@@ -296,10 +296,10 @@
 
     .automation-visual {
       position: relative;
-      min-height: 420px;
+      min-height: 460px;
       border-radius: 24px;
       overflow: hidden;
-      background: radial-gradient(circle at top left, #2563eb 0%, #0f172a 45%, #020617 100%);
+      background: radial-gradient(circle at top left, #2563eb 0%, #0f172a 40%, #020617 100%);
       box-shadow: var(--shadow);
       border: 1px solid rgba(37, 99, 235, 0.18);
       padding: 1.5rem;
@@ -330,6 +330,15 @@
       animation-delay: 1.2s;
     }
 
+    .visual-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
     .visual-badge {
       position: relative;
       z-index: 2;
@@ -346,7 +355,7 @@
       position: relative;
       z-index: 2;
       display: grid;
-      gap: 0.9rem;
+      gap: 0.7rem;
       margin-top: 1.2rem;
     }
 
@@ -357,11 +366,25 @@
       padding: 0.9rem 1rem;
       backdrop-filter: blur(6px);
       animation: pulseCard 3.8s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual-node::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+      animation: shimmer 4.2s linear infinite;
     }
 
     .visual-node:nth-child(2) { animation-delay: 0.6s; }
-    .visual-node:nth-child(3) { animation-delay: 1.2s; }
-    .visual-node:nth-child(4) { animation-delay: 1.8s; }
+    .visual-node:nth-child(4) { animation-delay: 1.2s; }
+    .visual-node:nth-child(6) { animation-delay: 1.8s; }
+    .visual-node:nth-child(8) { animation-delay: 2.4s; }
 
     .visual-node strong {
       display: block;
@@ -370,14 +393,62 @@
     }
 
     .visual-line {
-      height: 32px;
+      height: 26px;
       width: 2px;
       background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(14,165,233,0.8));
-      margin: -0.2rem auto -0.2rem 1.2rem;
+      margin: -0.1rem auto -0.1rem 1.2rem;
       position: relative;
       z-index: 2;
       animation: flowLine 2.5s linear infinite;
     }
+
+    .visual-monitor {
+      position: relative;
+      z-index: 2;
+      margin-top: 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      padding: 0.9rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .monitor-top {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .monitor-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .monitor-bars {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .monitor-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .monitor-bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #60a5fa, #22c55e);
+      animation: growBar 3.6s ease-in-out infinite;
+    }
+
+    .monitor-bar:nth-child(2) span { animation-delay: 0.4s; }
+    .monitor-bar:nth-child(3) span { animation-delay: 0.8s; }
 
     @keyframes floatOrb {
       0%, 100% { transform: translateY(0px); }
@@ -391,6 +462,19 @@
 
     @keyframes flowLine {
       0% { opacity: 0.45; }
+      50% { opacity: 1; }
+      100% { opacity: 0.45; }
+    }
+
+    @keyframes shimmer {
+      0% { left: -120%; }
+      100% { left: 130%; }
+    }
+
+    @keyframes growBar {
+      0%, 100% { width: 58%; }
+      50% { width: 92%; }
+    }
       50% { opacity: 1; }
       100% { opacity: 0.45; }
     }
@@ -618,6 +702,7 @@
       </div>
 
       <aside class="automation-visual">
+        <div class="visual-grid"></div>
         <div class="visual-badge">Animated framework view</div>
         <h3 style="position:relative; z-index:2; margin:0 0 0.5rem; font-size:1.5rem;">API Automation Flow</h3>
         <p style="position:relative; z-index:2; color:rgba(255,255,255,0.85); margin:0 0 1rem;">
@@ -643,6 +728,19 @@
           <div class="visual-node">
             <strong>Reports & CI/CD</strong>
             <span>Execution insights, logging, dashboards, pipeline feedback</span>
+          </div>
+        </div>
+
+        <div class="visual-monitor">
+          <div class="monitor-top">
+            <span class="monitor-dot"></span>
+            <span class="monitor-dot"></span>
+            <span class="monitor-dot"></span>
+          </div>
+          <div class="monitor-bars">
+            <div class="monitor-bar"><span style="width:82%;"></span></div>
+            <div class="monitor-bar"><span style="width:68%;"></span></div>
+            <div class="monitor-bar"><span style="width:90%;"></span></div>
           </div>
         </div>
       </aside>
