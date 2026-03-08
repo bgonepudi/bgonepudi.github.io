@@ -4,253 +4,548 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bhavya Gonepudi | QA & Test Automation Leader</title>
-  <meta name="description" content="Strategic QA and Test Automation Leader with 17+ years experience modernizing QA, building CI/CD-aligned test frameworks, and presenting to executive leadership.">
+  <meta name="description" content="Bhavya Gonepudi is a QA Manager and Test Automation Leader with 17+ years of experience driving quality engineering transformation, automation strategy, CI/CD quality gates, and enterprise testing excellence." />
   <style>
     :root {
-      --bg: #f4f5fb;
-      --white: #ffffff;
-      --dark: #111827;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, 0.1);
-      --radius: 16px;
+      --bg: #0b1120;
+      --bg-soft: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --accent: #0ea5e9;
+      --line: #e2e8f0;
+      --light: #f8fafc;
+      --success: #0f766e;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --radius: 20px;
+      --max: 1150px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--dark);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--light);
       line-height: 1.6;
     }
-    header {
-      background: radial-gradient(circle at top, #0f172a 0%, #1d4ed8 60%, #0f172a 100%);
-      color: #fff;
-      text-align: center;
-      padding: 3.5rem 1.25rem 4.5rem;
-    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
     .container {
-      width: min(1100px, 100%);
+      width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
-      padding: 0 1.25rem;
     }
-    .hero-title {
-      font-size: clamp(2.3rem, 6vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
     }
-    .hero-role {
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      color: rgba(255,255,255,.85);
-    }
-    .hero-subtitle {
-      margin: 1rem auto 1.6rem;
-      max-width: 620px;
-      color: rgba(255,255,255,.75);
-    }
-    .hero-buttons {
+
+    .nav {
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      font-size: 1.05rem;
+    }
+
+    .brand span { color: var(--brand); }
+
+    .nav-links {
+      display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      font-size: 0.96rem;
+      color: var(--muted);
     }
-    .btn {
-      display: inline-block;
-      padding: 0.55rem 1.3rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.15s ease;
-    }
-    .btn-primary {
-      background: #fff;
-      color: #0f172a;
-    }
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.6);
-      color: #fff;
-    }
-    .btn:hover { transform: translateY(-2px); }
 
-    section {
-      margin-top: -2.4rem;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 3rem;
+    .nav-links a:hover { color: var(--brand); }
+
+    .hero {
+      background: linear-gradient(135deg, #0b1120 0%, #0f172a 45%, #1d4ed8 100%);
+      color: white;
+      padding: 4.5rem 0 3.5rem;
     }
-    .grid {
+
+    .hero-grid {
       display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1.08;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.9);
+      margin: 0 0 1.25rem;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: white;
+      color: var(--brand-dark);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.25);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 0.2rem;
+    }
+
+    section { padding: 4.2rem 0; }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin: 0 0 0.7rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 1.75rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.2rem;
     }
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.45fr 1fr;
-      gap: 1.35rem;
-    }
+
     .card {
-      background: #fff;
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 1.5rem 1.35rem 1.2rem;
-      box-shadow: 0 20px 40px rgba(15,23,42,0.06);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
     }
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
     }
-    .exp-item {
-      margin-bottom: 1.05rem;
+
+    .muted { color: var(--muted); }
+
+    .about-grid,
+    .insight-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.4rem;
+      align-items: start;
     }
-    .exp-title { font-weight: 600; }
-    .exp-meta {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    ul { padding-left: 1.1rem; }
-    .tag {
-      display: inline-block;
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      font-size: 0.65rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      margin: 0 0.35rem 0.35rem 0;
-    }
-    .metrics {
+
+    .pill-row {
       display: flex;
-      gap: 0.65rem;
       flex-wrap: wrap;
+      gap: 0.7rem;
       margin-top: 1rem;
     }
-    .metric-pill {
-      background: rgba(15,23,42,0.03);
-      border: 1px solid rgba(15,23,42,0.04);
-      border-radius: 12px;
-      padding: 0.45rem 0.7rem;
-      font-size: 0.67rem;
-      color: #374151;
+
+    .pill {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-size: 0.9rem;
+      border: 1px solid #bfdbfe;
+      font-weight: 700;
     }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1rem;
+      border-left: 3px solid #bfdbfe;
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .impact-box {
+      background: #0f172a;
+      color: white;
+      padding: 1.2rem;
+      border-radius: 18px;
+    }
+
+    .impact-box strong {
+      display: block;
+      font-size: 1.65rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .blog-meta {
+      font-size: 0.88rem;
+      color: var(--success);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .blog-card p { margin: 0; color: var(--muted); }
+
+    .featured-note {
+      background: linear-gradient(135deg, #eff6ff, #f8fafc);
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 1.35rem;
+    }
+
+    .featured-note ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
     .footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.85);
+      padding: 2rem 0;
       text-align: center;
-      font-size: 0.7rem;
-      color: #9ca3af;
-      margin-bottom: 2rem;
     }
-    a { color: var(--accent); }
-    @media (max-width: 880px) {
-      .two-col { grid-template-columns: 1fr; }
-      section { margin-top: -1.9rem; }
+
+    .small { font-size: 0.92rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .insight-grid,
+      .contact-grid,
+      .cards,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="hero-title">Bhavya Gonepudi</div>
-      <div class="hero-role">QA & Test Automation Leader</div>
-      <p class="hero-subtitle">
-        17+ years building enterprise QA frameworks, modernizing test delivery, and presenting automation ROI to SVP/CXO audiences.
-      </p>
-      <div class="hero-buttons">
-        <!-- put your real LinkedIn link below -->
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG" target="_blank" rel="noopener">View LinkedIn</a>
-        <a class="btn btn-outline" href="#contact">Contact</a>
-      </div>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Bhavya <span>Gonepudi</span></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#impact">Impact</a>
+        <a href="#insights">Automation Weekly</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section>
-    <div class="container">
-      <div class="two-col">
-        <!-- LEFT -->
-        <div class="grid">
-          <div class="card">
-            <h2>About</h2>
-            <p>
-              I help organizations move from manual-heavy testing to scalable, CI/CD-aligned automation. My work spans Selenium/POM frameworks, ALM-based reporting, and leadership dashboards that show coverage, defects, and business risk in a single view.
-            </p>
-            <div class="metrics">
-              <div class="metric-pill">↑ Coverage to 80–90%</div>
-              <div class="metric-pill">↓ Regression cycle time</div>
-              <div class="metric-pill">Executive-ready reporting</div>
-            </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">QA Manager • Test Automation Leader • Director-level impact</div>
+        <h1>Driving quality engineering transformation with automation, strategy, and measurable business value.</h1>
+        <p>
+          I’m Bhavya Gonepudi, a results-driven QA and Test Automation leader with 17+ years of experience building scalable automation programs, embedding quality across the SDLC, and helping enterprise teams ship faster with confidence.
+        </p>
+        <p>
+          My focus spans automation-first testing, AI-assisted QA practices, CI/CD quality gates, compliance-focused delivery, and mentoring high-performing teams across regulated and cloud-based platforms.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">Learn more</a>
+          <a class="btn btn-secondary" href="#insights">Read weekly automation insights</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2 style="margin-top:0; font-size:1.35rem;">Quick highlights</h2>
+        <p class="small" style="color: rgba(255,255,255,0.82); margin-top:0;">
+          Enterprise quality leadership across insurance, clinical, SaaS, and multi-system platforms.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <strong>17+</strong>
+            <span>Years in QA and test automation</span>
           </div>
-
-          <div class="card">
-            <h2>Experience</h2>
-
-            <div class="exp-item">
-              <div class="exp-title">Test Engineer Lead / QA Automation</div>
-              <div class="exp-meta">AmeriHealth Caritas • 2014 – Present</div>
-              <ul>
-                <li>Designed and matured an automation framework integrated with Jenkins and ALM.</li>
-                <li>Built SQL/ALM reports to track created vs. modified test cases for leadership.</li>
-                <li>Partnered with business, security, and release teams to meet compliance.</li>
-              </ul>
-            </div>
-
-            <div class="exp-item">
-              <div class="exp-title">Academic / Professional Growth</div>
-              <div class="exp-meta">Purdue Global · IT & CSR coursework</div>
-              <ul>
-                <li>Projects on CSR, IT project WBS, and security topics.</li>
-              </ul>
-            </div>
+          <div class="stat">
+            <strong>2,000+</strong>
+            <span>Production defects prevented</span>
           </div>
-
-          <div class="card">
-            <h2>Selected Work</h2>
-            <ul>
-              <li>“Test Automation to SVP in 5 Minutes” – org, tools, roadmap.</li>
-              <li>Automation reporting: created vs. modified TCs in ALM (SQL-based).</li>
-              <li>PowerShell & Jenkins utilities for test agents.</li>
-            </ul>
+          <div class="stat">
+            <strong>60%+</strong>
+            <span>Reduction in environment setup effort</span>
+          </div>
+          <div class="stat">
+            <strong>CI/CD</strong>
+            <span>Integrated quality gates and automation</span>
           </div>
         </div>
+      </aside>
+    </div>
+  </section>
 
-        <!-- RIGHT -->
-        <div class="grid">
-          <div class="card">
-            <h2>Skills & Tools</h2>
-            <div>
-              <span class="tag">Selenium / POM</span>
-              <span class="tag">ALM / QC</span>
-              <span class="tag">Jenkins / CI-CD</span>
-              <span class="tag">Gradle</span>
-              <span class="tag">SQL Reporting</span>
-              <span class="tag">Test Strategy</span>
-              <span class="tag">Azure / Cloud QA</span>
-              <span class="tag">Data validation</span>
-              <span class="tag">Leadership decks</span>
-            </div>
+  <section id="about">
+    <div class="container about-grid">
+      <div class="card">
+        <h2 class="section-title">About me</h2>
+        <p class="section-copy">
+          I specialize in building reusable automation frameworks, defining QA strategy, and translating complex technical quality risks into clear, actionable outcomes for leadership. Although my title is Manager, I regularly operate at a director level by partnering with engineering, product, security, compliance, and delivery leaders.
+        </p>
+        <p class="muted">
+          I’m known for aligning quality vision to business goals, improving release confidence, and creating accountability through metrics, governance, and continuous improvement. I care deeply about delivering faster release cycles, fewer escaped defects, and stronger collaboration across the software delivery lifecycle.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Automation Strategy</span>
+          <span class="pill">QA Leadership</span>
+          <span class="pill">Selenium & Java</span>
+          <span class="pill">API & Performance Testing</span>
+          <span class="pill">CI/CD Quality Gates</span>
+          <span class="pill">Compliance-focused QA</span>
+          <span class="pill">AI-assisted QA</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Core strengths</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Enterprise QA transformation</h4>
+            <p>Built scalable automation programs and governance models that improve visibility, readiness, and quality outcomes.</p>
           </div>
-
-          <div class="card" id="contact">
-            <h2>Contact</h2>
-            <p>Collaborations, speaking, or QA modernization discussions:</p>
-            <p><strong>Email:</strong> <a href="mailto:youremail@example.com">bgonepudi@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG" target="_blank">https://www.linkedin.com/in/bhavyagonepudi/</a></p>
+          <div class="timeline-item">
+            <h4>Framework design and tooling</h4>
+            <p>Designed reusable frameworks for functional, regression, API, performance, and data validation testing.</p>
           </div>
-
-          <div class="card">
-            <h2>Also Me</h2>
-            <p>
-              Proud baseball mom ⚾ · Supports kids’ academic  travel schedules · Enjoys building clean, story-driven slides for leadership.
-            </p>
+          <div class="timeline-item">
+            <h4>Leadership and mentoring</h4>
+            <p>Grew and coached automation-first teams while driving standards, reviews, and best practices.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Executive communication</h4>
+            <p>Reported coverage, risks, defect trends, and release readiness in a way that supports better decisions.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    © <span id="year"></span> Bhavya Gonepudi
-  </footer>
+  <section id="experience" style="background:#eef4ff;">
+    <div class="container">
+      <h2 class="section-title">Professional experience</h2>
+      <p class="section-copy">
+        A snapshot of the leadership, delivery, and quality engineering experience I’ve built across enterprise programs.
+      </p>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+      <div class="cards">
+        <article class="card">
+          <h3>AmeriHealth Caritas</h3>
+          <p class="muted"><strong>QA Manager / Test Automation Lead</strong></p>
+          <p class="muted">
+            Led and scaled a high-performing QA organization, defined enterprise-wide automation strategy, integrated automation into CI/CD, and established dashboards for coverage, defects, and release readiness.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Prior consulting leadership roles</h3>
+          <p class="muted"><strong>QA Manager / Test Automation Lead / Consultant</strong></p>
+          <p class="muted">
+            Built offshore-onsite delivery models, managed distributed teams, supported release management, and delivered ROI through automation, performance testing, and process optimization.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Technical depth across platforms</h3>
+          <p class="muted"><strong>Enterprise applications and test tooling</strong></p>
+          <p class="muted">
+            Hands-on experience with Java, SQL, JavaScript, NodeJS, Selenium, JMeter, PowerShell, Docker, Postman, SoapUI, GitHub, GitLab, and cloud-based solutions.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="container">
+      <h2 class="section-title">Selected impact</h2>
+      <p class="section-copy">
+        I focus on measurable outcomes: stronger release confidence, fewer escaped defects, better ROI, and scalable systems that support long-term growth.
+      </p>
+
+      <div class="impact-grid">
+        <div class="impact-box">
+          <strong>2,000+</strong>
+          <span>Production defects prevented through stronger automation and quality controls</span>
+        </div>
+        <div class="impact-box">
+          <strong>60%+</strong>
+          <span>Reduction in environment setup effort with a custom automated test data tool</span>
+        </div>
+        <div class="impact-box">
+          <strong>Faster</strong>
+          <span>Release cycles enabled by early defect detection and CI/CD integration</span>
+        </div>
+        <div class="impact-box">
+          <strong>Higher ROI</strong>
+          <span>Cost savings through automation, tooling optimization, and process standardization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights" style="background:#f8fafc;">
+    <div class="container insight-grid">
+      <div>
+        <h2 class="section-title">Automation Weekly</h2>
+        <p class="section-copy">
+          This section is for weekly posts on test automation, quality engineering, framework design, leadership lessons, CI/CD quality gates, performance testing, API testing, and AI in QA.
+        </p>
+
+        <div class="cards" style="grid-template-columns:1fr;">
+          <article class="card blog-card">
+            <div class="blog-meta">Week 1 • Featured topic</div>
+            <h3>How to build an automation strategy that leadership actually values</h3>
+            <p>Cover business outcomes first: risk reduction, cycle-time improvement, release confidence, and ROI. Then map frameworks, environments, and coverage to those outcomes.</p>
+          </article>
+
+          <article class="card blog-card">
+            <div class="blog-meta">Week 2 • Upcoming topic</div>
+            <h3>Smoke vs. regression: where each belongs in a modern CI/CD pipeline</h3>
+            <p>Explain how fast confidence checks differ from deeper release validation, and how both support smarter feedback loops for engineering teams.</p>
+          </article>
+
+          <article class="card blog-card">
+            <div class="blog-meta">Week 3 • Upcoming topic</div>
+            <h3>Designing maintainable API test frameworks for enterprise teams</h3>
+            <p>Share patterns for reusable request builders, environment configs, assertions, reporting, and scaling tests across multiple projects.</p>
+          </article>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="card">
+        <h2 class="section-title">Let’s connect</h2>
+        <p class="section-copy">
+          I’m passionate about quality engineering leadership, automation transformation, and building practical testing solutions that create real business value.
+        </p>
+        <p><strong>Email:</strong> <a href="mailto:BGonepudi@gmail.com">BGonepudi@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:16109991979">610-999-1979</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Education</h3>
+        <p class="muted"><strong>Bachelor of Science in Analytics</strong><br />Purdue University Global</p>
+        <p class="muted"><strong>Associate of Applied Science in Information Technology</strong><br />Purdue University Global</p>
+        <p class="muted"><strong>High School Diploma</strong><br />Kennett High School, PA</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="margin:0;">© 2026 Bhavya Gonepudi • QA & Test Automation Leader</p>
+    </div>
+  </footer>
 </body>
 </html>
