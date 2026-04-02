@@ -28,7 +28,6 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -368,6 +367,54 @@
       text-decoration: underline;
     }
 
+    .current-week-card {
+      border: 2px solid #2563eb;
+      background: #eef4ff;
+    }
+
+    .archive-title {
+      margin: 0 0 1rem;
+      font-size: 1.35rem;
+    }
+
+    .article-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .article-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid #bfdbfe;
+      color: var(--brand-dark);
+      background: white;
+      transition: all 0.2s ease;
+    }
+
+    .article-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand);
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.15);
+    }
+
+    .article-btn.primary {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .article-btn.primary:hover {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+    }
+
     .automation-visual {
       position: relative;
       min-height: 500px;
@@ -562,7 +609,6 @@
       text-align: center;
     }
 
-    /* fade in */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -658,9 +704,7 @@
     }
   </style>
 
-  <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "223c4b36e9ff4e38b1656ff8b4c1e8fa"}'></script>
-  <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
   <header class="topbar">
@@ -887,65 +931,96 @@
       <div>
         <h2 class="section-title">Automation Weekly</h2>
         <p class="section-copy">
-          Practical weekly insights on test automation, quality engineering, framework design, leadership lessons, CI/CD quality gates, performance testing, API testing, and AI in QA.
+          A weekly journey of building scalable, enterprise-grade test automation frameworks.
         </p>
+
+        <div style="margin-bottom:2rem;">
+          <article class="card blog-card current-week-card fade-in fade-delay-1">
+            <div class="blog-meta">Current Week • Week 2</div>
+            <h3>Scaling automation with data-driven execution and end-to-end validation</h3>
+            <p>
+              In Week 2, we evolved the framework from basic execution to scalable automation by introducing data-driven testing.
+              Using CSV/TXT inputs, we enabled loop-based execution for multiple datasets without duplicating code.
+            </p>
+            <p>
+              We also strengthened API and database validation by integrating DB queries, dynamic value storage,
+              and response comparison—moving toward true end-to-end validation.
+            </p>
+            <p>
+              These enhancements make the framework more modular, reliable, and ready for enterprise-scale execution.
+            </p>
+
+            <div class="article-actions">
+              <a
+                class="article-btn primary"
+                href="#"
+                target="_blank"
+              >
+                View Week 2 Article
+              </a>
+
+              <a
+                class="article-btn"
+                href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e/"
+                target="_blank"
+              >
+                Week 1 Reference
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="archive-title">Archive</h3>
 
         <div class="cards" style="grid-template-columns:1fr;">
           <article class="card blog-card fade-in fade-delay-1">
-            <div class="blog-meta">Week 1 • API Automation Framework</div>
-            <h3>How I design a scalable API automation framework for enterprise teams</h3>
+            <div class="blog-meta">Week 1 • Foundation</div>
+            <h3>Building a scalable API automation framework for enterprise teams</h3>
             <p>
-              A strong API automation framework should be reusable, easy to maintain, and simple to scale across projects. My approach starts with separating core layers like request builders, environment configuration, test data management, reusable assertions, reporting, and CI/CD execution.
+              Week 1 focused on establishing a strong foundation by designing a modular, reusable API automation framework.
+              Key areas included request builders, environment configuration, reusable validations, reporting, and CI/CD readiness.
             </p>
             <p>
-              I also focus on standardization: common utilities for authentication, headers, payload creation, response validation, logging, and dynamic environment selection using config-driven execution.
-            </p>
-            <p>
-              Recent improvements include environment-based execution using <strong>-Denv</strong>, reusable validation methods, better HTML reporting, and framework extensibility for new API request types without major code changes.
+              The goal was to ensure the framework is easy to scale, maintain, and extend across enterprise applications.
             </p>
             <a
               class="linkedin-link"
-              href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e?utm_source=share&utm_medium=member_ios&utm_campaign=share_via"
+              href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e/"
               target="_blank"
             >
-              View related LinkedIn update
+              ✅ Week 1 Completed – View Article
             </a>
           </article>
 
           <article class="card blog-card fade-in fade-delay-2">
-            <div class="blog-meta">Week 2 • Smoke vs Regression</div>
+            <div class="blog-meta">Week 3 • Smoke vs Regression</div>
             <h3>Where smoke and regression suites belong in a modern CI/CD pipeline</h3>
             <p>
-              Smoke tests give fast confidence that the core workflows are stable after a deployment, while regression suites provide deeper validation across integrated features and edge cases.
+              Smoke tests give fast confidence that core workflows remain stable after deployment,
+              while regression suites provide deeper validation across integrated features, business flows,
+              and edge cases.
             </p>
             <p>
-              In modern pipelines, lightweight smoke checks belong earlier for fast feedback, while fuller regression runs support deeper release validation at scheduled or release-critical checkpoints.
+              In modern pipelines, lightweight smoke checks should run early for rapid feedback,
+              while fuller regression suites support broader release validation during scheduled runs
+              or release-critical checkpoints.
             </p>
-            <a
-              class="linkedin-link"
-              href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e?utm_source=share&utm_medium=member_ios&utm_campaign=share_via"
-              target="_blank"
-            >
-              View related LinkedIn update
-            </a>
+            <span class="muted">Coming next</span>
           </article>
 
           <article class="card blog-card fade-in fade-delay-3">
-            <div class="blog-meta">Week 3 • Reusable Framework Design</div>
+            <div class="blog-meta">Week 4 • Reusable Framework Design</div>
             <h3>Designing maintainable API test frameworks for enterprise teams</h3>
             <p>
-              Maintainability comes from having a clean structure: centralized configs, modular request builders, shared assertions, test data utilities, reporting hooks, and execution controls that support different environments and applications.
+              Maintainability starts with a clean framework structure: centralized configuration,
+              modular request builders, reusable assertions, test data utilities, reporting hooks,
+              and execution controls that support multiple environments and applications.
             </p>
             <p>
-              A good framework reduces duplication, improves onboarding, and lets teams add new test scenarios quickly while remaining aligned with CI/CD and reporting expectations.
+              A well-designed framework reduces duplication, improves onboarding, and helps teams
+              expand test coverage quickly while staying aligned with CI/CD and reporting needs.
             </p>
-            <a
-              class="linkedin-link"
-              href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e?utm_source=share&utm_medium=member_ios&utm_campaign=share_via"
-              target="_blank"
-            >
-              View related LinkedIn update
-            </a>
+            <span class="muted">Planned article</span>
           </article>
         </div>
       </div>
