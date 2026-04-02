@@ -22,6 +22,7 @@
       --accent: #0ea5e9;
       --line: #e2e8f0;
       --success: #0f766e;
+      --warning: #b45309;
       --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
       --radius: 20px;
       --max: 1150px;
@@ -353,6 +354,10 @@
       letter-spacing: 0.06em;
     }
 
+    .blog-meta.progress {
+      color: var(--warning);
+    }
+
     .blog-card p { margin: 0; color: var(--muted); }
 
     .linkedin-link {
@@ -413,6 +418,16 @@
     .article-btn.primary:hover {
       background: var(--brand-dark);
       border-color: var(--brand-dark);
+    }
+
+    .article-btn.disabled,
+    .article-btn.disabled:hover {
+      background: #f1f5f9;
+      color: #64748b;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: none;
+      cursor: default;
     }
 
     .automation-visual {
@@ -936,36 +951,25 @@
 
         <div style="margin-bottom:2rem;">
           <article class="card blog-card current-week-card fade-in fade-delay-1">
-            <div class="blog-meta">Current Week • Week 2</div>
+            <div class="blog-meta progress">Next Week • Week 2 • In Progress</div>
             <h3>Scaling automation with data-driven execution and end-to-end validation</h3>
             <p>
-              In Week 2, we evolved the framework from basic execution to scalable automation by introducing data-driven testing.
-              Using CSV/TXT inputs, we enabled loop-based execution for multiple datasets without duplicating code.
+              Week 2 is currently in progress and focuses on evolving the framework from basic execution
+              to scalable automation through data-driven testing and end-to-end validation.
             </p>
             <p>
-              We also strengthened API and database validation by integrating DB queries, dynamic value storage,
-              and response comparison—moving toward true end-to-end validation.
+              The goal is to enable loop-based execution using CSV/TXT inputs, improve reusability,
+              and strengthen API-to-database validation with dynamic value handling.
             </p>
             <p>
-              These enhancements make the framework more modular, reliable, and ready for enterprise-scale execution.
+              These enhancements will make the framework more modular, reliable, and ready for
+              enterprise-scale execution.
             </p>
 
             <div class="article-actions">
-              <a
-                class="article-btn primary"
-                href="#"
-                target="_blank"
-              >
-                View Week 2 Article
-              </a>
-
-              <a
-                class="article-btn"
-                href="https://www.linkedin.com/pulse/building-scalable-api-test-automation-framework-story-bhavya-gonepudi-ldr8e/"
-                target="_blank"
-              >
-                Week 1 Reference
-              </a>
+              <span class="article-btn primary disabled">
+                Week 2 Article — In Progress
+              </span>
             </div>
           </article>
         </div>
@@ -974,7 +978,7 @@
 
         <div class="cards" style="grid-template-columns:1fr;">
           <article class="card blog-card fade-in fade-delay-1">
-            <div class="blog-meta">Week 1 • Foundation</div>
+            <div class="blog-meta">Week 1 • Foundation • Completed</div>
             <h3>Building a scalable API automation framework for enterprise teams</h3>
             <p>
               Week 1 focused on establishing a strong foundation by designing a modular, reusable API automation framework.
