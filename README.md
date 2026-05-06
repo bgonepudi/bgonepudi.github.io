@@ -2,11 +2,17 @@
 
 QA & Test Automation Leadership Portfolio Website.
 
-## Highlights
+## Sections
 
-- Enterprise QA Transformation
-- Automation Strategy
-- CI/CD Integration
-- API Automation
-- AI in QA
-- Automation Weekly Blog
+- About
+- Experience
+- Impact
+- Director Value
+- Automation Weekly
+- Contact
+
+## Technologies
+
+- HTML
+- CSS
+- GitHub Pages
