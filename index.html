@@ -1,1934 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="Bhavya Gonepudi — Quality Engineering and Test Automation leader focused on AI-assisted quality engineering, enterprise automation, API testing, CI/CD modernization, quality analytics, and engineering leadership." />
+  <meta name="keywords" content="Bhavya Gonepudi, Quality Engineering Leader, Test Automation, AI in QA, AI Assisted Testing, Selenium, Java, API Testing, REST Assured, CI/CD, Jenkins, Healthcare QA, Quality Engineering" />
+  <meta property="og:title" content="Bhavya Gonepudi | Quality Engineering for the AI Era" />
+  <meta property="og:description" content="Quality Engineering leadership, AI-assisted testing, automation architecture, API/UI automation, CI/CD transformation, and quality intelligence." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bgonepudi.github.io/" />
 
-  <meta
-    name="description"
-    content="Bhavya Gonepudi - Quality Engineering Leader with 18+ years of experience in AI-assisted quality engineering, enterprise test automation, healthcare, CI/CD quality gates, API testing, data validation, and engineering leadership."
-  />
-
-  <meta
-    name="keywords"
-    content="Bhavya Gonepudi, Quality Engineering Leader, Test Automation, AI in QA, AI Assisted Testing, Selenium, Java, API Testing, REST Assured, CI/CD, Jenkins, Healthcare QA, HIPAA, Quality Engineering"
-  />
-
-  <title>Bhavya Gonepudi | Quality Engineering & AI-Assisted QA Leader</title>
+  <title>Bhavya Gonepudi | Quality Engineering for the AI Era</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1728;
+      --surface: rgba(17, 31, 51, .74);
+      --surface-strong: #102039;
+      --surface-soft: rgba(255,255,255,.045);
+      --text: #edf5ff;
+      --muted: #9fb1c8;
+      --line: rgba(158, 181, 211, .16);
+      --blue: #5ca8ff;
+      --cyan: #4ee7e2;
+      --violet: #9c83ff;
+      --green: #72e4a8;
+      --shadow: 0 24px 80px rgba(0,0,0,.22);
+      --max: 1180px;
+      --radius: 22px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html[data-theme="light"] {
+      --bg: #f7f9fc;
+      --bg-2: #eef4fb;
+      --surface: rgba(255,255,255,.9);
+      --surface-strong: #ffffff;
+      --surface-soft: rgba(15, 37, 68, .035);
+      --text: #0d1b2d;
+      --muted: #52657d;
+      --line: rgba(32, 61, 97, .13);
+      --blue: #1265d4;
+      --cyan: #008f9f;
+      --violet: #6a4fe7;
+      --green: #137a4b;
+      --shadow: 0 20px 60px rgba(28, 60, 100, .10);
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.7;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    /* =====================================================
-       HEADER / HERO
-    ===================================================== */
-
-    header {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 75% 35%, rgba(37, 99, 235, .22), transparent 28%),
-        radial-gradient(circle at 85% 70%, rgba(124, 58, 237, .18), transparent 24%),
-        linear-gradient(135deg, #020617, #0f172a 45%, #172554);
-      color: white;
-      padding: 26px 0 80px;
-      overflow: hidden;
+        radial-gradient(circle at 75% -10%, rgba(92,168,255,.13), transparent 33%),
+        radial-gradient(circle at 2% 18%, rgba(156,131,255,.09), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background .25s ease, color .25s ease;
     }
 
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), 92%); margin: 0 auto; }
+    .section { padding: 92px 0; position: relative; }
+    .section.alt { background: linear-gradient(180deg, transparent, rgba(92,168,255,.035), transparent); }
+    .section-head { max-width: 760px; margin-bottom: 42px; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--cyan); font-weight: 800; font-size: .78rem;
+      text-transform: uppercase; letter-spacing: .14em; margin-bottom: 12px;
+    }
+    .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h2 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.04em; line-height: 1.08; }
+    .section-head p { color: var(--muted); margin-top: 14px; font-size: 1.02rem; }
+
+    /* NAV */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-bottom: 58px;
+      min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 850; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 37px; height: 37px; border-radius: 12px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: #fff; font-size: .88rem; box-shadow: 0 8px 30px rgba(92,168,255,.22);
+    }
+    .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .07em; margin-top: -2px; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-weight: 700; font-size: .88rem; }
+    .nav-links a:hover { color: var(--text); }
+    .theme-btn {
+      width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line);
+      background: var(--surface-soft); color: var(--text); cursor: pointer;
     }
 
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-    }
-
-    .logo small {
-      display: block;
-      color: #60a5fa;
-      font-size: .72rem;
-      letter-spacing: .8px;
-      margin-top: -2px;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #dbeafe;
-      font-weight: 700;
-      font-size: .93rem;
-      transition: .2s;
-    }
-
-    .nav-links a:hover {
-      color: #ffffff;
-    }
-
-    .nav-social {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(191,219,254,.25);
-      background: rgba(255,255,255,.05);
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 46px;
-      align-items: center;
-    }
-
+    /* HERO */
+    .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; padding: 72px 0 82px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 56px; }
     .eyebrow {
-      display: inline-block;
-      padding: 8px 15px;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, .18);
-      border: 1px solid rgba(96, 165, 250, .35);
-      color: #bfdbfe;
-      font-size: .84rem;
-      font-weight: 800;
-      margin-bottom: 22px;
+      display: inline-flex; gap: 9px; align-items: center; padding: 8px 12px;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--surface-soft);
+      color: var(--muted); font-size: .8rem; font-weight: 800; margin-bottom: 24px;
+    }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(114,228,168,.08); }
+    h1 { font-size: clamp(3rem, 7vw, 6.35rem); line-height: .96; letter-spacing: -.065em; max-width: 850px; }
+    .grad {
+      background: linear-gradient(90deg, var(--blue), var(--cyan) 46%, var(--violet));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-copy { color: var(--muted); max-width: 720px; margin-top: 25px; font-size: clamp(1rem, 1.5vw, 1.18rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 17px; border-radius: 13px; border: 1px solid var(--line);
+      font-weight: 800; font-size: .9rem; transition: .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: linear-gradient(135deg, var(--blue), #3c82ed); color: white; border-color: transparent; box-shadow: 0 12px 34px rgba(50,126,230,.2); }
+    .btn.soft { background: var(--surface-soft); }
+
+    .signal-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+    .signal {
+      padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--surface-soft); color: var(--muted); font-size: .75rem; font-weight: 700;
     }
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 1.08;
-      margin-bottom: 22px;
-      letter-spacing: -1.7px;
+    .hero-visual { position: relative; min-height: 530px; display: grid; place-items: center; }
+    .orbital {
+      width: 370px; height: 370px; border-radius: 50%; border: 1px solid var(--line);
+      position: relative; display: grid; place-items: center;
+      box-shadow: inset 0 0 80px rgba(92,168,255,.035);
     }
-
-    .hero h1 .blue {
-      color: #60a5fa;
+    .orbital::before, .orbital::after {
+      content: ""; position: absolute; border-radius: 50%; border: 1px solid var(--line);
     }
-
-    .hero h1 .purple {
-      color: #a78bfa;
+    .orbital::before { inset: 42px; }
+    .orbital::after { inset: 92px; }
+    .core {
+      width: 132px; height: 132px; border-radius: 32px;
+      background: linear-gradient(135deg, rgba(92,168,255,.95), rgba(156,131,255,.95));
+      display: grid; place-items: center; text-align: center; color: #fff;
+      box-shadow: 0 0 80px rgba(92,168,255,.26);
+      position: relative; z-index: 2; animation: float 5s ease-in-out infinite;
     }
-
-    .hero p {
-      max-width: 780px;
-      color: #dbeafe;
-      margin-bottom: 14px;
-      font-size: 1.05rem;
+    .core strong { font-size: 1.55rem; line-height: 1; }
+    .core span { display: block; font-size: .68rem; margin-top: 7px; opacity: .86; font-weight: 700; }
+    @keyframes float { 50% { transform: translateY(-8px); } }
+    .node {
+      position: absolute; width: 126px; padding: 12px 10px;
+      border: 1px solid var(--line); border-radius: 15px;
+      background: color-mix(in srgb, var(--surface-strong) 90%, transparent);
+      box-shadow: var(--shadow); text-align: center;
     }
+    .node b { display: block; font-size: .78rem; }
+    .node small { color: var(--muted); font-size: .67rem; }
+    .node.n1 { top: 5%; left: 0; }
+    .node.n2 { top: 6%; right: -2%; }
+    .node.n3 { bottom: 7%; left: -2%; }
+    .node.n4 { bottom: 5%; right: 0; }
 
-    .hero-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
+    /* METRICS */
+    .metric-strip {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow); overflow: hidden;
     }
+    .metric { padding: 26px 28px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric strong { display: block; font-size: 2rem; letter-spacing: -.05em; color: var(--text); }
+    .metric span { display: block; color: var(--muted); font-size: .82rem; margin-top: 4px; font-weight: 700; }
 
-    .hero-points span {
-      font-size: .82rem;
-      padding: 7px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(191,219,254,.25);
-      background: rgba(255,255,255,.06);
-      color: #dbeafe;
+    /* CARDS */
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .card {
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 25px;
+      background: var(--surface); box-shadow: 0 14px 45px rgba(0,0,0,.06);
+      transition: transform .2s ease, border-color .2s ease;
     }
+    .card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--blue) 45%, var(--line)); }
+    .icon {
+      width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(92,168,255,.14), rgba(156,131,255,.10));
+      border: 1px solid var(--line); margin-bottom: 16px; font-size: 1.18rem;
+    }
+    .card h3 { font-size: 1.04rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: .9rem; }
 
-    .hero-actions {
-      display: flex;
-      gap: 13px;
-      flex-wrap: wrap;
+    /* QUALITY FLOW */
+    .flow {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 9px; align-items: stretch;
       margin-top: 30px;
     }
+    .flow-step {
+      padding: 18px 10px; text-align: center; border: 1px solid var(--line);
+      border-radius: 16px; background: var(--surface);
+    }
+    .flow-step b { font-size: .8rem; display: block; }
+    .flow-step small { font-size: .68rem; color: var(--muted); }
+    .flow-arrow { display: none; }
 
-    .btn {
-      padding: 12px 21px;
-      border-radius: 999px;
-      font-weight: 800;
-      display: inline-block;
-      transition: transform .2s ease, box-shadow .2s ease;
+    /* EXPERIENCE */
+    .experience {
+      display: grid; grid-template-columns: 240px 1fr; gap: 34px;
+      border: 1px solid var(--line); border-radius: 28px; padding: 34px;
+      background: var(--surface);
+    }
+    .experience-side .company { color: var(--cyan); font-weight: 900; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
+    .experience-side .years { margin-top: 8px; color: var(--muted); font-size: .86rem; }
+    .experience-main h3 { font-size: clamp(1.5rem,3vw,2.2rem); letter-spacing: -.03em; }
+    .experience-main > p { color: var(--muted); margin-top: 10px; max-width: 810px; }
+    .impact-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px 28px; margin-top: 24px; }
+    .impact-item { display: flex; gap: 10px; color: var(--muted); font-size: .9rem; }
+    .impact-item::before { content: "↗"; color: var(--cyan); font-weight: 900; }
+    .timeline { margin-top: 18px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .timeline-item { border: 1px solid var(--line); border-radius: 16px; padding: 16px; background: var(--surface-soft); }
+    .timeline-item small { color: var(--cyan); font-size: .7rem; font-weight: 800; }
+    .timeline-item b { display: block; margin-top: 5px; font-size: .86rem; }
+    .timeline-item span { display: block; color: var(--muted); font-size: .74rem; margin-top: 3px; }
+
+    /* PROJECTS */
+    .project-card { position: relative; overflow: hidden; min-height: 255px; }
+    .project-num { position: absolute; right: 18px; top: 14px; color: var(--line); font-size: 3.4rem; font-weight: 900; line-height: 1; }
+    .project-card .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .68rem; font-weight: 700; }
+
+    /* TECH */
+    .tech-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech {
+      padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface); color: var(--muted); font-size: .82rem; font-weight: 750;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(15,23,42,.2);
-    }
-
-    .btn-primary {
-      background: #ffffff;
-      color: #1d4ed8;
-    }
-
-    .btn-secondary {
-      border: 1px solid #93c5fd;
-      color: white;
-    }
-
-    .btn-blue {
-      background: #2563eb;
-      color: white;
-    }
-
-    .btn-light {
-      background: #eff6ff;
-      color: #1d4ed8;
-    }
-
-    /* =====================================================
-       AI VISUAL
-    ===================================================== */
-
-    .ai-visual {
-      position: relative;
-      min-height: 445px;
-      display: grid;
-      place-items: center;
-    }
-
-    .ai-core {
-      width: 215px;
-      height: 215px;
-      border-radius: 36px;
+    /* QUOTE / CONTACT */
+    .vision {
+      border-radius: 30px; padding: 44px;
       background:
-        linear-gradient(145deg, rgba(37,99,235,.95), rgba(124,58,237,.9));
-      border: 1px solid rgba(191,219,254,.35);
-      box-shadow:
-        0 0 80px rgba(37,99,235,.38),
-        inset 0 0 35px rgba(255,255,255,.08);
-      display: grid;
-      place-items: center;
-      position: relative;
-      z-index: 3;
-    }
-
-    .ai-core::before,
-    .ai-core::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(96,165,250,.25);
-      border-radius: 50%;
-    }
-
-    .ai-core::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .ai-core::after {
-      width: 390px;
-      height: 390px;
-    }
-
-    .ai-label {
-      text-align: center;
-      z-index: 4;
-    }
-
-    .ai-label .brain {
-      font-size: 3.2rem;
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .ai-label strong {
-      font-size: 2rem;
-      display: block;
-    }
-
-    .ai-label small {
-      color: #dbeafe;
-      font-weight: 700;
-    }
-
-    .orbit-card {
-      position: absolute;
-      width: 138px;
-      padding: 12px;
-      border: 1px solid rgba(96,165,250,.35);
-      border-radius: 16px;
-      background: rgba(15,23,42,.72);
-      backdrop-filter: blur(9px);
-      text-align: center;
-      z-index: 5;
-      box-shadow: 0 12px 34px rgba(0,0,0,.16);
-    }
-
-    .orbit-card .icon {
-      font-size: 1.55rem;
-      margin-bottom: 5px;
-    }
-
-    .orbit-card strong {
-      display: block;
-      font-size: .82rem;
-    }
-
-    .orbit-card small {
-      display: block;
-      color: #93c5fd;
-      font-size: .7rem;
-    }
-
-    .orbit-1 { top: 4%; left: 2%; }
-    .orbit-2 { top: 5%; right: 1%; }
-    .orbit-3 { bottom: 5%; left: 2%; }
-    .orbit-4 { bottom: 5%; right: 1%; }
-
-    /* =====================================================
-       GENERAL
-    ===================================================== */
-
-    section {
-      padding: 76px 0;
-    }
-
-    .section-kicker {
-      color: #2563eb;
-      font-size: .79rem;
-      font-weight: 900;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: clamp(1.9rem, 4vw, 2.5rem);
-      margin-bottom: 14px;
-      color: #0f172a;
-      line-height: 1.2;
-    }
-
-    .section-subtitle {
-      max-width: 800px;
-      color: #475569;
-      margin-bottom: 34px;
-    }
-
-    #leadership,
-    #impact,
-    #skills {
-      background: white;
-    }
-
-    #experience,
-    #automation-weekly {
-      background: #eef6ff;
-    }
-
-    /* =====================================================
-       HIGHLIGHTS
-    ===================================================== */
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 10px 30px rgba(15,23,42,.06);
-    }
-
-    .card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-    }
-
-    .card strong {
-      display: block;
-      font-size: 1.95rem;
-      color: #1d4ed8;
-      margin-bottom: 4px;
-    }
-
-    .card span {
-      color: #475569;
-      font-weight: 700;
-      font-size: .92rem;
-    }
-
-    /* =====================================================
-       LEADERSHIP / CAPABILITIES
-    ===================================================== */
-
-    .strength-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .strength-card {
-      background: #ffffff;
-      border-radius: 21px;
-      padding: 25px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 10px 26px rgba(15,23,42,.05);
-      transition: transform .2s ease;
-    }
-
-    .strength-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .strength-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.45rem;
-      background: #eff6ff;
-      margin-bottom: 15px;
-    }
-
-    .strength-card h3 {
-      color: #0f172a;
-      margin-bottom: 9px;
-      font-size: 1.08rem;
-    }
-
-    .strength-card p {
-      color: #475569;
-      font-size: .92rem;
-    }
-
-    /* =====================================================
-       EXPERIENCE
-    ===================================================== */
-
-    .experience-feature {
-      background: white;
-      border-radius: 25px;
-      padding: 34px;
-      border: 1px solid #dbeafe;
-      box-shadow: 0 15px 40px rgba(15,23,42,.07);
-      margin-bottom: 25px;
-    }
-
-    .experience-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .experience-heading h3 {
-      font-size: 1.75rem;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-
-    .experience-role {
-      color: #475569;
-      font-weight: 800;
-    }
-
-    .experience-date {
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 7px 13px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: .82rem;
-    }
-
-    .experience-feature > p {
-      color: #334155;
-      margin-bottom: 20px;
-    }
-
-    .experience-feature ul {
-      padding-left: 20px;
-    }
-
-    .experience-feature li {
-      color: #334155;
-      margin-bottom: 10px;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 24px;
-    }
-
-    .tag-list span {
-      background: #eff6ff;
-      color: #1d4ed8;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: .79rem;
-      font-weight: 800;
-    }
-
-    .earlier-experience {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .experience-item {
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      border-left: 5px solid #2563eb;
-      box-shadow: 0 8px 22px rgba(15,23,42,.05);
-    }
-
-    .experience-item .experience-date {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 0;
-      background: none;
-    }
-
-    .experience-item h3 {
-      color: #0f172a;
-    }
-
-    .experience-item p {
-      color: #475569;
-      margin-top: 7px;
-    }
-
-    /* =====================================================
-       SKILLS
-    ===================================================== */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 24px;
-      background: #f8fafc;
-    }
-
-    .skill-card h3 {
-      color: #0f172a;
-      margin-bottom: 10px;
-    }
-
-    .skill-card p {
-      color: #475569;
-      font-size: .92rem;
-    }
-
-    /* =====================================================
-       IMPACT
-    ===================================================== */
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .impact-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 25px;
-      background: white;
-      box-shadow: 0 10px 26px rgba(15,23,42,.05);
-    }
-
-    .impact-card strong {
-      display: block;
-      font-size: 1.8rem;
-      color: #1d4ed8;
-      margin-bottom: 7px;
-    }
-
-    .impact-card span {
-      color: #475569;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-
-    /* =====================================================
-       AUTOMATION WEEKLY
-    ===================================================== */
-
-    .weekly-feature {
-      background: white;
-      border-radius: 26px;
-      padding: 36px;
-      border: 1px solid #dbeafe;
-      box-shadow: 0 15px 40px rgba(15,23,42,.07);
-    }
-
-    .weekly-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .weekly-badge {
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: .8rem;
-      font-weight: 900;
-    }
-
-    .weekly-date {
-      color: #64748b;
-      font-weight: 800;
-      font-size: .85rem;
-    }
-
-    .weekly-feature h3 {
-      font-size: 1.8rem;
-      color: #0f172a;
-      margin-bottom: 16px;
-      line-height: 1.25;
-    }
-
-    .weekly-feature h4 {
-      color: #1e3a8a;
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
-    .weekly-feature p,
-    .weekly-feature li {
-      color: #334155;
-    }
-
-    .weekly-feature ul {
-      padding-left: 22px;
-      margin-top: 10px;
-    }
-
-    .weekly-feature li {
-      margin-bottom: 8px;
-    }
-
-    .quote-box {
-      background: #eff6ff;
-      padding: 18px 20px;
-      border-left: 4px solid #2563eb;
-      border-radius: 12px;
-      margin-top: 25px;
-      color: #1e3a8a;
-      font-weight: 700;
-    }
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    #contact {
-      background: white;
-    }
-
-    .contact-box {
-      background:
-        radial-gradient(circle at 85% 30%, rgba(37,99,235,.24), transparent 25%),
-        linear-gradient(135deg, #020617, #172554);
-      color: white;
-      padding: 44px;
-      border-radius: 27px;
-    }
-
-    .contact-box .section-title {
-      color: white;
-    }
-
-    .contact-box p {
-      color: #dbeafe;
-      margin-bottom: 18px;
-      max-width: 760px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    footer {
-      background: #020617;
-      color: #cbd5e1;
-      text-align: center;
-      padding: 28px 0;
-    }
-
-    .back-top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: #1d4ed8;
-      color: white;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      box-shadow: 0 10px 25px rgba(15,23,42,.25);
-    }
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 900px) {
-      .hero-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .ai-visual {
-        min-height: 400px;
-      }
-
-      .quick-grid,
-      .impact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .strength-grid,
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+        radial-gradient(circle at 95% 0, rgba(78,231,226,.13), transparent 28%),
+        radial-gradient(circle at 3% 100%, rgba(156,131,255,.12), transparent 30%),
+        var(--surface);
+      border: 1px solid var(--line);
+    }
+    .vision blockquote { font-size: clamp(1.6rem, 4vw, 3.1rem); line-height: 1.12; letter-spacing: -.04em; max-width: 950px; }
+    .vision p { color: var(--muted); margin-top: 18px; max-width: 750px; }
+
+    .contact {
+      text-align: center; border: 1px solid var(--line); border-radius: 32px; padding: 60px 24px;
+      background: linear-gradient(135deg, rgba(92,168,255,.09), rgba(156,131,255,.07));
+    }
+    .contact h2 { max-width: 800px; margin: auto; }
+    .contact p { max-width: 650px; margin: 16px auto 0; color: var(--muted); }
+    .contact .hero-actions { justify-content: center; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 42px; color: var(--muted); font-size: .78rem; }
+    .footer-flex { display: flex; justify-content: space-between; gap: 20px; align-items: center; flex-wrap: wrap; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      .nav-links a:not(.keep) { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-visual { min-height: 450px; }
+      .metric-strip { grid-template-columns: repeat(2,1fr); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .grid-3 { grid-template-columns: repeat(2,1fr); }
+      .flow { grid-template-columns: repeat(4,1fr); }
+      .experience { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(2,1fr); }
     }
 
     @media (max-width: 650px) {
-      header {
-        padding-bottom: 55px;
-      }
+      .section { padding: 68px 0; }
+      .hero { padding-top: 52px; }
+      h1 { font-size: clamp(3rem, 16vw, 4.25rem); }
+      .hero-visual { min-height: 380px; transform: scale(.88); margin-inline: -22px; }
+      .orbital { width: 315px; height: 315px; }
+      .node { width: 110px; }
+      .metric-strip, .grid-3, .grid-2, .impact-list, .timeline, .flow { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .experience, .vision { padding: 24px; }
+      .brand small { display: none; }
+    }
 
-      nav {
-        margin-bottom: 40px;
-      }
-
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-
-      .quick-grid,
-      .impact-grid,
-      .strength-grid,
-      .skills-grid,
-      .earlier-experience {
-        grid-template-columns: 1fr;
-      }
-
-      .ai-visual {
-        min-height: 360px;
-        transform: scale(.88);
-      }
-
-      .experience-feature,
-      .weekly-feature,
-      .contact-box {
-        padding: 25px;
-      }
-
-      section {
-        padding: 58px 0;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .core { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn, .card { transition: none; }
     }
   </style>
 </head>
 
-<body id="home">
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<header>
-  <div class="container">
-
-    <nav>
-
-      <div class="logo">
-        Bhavya Gonepudi
-        <small>QUALITY ENGINEERING LEADER</small>
-      </div>
-
-      <div class="nav-links">
-
-        <a href="#leadership">About</a>
-
-        <a href="#experience">Experience</a>
-
-        <a href="#skills">Skills</a>
-
-        <a href="#impact">Impact</a>
-
-        <a href="#automation-weekly">
-          Automation Weekly
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Bhavya Gonepudi home">
+          <span class="brand-mark">BG</span>
+          <span>Bhavya Gonepudi<small>QUALITY ENGINEERING LEADER</small></span>
         </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-        <a
-          class="nav-social"
-          href="https://www.linkedin.com/in/bhavyagonepudi/"
-          target="_blank"
-          rel="noopener">
-          in LinkedIn
-        </a>
-
-        <a
-          class="nav-social"
-          href="https://github.com/bgonepudi"
-          target="_blank"
-          rel="noopener">
-          GitHub
-        </a>
-
-      </div>
-
-    </nav>
-
-    <div class="hero-layout">
-
-      <div class="hero">
-
-        <div class="eyebrow">
-          QUALITY ENGINEERING • AI-ASSISTED QUALITY • HEALTHCARE
+        <div class="nav-links">
+          <a href="#leadership">Leadership</a>
+          <a href="#experience">Experience</a>
+          <a href="#work">Work</a>
+          <a href="#technology">Technology</a>
+          <a class="keep" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme">◐</button>
         </div>
-
-        <h1>
-          Building intelligent quality systems with
-          <span class="blue">Automation</span>,
-          <span class="purple">AI</span>
-          and engineering leadership.
-        </h1>
-
-        <p>
-          I'm Bhavya Gonepudi, a Quality Engineering leader with
-          18+ years of experience building and scaling automation-first
-          quality practices across enterprise and healthcare platforms.
-        </p>
-
-        <p>
-          I lead quality transformation across UI, API, backend, data,
-          integration and CI/CD — helping engineering teams move quality
-          earlier in the development lifecycle while improving release
-          confidence and engineering efficiency.
-        </p>
-
-        <div class="hero-points">
-
-          <span>✓ AI-Assisted Quality Engineering</span>
-
-          <span>✓ Enterprise Automation</span>
-
-          <span>✓ CI/CD Quality Gates</span>
-
-          <span>✓ Healthcare & HIPAA</span>
-
-          <span>✓ Quality Leadership</span>
-
-        </div>
-
-        <div class="hero-actions">
-
-          <a
-            class="btn btn-primary"
-            href="#experience">
-            View Experience
-          </a>
-
-          <a
-            class="btn btn-secondary"
-            href="https://www.linkedin.com/in/bhavyagonepudi/"
-            target="_blank"
-            rel="noopener">
-            View LinkedIn
-          </a>
-
-          <a
-            class="btn btn-secondary"
-            href="#contact">
-            Let's Connect
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- AI + QUALITY ENGINEERING VISUAL -->
-
-      <div
-        class="ai-visual"
-        aria-label="AI assisted quality engineering illustration">
-
-        <div class="orbit-card orbit-1">
-
-          <div class="icon">
-            🤖
-          </div>
-
-          <strong>
-            AI-Assisted Testing
-          </strong>
-
-          <small>
-            Generate • Review • Refine
-          </small>
-
-        </div>
-
-        <div class="orbit-card orbit-2">
-
-          <div class="icon">
-            ⚙️
-          </div>
-
-          <strong>
-            Automation
-          </strong>
-
-          <small>
-            UI • API • Backend
-          </small>
-
-        </div>
-
-        <div class="orbit-card orbit-3">
-
-          <div class="icon">
-            ∞
-          </div>
-
-          <strong>
-            CI/CD Quality
-          </strong>
-
-          <small>
-            Continuous Validation
-          </small>
-
-        </div>
-
-        <div class="orbit-card orbit-4">
-
-          <div class="icon">
-            📊
-          </div>
-
-          <strong>
-            Quality Metrics
-          </strong>
-
-          <small>
-            Risk • Coverage • Release
-          </small>
-
-        </div>
-
-        <div class="ai-core">
-
-          <div class="ai-label">
-
-            <span class="brain">
-              🧠
-            </span>
-
-            <strong>
-              AI + QE
-            </strong>
-
-            <small>
-              Intelligent Quality Engineering
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
+      </nav>
     </div>
-
-  </div>
-</header>
-
-<!-- =====================================================
-     QUICK HIGHLIGHTS
-===================================================== -->
-
-<section>
-
-  <div class="container">
-
-    <div class="quick-grid">
-
-      <div class="card">
-
-        <div class="card-icon">
-          🏆
-        </div>
-
-        <strong>
-          18+
-        </strong>
-
-        <span>
-          Years in Quality Engineering & Automation
-        </span>
-
-      </div>
-
-      <div class="card">
-
-        <div class="card-icon">
-          🛡️
-        </div>
-
-        <strong>
-          2,000+
-        </strong>
-
-        <span>
-          Production Defects Prevented
-        </span>
-
-      </div>
-
-      <div class="card">
-
-        <div class="card-icon">
-          📈
-        </div>
-
-        <strong>
-          ~90%
-        </strong>
-
-        <span>
-          Automated Regression Coverage
-        </span>
-
-      </div>
-
-      <div class="card">
-
-        <div class="card-icon">
-          ⚡
-        </div>
-
-        <strong>
-          60%+
-        </strong>
-
-        <span>
-          Environment Setup Effort Reduced
-        </span>
-
-      </div>
-
-    </div>
-
   </div>
 
-</section>
-
-<!-- =====================================================
-     LEADERSHIP
-===================================================== -->
-
-<section id="leadership">
-
-  <div class="container">
-
-    <div class="section-kicker">
-      Quality Engineering Leadership
-    </div>
-
-    <h2 class="section-title">
-      Quality leadership backed by hands-on technical depth.
-    </h2>
-
-    <p class="section-subtitle">
-      I build quality systems that help engineering teams deliver
-      faster without lowering the quality bar. My focus combines
-      automation, AI-assisted engineering, risk management,
-      measurable quality outcomes and team development.
-    </p>
-
-    <div class="strength-grid">
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          🧠
-        </div>
-
-        <h3>
-          AI-Assisted Quality Engineering
-        </h3>
-
-        <p>
-          Apply AI to accelerate test generation, API automation,
-          framework development, documentation and engineering
-          analysis while keeping human validation focused on intent,
-          risk and meaningful coverage.
-        </p>
-
-      </div>
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          ⚙️
-        </div>
-
-        <h3>
-          Enterprise Quality Architecture
-        </h3>
-
-        <p>
-          Design scalable automation strategies across UI, API,
-          backend, database, integration and end-to-end testing.
-        </p>
-
-      </div>
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          ∞
-        </div>
-
-        <h3>
-          Continuous Quality & CI/CD
-        </h3>
-
-        <p>
-          Embed automated validation and risk-based quality gates
-          into CI/CD pipelines to provide faster feedback and
-          stronger release confidence.
-        </p>
-
-      </div>
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          👥
-        </div>
-
-        <h3>
-          Leadership & Transformation
-        </h3>
-
-        <p>
-          Build and mentor automation-first Quality Engineering
-          teams through technical standards, code reviews,
-          cross-training, governance and continuous improvement.
-        </p>
-
-      </div>
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          🏥
-        </div>
-
-        <h3>
-          Healthcare Quality Engineering
-        </h3>
-
-        <p>
-          Lead quality initiatives within HIPAA-regulated healthcare
-          environments involving complex integrations, sensitive data
-          and business-critical workflows.
-        </p>
-
-      </div>
-
-      <div class="strength-card">
-
-        <div class="strength-icon">
-          📊
-        </div>
-
-        <h3>
-          Metrics & Quality Governance
-        </h3>
-
-        <p>
-          Use automation coverage, defect leakage, execution trends,
-          workflow risk and release-readiness indicators to support
-          better engineering decisions.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     EXPERIENCE
-===================================================== -->
-
-<section id="experience">
-
-  <div class="container">
-
-    <div class="section-kicker">
-      Experience
-    </div>
-
-    <h2 class="section-title">
-      Enterprise Quality Engineering, automation and leadership.
-    </h2>
-
-    <p class="section-subtitle">
-      Leading quality transformation across large-scale enterprise
-      and healthcare platforms.
-    </p>
-
-    <div class="experience-feature">
-
-      <div class="experience-heading">
-
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
         <div>
-
-          <h3>
-            AmeriHealth Caritas
-          </h3>
-
-          <div class="experience-role">
-            Quality Engineering Leader / Test Automation Manager
+          <div class="eyebrow"><span class="live-dot"></span> Quality Engineering • AI • Automation • Leadership</div>
+          <h1>Engineering quality for the <span class="grad">AI era.</span></h1>
+          <p class="hero-copy">
+            I’m Bhavya Gonepudi, a Quality Engineering and Test Automation leader with 17+ years of experience building scalable automation, modernizing CI/CD quality practices, and helping teams turn quality data into better engineering decisions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#work">Explore my work →</a>
+            <a class="btn soft" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn soft" href="https://github.com/bgonepudi" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
+          <div class="signal-list">
+            <span class="signal">AI-Assisted Quality Engineering</span>
+            <span class="signal">Enterprise Automation</span>
+            <span class="signal">API & Integration Testing</span>
+            <span class="signal">CI/CD Quality Gates</span>
+            <span class="signal">Healthcare Quality</span>
+          </div>
         </div>
 
-        <div class="experience-date">
-          Aug 2014 – Present
+        <div class="hero-visual" aria-label="AI and Quality Engineering visual">
+          <div class="orbital">
+            <div class="node n1"><b>AI-Assisted QE</b><small>Generate • Analyze • Refine</small></div>
+            <div class="node n2"><b>Automation</b><small>UI • API • Data</small></div>
+            <div class="node n3"><b>CI/CD</b><small>Continuous validation</small></div>
+            <div class="node n4"><b>Quality Intelligence</b><small>Risk • Coverage • KPIs</small></div>
+            <div class="core"><div><strong>AI + QE</strong><span>INTELLIGENT QUALITY</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="metric-strip reveal">
+          <div class="metric"><strong>17+</strong><span>Years in Quality Engineering & Automation</span></div>
+          <div class="metric"><strong>2,000+</strong><span>Production defects prevented</span></div>
+          <div class="metric"><strong>~90%</strong><span>Automated regression coverage</span></div>
+          <div class="metric"><strong>60%+</strong><span>Environment setup effort reduced</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="leadership">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Leadership focus</div>
+          <h2>Quality is an engineering capability, not a final checkpoint.</h2>
+          <p>I combine hands-on technical depth with strategy, governance, mentoring, and measurable outcomes to help engineering organizations build quality into delivery.</p>
         </div>
 
+        <div class="grid-3">
+          <article class="card reveal"><div class="icon">✦</div><h3>AI-Assisted Quality Engineering</h3><p>Apply AI to accelerate test ideation, API automation, framework development, failure analysis, documentation, and engineering productivity — with human review focused on intent and risk.</p></article>
+          <article class="card reveal"><div class="icon">⚙</div><h3>Enterprise Automation Architecture</h3><p>Design scalable validation across UI, API, backend, database, integration, and end-to-end workflows with maintainability and execution speed in mind.</p></article>
+          <article class="card reveal"><div class="icon">∞</div><h3>CI/CD Quality Engineering</h3><p>Embed automated validation, quality gates, and release signals into delivery pipelines to create faster feedback and stronger release confidence.</p></article>
+          <article class="card reveal"><div class="icon">↗</div><h3>Quality Intelligence</h3><p>Turn automation results, defect trends, coverage, execution health, and risk indicators into information teams and leaders can act on.</p></article>
+          <article class="card reveal"><div class="icon">◇</div><h3>Healthcare Quality</h3><p>Lead quality initiatives across complex healthcare platforms, sensitive data, integrations, and business-critical workflows in regulated environments.</p></article>
+          <article class="card reveal"><div class="icon">◎</div><h3>People & Transformation</h3><p>Build stronger Quality Engineering teams through standards, technical mentoring, code review, cross-training, governance, and a continuous improvement mindset.</p></article>
+        </div>
       </div>
+    </section>
 
-      <p>
-        Lead Quality Engineering and test automation strategy for
-        large-scale healthcare platforms in a HIPAA-regulated
-        environment. Partner across Engineering, Product, DevOps,
-        architecture and business teams to move quality earlier in
-        the development lifecycle.
-      </p>
-
-      <ul>
-
-        <li>
-          Lead enterprise Quality Engineering initiatives across
-          healthcare applications, APIs, data platforms, integrations
-          and business-critical workflows.
-        </li>
-
-        <li>
-          Transformed traditional testing practices into an
-          <strong>
-            automation-first Quality Engineering model
-          </strong>,
-          expanding automated regression coverage to approximately
-          <strong>90%</strong>.
-        </li>
-
-        <li>
-          Lead adoption of
-          <strong>
-            AI-assisted Quality Engineering
-          </strong>
-          for API automation, test generation, framework development
-          and release validation.
-        </li>
-
-        <li>
-          Develop internal AI-enabled automation accelerators that
-          help engineers create and refine automation assets while
-          keeping QE review focused on business behavior, expected
-          outcomes and risk.
-        </li>
-
-        <li>
-          Designed scalable automation frameworks across
-          <strong>
-            UI, API, backend, database, data integration and
-            end-to-end testing
-          </strong>.
-        </li>
-
-        <li>
-          Built enterprise API automation capabilities supporting
-          REST, OAuth2, SSL certificates, schema validation, negative
-          testing, chained API workflows and automated reporting.
-        </li>
-
-        <li>
-          Embedded automated validation into
-          <strong>
-            Jenkins and Git-based CI/CD pipelines
-          </strong>,
-          enabling faster feedback across builds and releases.
-        </li>
-
-        <li>
-          Establish risk-based testing, quality gates, defect triage,
-          release-readiness criteria and quality metrics supporting
-          go/no-go decisions.
-        </li>
-
-        <li>
-          Lead and mentor distributed onshore and offshore Quality
-          Engineering teams through automation standards, technical
-          governance, code reviews and cross-training.
-        </li>
-
-        <li>
-          <strong>
-            Prevented 2,000+ production defects
-          </strong>
-          through automation, early validation, risk-based testing
-          and stronger release controls.
-        </li>
-
-      </ul>
-
-      <div class="tag-list">
-
-        <span>
-          AI-Assisted QE
-        </span>
-
-        <span>
-          Automation Architecture
-        </span>
-
-        <span>
-          API Automation
-        </span>
-
-        <span>
-          Data Validation
-        </span>
-
-        <span>
-          CI/CD Quality Gates
-        </span>
-
-        <span>
-          Risk-Based Testing
-        </span>
-
-        <span>
-          HIPAA Healthcare
-        </span>
-
-        <span>
-          Team Leadership
-        </span>
-
+    <section class="section">
+      <div class="container">
+        <div class="vision reveal">
+          <div class="kicker">How I think about quality</div>
+          <blockquote>Move quality earlier. Automate what repeats. Use AI where it adds leverage. Keep engineering judgment focused on risk and customer impact.</blockquote>
+          <p>The goal is not simply more tests. The goal is a quality system that gives teams better feedback, better decisions, and more confidence to ship.</p>
+          <div class="flow">
+            <div class="flow-step"><b>Requirements</b><small>Intent & risk</small></div>
+            <div class="flow-step"><b>AI Assist</b><small>Generate & analyze</small></div>
+            <div class="flow-step"><b>Development</b><small>Shift left</small></div>
+            <div class="flow-step"><b>API / UI</b><small>Automated validation</small></div>
+            <div class="flow-step"><b>CI/CD</b><small>Quality gates</small></div>
+            <div class="flow-step"><b>Intelligence</b><small>KPIs & signals</small></div>
+            <div class="flow-step"><b>Release</b><small>Confidence</small></div>
+          </div>
+        </div>
       </div>
+    </section>
 
+    <section class="section alt" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Experience</div>
+          <h2>Enterprise Quality Engineering backed by measurable impact.</h2>
+          <p>Leadership across healthcare, pharmaceutical, financial services, telecom, automation architecture, test strategy, performance, API, data, and CI/CD.</p>
+        </div>
+
+        <div class="experience reveal">
+          <aside class="experience-side">
+            <div class="company">AmeriHealth Caritas</div>
+            <div class="years">Aug 2014 — Present</div>
+          </aside>
+          <div class="experience-main">
+            <h3>Quality Engineering Leader / Test Automation Manager</h3>
+            <p>Lead Quality Engineering and automation strategy for large-scale healthcare platforms, partnering across Engineering, Product, DevOps, Architecture, and business teams to move quality earlier in the lifecycle.</p>
+            <div class="impact-list">
+              <div class="impact-item">Expanded automated regression coverage to approximately 90%.</div>
+              <div class="impact-item">Prevented 2,000+ production defects through stronger automation and release controls.</div>
+              <div class="impact-item">Built scalable UI, API, backend, database, data integration, and end-to-end automation capabilities.</div>
+              <div class="impact-item">Embedded automated validation into Jenkins and Git-based CI/CD pipelines.</div>
+              <div class="impact-item">Developed API automation for REST, OAuth2, SSL, schema validation, negative testing, and chained workflows.</div>
+              <div class="impact-item">Lead AI-assisted QE adoption for test generation, API automation, framework development, and release validation.</div>
+              <div class="impact-item">Established quality metrics, risk-based testing, release readiness, and go/no-go decision support.</div>
+              <div class="impact-item">Mentor distributed Quality Engineering teams through standards, governance, code reviews, and cross-training.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal"><small>2012 — 2014</small><b>ALMAC — NTT DATA</b><span>QA Manager / Test Automation Lead</span></div>
+          <div class="timeline-item reveal"><small>2012</small><b>iPipeline — NTT DATA</b><span>Test Lead Consultant</span></div>
+          <div class="timeline-item reveal"><small>2008 — 2012</small><b>SEI Investments — NTT DATA</b><span>Automation Consultant</span></div>
+          <div class="timeline-item reveal"><small>2007 — 2008</small><b>Verizon</b><span>Production Support Engineer</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Featured engineering work</div>
+          <h2>From test automation to quality platforms.</h2>
+          <p>Representative areas of engineering work that show how strategy, architecture, automation, AI, and reporting come together.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card project-card reveal">
+            <div class="project-num">01</div><div class="icon">API</div>
+            <h3>Enterprise API Automation Framework</h3>
+            <p>Reusable architecture for REST and service validation with authentication, data-driven execution, assertions, reporting, and CI/CD integration.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">REST Assured</span><span class="tag">OAuth2</span><span class="tag">JSON</span><span class="tag">Gradle</span></div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-num">02</div><div class="icon">∞</div>
+            <h3>CI/CD Test Automation Platform</h3>
+            <p>Pipeline-driven execution with configurable test selection, environment handling, automated reporting, and quality gates designed for faster feedback.</p>
+            <div class="tags"><span class="tag">Jenkins</span><span class="tag">Git</span><span class="tag">Gradle</span><span class="tag">Selenium</span><span class="tag">API</span></div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-num">03</div><div class="icon">KPI</div>
+            <h3>Quality KPI & Automation Analytics</h3>
+            <p>Centralized execution results and quality metrics that turn pass/fail data, coverage, trends, and execution health into actionable release insight.</p>
+            <div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Reporting</span><span class="tag">KPIs</span><span class="tag">Quality Intelligence</span></div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-num">04</div><div class="icon">AI</div>
+            <h3>AI + Quality Engineering Lab</h3>
+            <p>Practical exploration of AI-generated test scenarios, requirements-to-test workflows, failure analysis, test data generation, API test creation, and risk-based regression.</p>
+            <div class="tags"><span class="tag">Generative AI</span><span class="tag">LLMs</span><span class="tag">Test Generation</span><span class="tag">Failure Analysis</span><span class="tag">Risk</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="technology">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Technology</div>
+          <h2>Technical depth across the quality engineering stack.</h2>
+          <p>I use technology as an enabler for reliable delivery — not as a collection of buzzwords.</p>
+        </div>
+
+        <div class="tech-cloud reveal">
+          <span class="tech">Java</span><span class="tech">Selenium</span><span class="tech">REST Assured</span><span class="tech">Cucumber</span><span class="tech">JUnit</span>
+          <span class="tech">API Automation</span><span class="tech">REST APIs</span><span class="tech">OAuth2</span><span class="tech">SSL</span><span class="tech">Postman</span>
+          <span class="tech">SoapUI</span><span class="tech">JMeter</span><span class="tech">SQL</span><span class="tech">MySQL</span><span class="tech">SQL Server</span>
+          <span class="tech">JSON</span><span class="tech">JSONPath</span><span class="tech">Jenkins</span><span class="tech">Git</span><span class="tech">GitLab</span>
+          <span class="tech">GitHub</span><span class="tech">Gradle</span><span class="tech">Docker</span><span class="tech">CI/CD</span><span class="tech">Data Validation</span>
+          <span class="tech">Quality Gates</span><span class="tech">Generative AI</span><span class="tech">LLM-Assisted Testing</span><span class="tech">Quality Analytics</span><span class="tech">Risk-Based Testing</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-3">
+          <article class="card reveal"><div class="icon">01</div><h3>Strategy before tools</h3><p>Start with business risk, delivery bottlenecks, and feedback needs. Choose automation and AI techniques based on the problem, not the trend.</p></article>
+          <article class="card reveal"><div class="icon">02</div><h3>Measure what matters</h3><p>Coverage alone is not quality. Combine execution, leakage, reliability, risk, speed, and release-readiness signals.</p></article>
+          <article class="card reveal"><div class="icon">03</div><h3>Build for teams</h3><p>Frameworks succeed when engineers can understand, extend, troubleshoot, and trust them. Maintainability is part of the architecture.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="kicker" style="justify-content:center">Connect</div>
+          <h2>Interested in Quality Engineering, AI-assisted testing, automation strategy, or engineering leadership?</h2>
+          <p>I share practical ideas around automation, AI in testing, CI/CD, quality metrics, and building stronger engineering teams.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+            <a class="btn soft" href="https://github.com/bgonepudi" target="_blank" rel="noopener">View GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-flex">
+      <span>© <span id="year"></span> Bhavya Gonepudi. Built for GitHub Pages.</span>
+      <span>Quality Engineering • Automation • AI • Leadership</span>
     </div>
-
-    <div class="earlier-experience">
-
-      <div class="experience-item">
-
-        <div class="experience-date">
-          Dec 2012 – Aug 2014
-        </div>
-
-        <h3>
-          ALMAC – NTT DATA
-        </h3>
-
-        <div class="experience-role">
-          QA Manager / Test Automation Lead
-        </div>
-
-        <p>
-          Led QA strategy, automation, client collaboration and
-          distributed delivery for pharmaceutical and clinical
-          applications.
-        </p>
-
-      </div>
-
-      <div class="experience-item">
-
-        <div class="experience-date">
-          Aug 2012 – Nov 2012
-        </div>
-
-        <h3>
-          iPipeline – NTT DATA
-        </h3>
-
-        <div class="experience-role">
-          Test Lead Consultant
-        </div>
-
-        <p>
-          Led end-to-end QA delivery, automation planning,
-          performance testing and requirement traceability across
-          enterprise applications.
-        </p>
-
-      </div>
-
-      <div class="experience-item">
-
-        <div class="experience-date">
-          Mar 2008 – Jul 2012
-        </div>
-
-        <h3>
-          SEI Investments – NTT DATA
-        </h3>
-
-        <div class="experience-role">
-          Automation Consultant
-        </div>
-
-        <p>
-          Developed automation and performance-testing solutions
-          and supported enterprise functional, integration,
-          regression and data validation.
-        </p>
-
-      </div>
-
-      <div class="experience-item">
-
-        <div class="experience-date">
-          Feb 2007 – Feb 2008
-        </div>
-
-        <h3>
-          Verizon
-        </h3>
-
-        <div class="experience-role">
-          Production Support Engineer
-        </div>
-
-        <p>
-          Supported enterprise QA environments, automation,
-          performance testing, production issue analysis and
-          distributed delivery.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     SKILLS
-===================================================== -->
-
-<section id="skills">
-
-  <div class="container">
-
-    <div class="section-kicker">
-      Core Skills & Technologies
-    </div>
-
-    <h2 class="section-title">
-      Leadership strategy with technical depth.
-    </h2>
-
-    <div class="skills-grid">
-
-      <div class="skill-card">
-
-        <h3>
-          🧭 Quality Engineering
-        </h3>
-
-        <p>
-          Quality Strategy, Risk-Based Testing, Quality Gates,
-          Release Readiness, Test Data Strategy, Defect Governance,
-          Shift-Left Testing
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          🧠 AI-Assisted QE
-        </h3>
-
-        <p>
-          AI-Assisted Test Generation, API Test Generation,
-          Automation Framework Development, Test Review,
-          Engineering Productivity
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          ⚙️ Automation
-        </h3>
-
-        <p>
-          Selenium, REST Assured, Cucumber, JUnit, API Automation,
-          Backend Validation, Database Validation, Data Testing
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          💻 Languages
-        </h3>
-
-        <p>
-          Java, SQL, JavaScript, Groovy, PowerShell
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          ∞ DevOps & CI/CD
-        </h3>
-
-        <p>
-          Jenkins, GitLab, GitHub, Gradle, Docker,
-          CI/CD Pipeline Integration
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          🔌 API & Performance
-        </h3>
-
-        <p>
-          REST APIs, OAuth2, SSL, Postman, SoapUI,
-          JMeter, Schema Validation, Integration Testing
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          🗄 Data Engineering Quality
-        </h3>
-
-        <p>
-          SQL Server, MySQL, File-to-File Validation,
-          File-to-Database Validation, Database Reconciliation,
-          Data Pipeline Testing
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          🏥 Healthcare
-        </h3>
-
-        <p>
-          HIPAA-Regulated Systems, Healthcare Integrations,
-          PHI-Sensitive Testing, Data Quality,
-          Business-Critical Healthcare Workflows
-        </p>
-
-      </div>
-
-      <div class="skill-card">
-
-        <h3>
-          👥 Leadership
-        </h3>
-
-        <p>
-          Distributed Teams, Technical Mentoring,
-          Automation Governance, Code Review,
-          Cross-Training, Executive Quality Reporting
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     IMPACT
-===================================================== -->
-
-<section id="impact">
-
-  <div class="container">
-
-    <div class="section-kicker">
-      Measured Impact
-    </div>
-
-    <h2 class="section-title">
-      Connecting quality engineering to business outcomes.
-    </h2>
-
-    <p class="section-subtitle">
-      Quality engineering should do more than report test execution.
-      I focus on measurable improvements in reliability, delivery
-      confidence, automation and engineering efficiency.
-    </p>
-
-    <div class="impact-grid">
-
-      <div class="impact-card">
-
-        <strong>
-          2,000+
-        </strong>
-
-        <span>
-          Production defects prevented through automation and
-          early validation.
-        </span>
-
-      </div>
-
-      <div class="impact-card">
-
-        <strong>
-          ~90%
-        </strong>
-
-        <span>
-          Automated regression coverage across enterprise workflows.
-        </span>
-
-      </div>
-
-      <div class="impact-card">
-
-        <strong>
-          60%+
-        </strong>
-
-        <span>
-          Reduction in environment setup effort through automation.
-        </span>
-
-      </div>
-
-      <div class="impact-card">
-
-        <strong>
-          18+
-        </strong>
-
-        <span>
-          Years leading and delivering Quality Engineering solutions.
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     AUTOMATION WEEKLY
-===================================================== -->
-
-<section id="automation-weekly">
-
-  <div class="container">
-
-    <div class="section-kicker">
-      Automation Weekly
-    </div>
-
-    <h2 class="section-title">
-      Practical thinking on AI, automation and modern Quality Engineering.
-    </h2>
-
-    <p class="section-subtitle">
-      Sharing lessons from building enterprise automation frameworks,
-      leading Quality Engineering teams and exploring responsible use
-      of AI in software quality.
-    </p>
-
-    <article class="weekly-feature">
-
-      <div class="weekly-top">
-
-        <span class="weekly-badge">
-          Featured • AI in Quality Engineering
-        </span>
-
-        <span class="weekly-date">
-          Automation Weekly
-        </span>
-
-      </div>
-
-      <h3>
-        How AI can help QA — without replacing engineering judgment
-      </h3>
-
-      <p>
-        AI is becoming an important engineering assistant for Quality
-        Engineering teams. Its greatest value is not replacing QA
-        engineers, but helping them spend less time on repetitive work
-        and more time understanding risk, business behavior and system
-        quality.
-      </p>
-
-      <h4>
-        Where AI can accelerate Quality Engineering
-      </h4>
-
-      <ul>
-
-        <li>
-          <strong>API automation:</strong>
-          Generate starter scenarios, payloads, negative cases,
-          schema validations and reusable test ideas.
-        </li>
-
-        <li>
-          <strong>UI automation:</strong>
-          Assist with page objects, test scenarios, locator strategies
-          and regression coverage ideas.
-        </li>
-
-        <li>
-          <strong>Backend validation:</strong>
-          Help generate SQL validation approaches and compare service
-          responses with stored data.
-        </li>
-
-        <li>
-          <strong>CI/CD:</strong>
-          Summarize failures, interpret logs and accelerate defect
-          investigation.
-        </li>
-
-        <li>
-          <strong>Framework development:</strong>
-          Accelerate repetitive code creation, documentation and
-          reusable automation components.
-        </li>
-
-      </ul>
-
-      <h4>
-        Where human judgment remains critical
-      </h4>
-
-      <ul>
-
-        <li>
-          Understanding business risk and real customer impact.
-        </li>
-
-        <li>
-          Determining whether a generated test validates the correct
-          business behavior.
-        </li>
-
-        <li>
-          Release decisions, defect prioritization and accountability.
-        </li>
-
-        <li>
-          Quality strategy, framework governance and engineering
-          standards.
-        </li>
-
-      </ul>
-
-      <div class="quote-box">
-        AI should make Quality Engineering teams faster and smarter —
-        not less responsible. The strongest teams will combine AI
-        speed with human judgment, engineering discipline and
-        measurable quality outcomes.
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section id="contact">
-
-  <div class="container">
-
-    <div class="contact-box">
-
-      <div
-        class="section-kicker"
-        style="color:#93c5fd;">
-        Let's Connect
-      </div>
-
-      <h2 class="section-title">
-        Building better software through intelligent Quality Engineering.
-      </h2>
-
-      <p>
-        I'm interested in connecting with engineering leaders,
-        healthcare technology organizations and teams transforming
-        software quality through automation, AI-assisted engineering
-        and modern Quality Engineering practices.
-      </p>
-
-      <div class="contact-links">
-
-        <a
-          class="btn btn-primary"
-          href="mailto:bgonepudi@gmail.com">
-          Email Me
-        </a>
-
-        <a
-          class="btn btn-secondary"
-          href="https://www.linkedin.com/in/bhavyagonepudi/"
-          target="_blank"
-          rel="noopener">
-          LinkedIn
-        </a>
-
-        <a
-          class="btn btn-secondary"
-          href="https://github.com/bgonepudi"
-          target="_blank"
-          rel="noopener">
-          GitHub
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-  <div class="container">
-
-    © 2026 Bhavya Gonepudi
-    • Quality Engineering Leader
-    • AI-Assisted Quality
-
-    <br />
-
-    <a
-      href="https://www.linkedin.com/in/bhavyagonepudi/"
-      target="_blank"
-      rel="noopener"
-      style="color:#93c5fd;">
-      LinkedIn
-    </a>
-
-    &nbsp; • &nbsp;
-
-    <a
-      href="https://github.com/bgonepudi"
-      target="_blank"
-      rel="noopener"
-      style="color:#93c5fd;">
-      GitHub
-    </a>
-
-  </div>
-
-</footer>
-
-<a
-  class="back-top"
-  href="#home"
-  aria-label="Back to top">
-  ↑
-</a>
-
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved) root.dataset.theme = saved;
+
+    toggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
