@@ -292,6 +292,58 @@
       .brand small { display: none; }
     }
 
+
+
+    /* AUTOMATION ANIMATIONS */
+    .automation-stack { width: 100%; max-width: 520px; display: grid; gap: 16px; }
+    .pipeline-panel, .console-panel {
+      border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); }
+    .panel-title { font-size:.74rem; font-weight:850; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .panel-status { display:flex; align-items:center; gap:7px; color:var(--green); font-size:.7rem; font-weight:800; }
+    .status-dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 6px rgba(114,228,168,.08); animation:pulse 1.8s infinite; }
+    @keyframes pulse { 50% { box-shadow:0 0 0 11px rgba(114,228,168,0); } }
+
+    .pipeline-track { position:relative; padding:18px 14px 20px; }
+    .pipeline-line { position:absolute; left:7%; right:7%; top:42px; height:2px; background:var(--line); overflow:hidden; }
+    .pipeline-line::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent, var(--cyan), var(--blue), transparent); transform:translateX(-100%); animation:flowline 3.2s linear infinite; }
+    @keyframes flowline { to { transform:translateX(100%); } }
+    .pipeline-steps { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; z-index:2; }
+    .pipe-step { text-align:center; min-width:0; }
+    .pipe-node { width:30px; height:30px; border-radius:50%; margin:0 auto 8px; display:grid; place-items:center; border:1px solid var(--line); background:var(--bg-2); font-size:.68rem; font-weight:900; color:var(--muted); position:relative; }
+    .pipe-step.active .pipe-node { color:#fff; background:linear-gradient(135deg,var(--blue),var(--violet)); border-color:transparent; box-shadow:0 0 24px rgba(92,168,255,.28); }
+    .pipe-step.done .pipe-node { color:#04120b; background:var(--green); border-color:transparent; }
+    .pipe-label { font-size:.62rem; color:var(--muted); font-weight:800; line-height:1.15; }
+    .pipeline-meta { display:flex; justify-content:space-between; gap:12px; padding:0 14px 14px; color:var(--muted); font-size:.7rem; }
+    .progress { height:6px; border-radius:999px; background:var(--surface-soft); overflow:hidden; margin:0 14px 14px; }
+    .progress > span { display:block; width:0%; height:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); border-radius:inherit; transition:width .6s ease; }
+
+    .console-body { padding:14px; min-height:155px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.72rem; line-height:1.55; color:var(--muted); }
+    .console-line { opacity:0; transform:translateY(4px); animation:consoleIn .35s forwards; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .console-line .ok { color:var(--green); }
+    .console-line .info { color:var(--cyan); }
+    .console-line .accent { color:var(--blue); }
+    @keyframes consoleIn { to { opacity:1; transform:none; } }
+
+    .orbital .signal-pulse { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--cyan); box-shadow:0 0 18px var(--cyan); z-index:5; }
+    .orbital .sp1 { animation:orbit1 6s linear infinite; }
+    .orbital .sp2 { animation:orbit2 7.5s linear infinite; animation-delay:-2s; background:var(--violet); box-shadow:0 0 18px var(--violet); }
+    .orbital .sp3 { animation:orbit3 5.5s linear infinite; animation-delay:-1s; background:var(--green); box-shadow:0 0 18px var(--green); }
+    @keyframes orbit1 { from { transform:rotate(0deg) translateX(185px) rotate(0deg);} to { transform:rotate(360deg) translateX(185px) rotate(-360deg);} }
+    @keyframes orbit2 { from { transform:rotate(0deg) translateX(143px) rotate(0deg);} to { transform:rotate(-360deg) translateX(143px) rotate(360deg);} }
+    @keyframes orbit3 { from { transform:rotate(0deg) translateX(92px) rotate(0deg);} to { transform:rotate(360deg) translateX(92px) rotate(-360deg);} }
+
+    .metric strong.counting { color:var(--cyan); }
+
+    @media (max-width:650px) {
+      .pipeline-steps { gap:3px; }
+      .pipe-node { width:26px; height:26px; }
+      .pipe-label { font-size:.56rem; }
+      .console-body { font-size:.65rem; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .core { animation: none; }
@@ -346,11 +398,42 @@
 
         <div class="hero-visual" aria-label="AI and Quality Engineering visual">
           <div class="orbital">
+            <span class="signal-pulse sp1"></span><span class="signal-pulse sp2"></span><span class="signal-pulse sp3"></span>
             <div class="node n1"><b>AI-Assisted QE</b><small>Generate • Analyze • Refine</small></div>
             <div class="node n2"><b>Automation</b><small>UI • API • Data</small></div>
             <div class="node n3"><b>CI/CD</b><small>Continuous validation</small></div>
             <div class="node n4"><b>Quality Intelligence</b><small>Risk • Coverage • KPIs</small></div>
             <div class="core"><div><strong>AI + QE</strong><span>INTELLIGENT QUALITY</span></div></div>
+          </div>
+
+          <div class="automation-stack reveal" aria-label="Live automation execution demo">
+            <div class="pipeline-panel">
+              <div class="panel-head">
+                <span class="panel-title">CI/CD Quality Pipeline</span>
+                <span class="panel-status"><span class="status-dot"></span>Running</span>
+              </div>
+              <div class="pipeline-track">
+                <div class="pipeline-line"></div>
+                <div class="pipeline-steps" id="pipelineSteps">
+                  <div class="pipe-step"><div class="pipe-node">1</div><div class="pipe-label">CODE</div></div>
+                  <div class="pipe-step"><div class="pipe-node">2</div><div class="pipe-label">BUILD</div></div>
+                  <div class="pipe-step"><div class="pipe-node">3</div><div class="pipe-label">API TEST</div></div>
+                  <div class="pipe-step"><div class="pipe-node">4</div><div class="pipe-label">UI TEST</div></div>
+                  <div class="pipe-step"><div class="pipe-node">5</div><div class="pipe-label">QUALITY</div></div>
+                  <div class="pipe-step"><div class="pipe-node">6</div><div class="pipe-label">DEPLOY</div></div>
+                </div>
+              </div>
+              <div class="progress"><span id="pipelineProgress"></span></div>
+              <div class="pipeline-meta"><span id="pipelineText">Initializing automation...</span><span id="pipelinePct">0%</span></div>
+            </div>
+
+            <div class="console-panel">
+              <div class="panel-head">
+                <span class="panel-title">Automation Console</span>
+                <span class="panel-status"><span class="status-dot"></span>Live</span>
+              </div>
+              <div class="console-body" id="consoleBody"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -359,10 +442,10 @@
     <section class="section" style="padding-top:0">
       <div class="container">
         <div class="metric-strip reveal">
-          <div class="metric"><strong>17+</strong><span>Years in Quality Engineering & Automation</span></div>
-          <div class="metric"><strong>2,000+</strong><span>Production defects prevented</span></div>
-          <div class="metric"><strong>~90%</strong><span>Automated regression coverage</span></div>
-          <div class="metric"><strong>60%+</strong><span>Environment setup effort reduced</span></div>
+          <div class="metric"><strong data-target="17" data-suffix="+">0</strong><span>Years in Quality Engineering & Automation</span></div>
+          <div class="metric"><strong data-target="2000" data-suffix="+">0</strong><span>Production defects prevented</span></div>
+          <div class="metric"><strong data-target="90" data-prefix="~" data-suffix="%">0</strong><span>Automated regression coverage</span></div>
+          <div class="metric"><strong data-target="60" data-suffix="%+">0</strong><span>Environment setup effort reduced</span></div>
         </div>
       </div>
     </section>
@@ -555,6 +638,95 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+    // Live CI/CD pipeline animation
+    const pipelineStages = [
+      {label:'Source validated', pct:16},
+      {label:'Gradle build complete', pct:32},
+      {label:'API regression running', pct:52},
+      {label:'UI regression running', pct:70},
+      {label:'Quality gate passed', pct:88},
+      {label:'Deployment approved', pct:100}
+    ];
+    const stepEls = [...document.querySelectorAll('#pipelineSteps .pipe-step')];
+    const progressEl = document.getElementById('pipelineProgress');
+    const pipelineText = document.getElementById('pipelineText');
+    const pipelinePct = document.getElementById('pipelinePct');
+    let stageIndex = 0;
+
+    function runPipeline() {
+      stepEls.forEach((el, i) => {
+        el.classList.toggle('done', i < stageIndex);
+        el.classList.toggle('active', i === stageIndex);
+      });
+      const stage = pipelineStages[stageIndex];
+      pipelineText.textContent = stage.label;
+      pipelinePct.textContent = stage.pct + '%';
+      progressEl.style.width = stage.pct + '%';
+      stageIndex++;
+      if (stageIndex >= pipelineStages.length) {
+        setTimeout(() => {
+          stepEls.forEach(el => el.classList.remove('done','active'));
+          progressEl.style.width = '0%';
+          pipelinePct.textContent = '0%';
+          pipelineText.textContent = 'Restarting quality pipeline...';
+          stageIndex = 0;
+        }, 1400);
+      }
+    }
+    setInterval(runPipeline, 1250);
+    runPipeline();
+
+    // Live automation console animation
+    const consoleMessages = [
+      '<span class="info">[INFO]</span> Pipeline triggered from Git commit',
+      '<span class="ok">[PASS]</span> OAuth2 token validated',
+      '<span class="ok">[PASS]</span> Member API response schema validated',
+      '<span class="ok">[PASS]</span> Database validation completed',
+      '<span class="accent">[RUN ]</span> Selenium regression suite executing',
+      '<span class="ok">[PASS]</span> 42/42 automated checks passed',
+      '<span class="info">[KPI ]</span> Results written to quality metrics store',
+      '<span class="ok">[GATE]</span> Quality Gate: PASSED'
+    ];
+    const consoleBody = document.getElementById('consoleBody');
+    let consoleIndex = 0;
+    function pushConsoleLine() {
+      const div = document.createElement('div');
+      div.className = 'console-line';
+      div.innerHTML = consoleMessages[consoleIndex];
+      consoleBody.appendChild(div);
+      while (consoleBody.children.length > 7) consoleBody.removeChild(consoleBody.firstChild);
+      consoleIndex = (consoleIndex + 1) % consoleMessages.length;
+    }
+    setInterval(pushConsoleLine, 900);
+    pushConsoleLine();
+
+    // Count-up impact metrics when they enter the viewport
+    const counters = document.querySelectorAll('.metric strong[data-target]');
+    const countObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.target || 0);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        el.classList.add('counting');
+        function tick(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const value = Math.round(target * eased);
+          el.textContent = prefix + value.toLocaleString() + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+          else el.classList.remove('counting');
+        }
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+      });
+    }, { threshold: .55 });
+    counters.forEach(c => countObserver.observe(c));
   </script>
 </body>
 </html>
