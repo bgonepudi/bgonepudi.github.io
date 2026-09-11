@@ -320,6 +320,18 @@
     .progress { height:6px; border-radius:999px; background:var(--surface-soft); overflow:hidden; margin:0 14px 14px; }
     .progress > span { display:block; width:0%; height:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); border-radius:inherit; transition:width .6s ease; }
 
+    .parallel-workers { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:0 14px 14px; }
+    .worker-card { padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--surface-soft); min-width:0; }
+    .worker-head { display:flex; align-items:center; gap:7px; }
+    .worker-dot { width:7px; height:7px; flex:none; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); animation:pulse 1.2s infinite; }
+    .worker-name { font-size:.62rem; font-weight:900; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .worker-value { margin-left:auto; color:var(--cyan); font-size:.63rem; font-weight:900; }
+    .worker-card small { display:block; color:var(--muted); font-size:.55rem; margin:6px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .worker-bar { height:3px; border-radius:10px; background:var(--line); overflow:hidden; }
+    .worker-bar span { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,var(--blue),var(--cyan)); transition:width .6s ease; }
+    .parallel-note { padding:0 14px 12px; color:var(--muted); font-size:.58rem; }
+    .parallel-note b { color:var(--violet); }
+
     .console-body { padding:14px; min-height:155px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.72rem; line-height:1.55; color:var(--muted); }
     .console-line { opacity:0; transform:translateY(4px); animation:consoleIn .35s forwards; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .console-line .ok { color:var(--green); }
@@ -342,6 +354,7 @@
       .pipe-node { width:26px; height:26px; }
       .pipe-label { font-size:.56rem; }
       .console-body { font-size:.65rem; }
+      .parallel-workers { grid-template-columns:1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -426,6 +439,21 @@
               </div>
               <div class="progress"><span id="pipelineProgress"></span></div>
               <div class="pipeline-meta"><span id="pipelineText">Initializing automation...</span><span id="pipelinePct">0%</span></div>
+              <div class="parallel-workers">
+                <div class="worker-card">
+                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">SELENIUM UI</span><span class="worker-value" id="uiPct">0%</span></div>
+                  <small>Chrome Worker 01 • User journeys</small><div class="worker-bar"><span id="uiBar"></span></div>
+                </div>
+                <div class="worker-card">
+                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">API TESTS</span><span class="worker-value" id="apiPct">0%</span></div>
+                  <small>Service Worker 02 • REST + OAuth2 + SSL</small><div class="worker-bar"><span id="apiBar"></span></div>
+                </div>
+                <div class="worker-card">
+                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">BACKEND VALIDATION</span><span class="worker-value" id="backendPct">0%</span></div>
+                  <small>Data Worker 03 • SQL + integration</small><div class="worker-bar"><span id="backendBar"></span></div>
+                </div>
+              </div>
+              <div class="parallel-note"><b>PARALLEL MODE:</b> Run Selenium, API, and backend validation together—or execute each suite independently.</div>
             </div>
 
             <div class="console-panel">
@@ -728,6 +756,12 @@
     const progressEl = document.getElementById('pipelineProgress');
     const pipelineText = document.getElementById('pipelineText');
     const pipelinePct = document.getElementById('pipelinePct');
+    const uiPct = document.getElementById('uiPct');
+    const apiPct = document.getElementById('apiPct');
+    const backendPct = document.getElementById('backendPct');
+    const uiBar = document.getElementById('uiBar');
+    const apiBar = document.getElementById('apiBar');
+    const backendBar = document.getElementById('backendBar');
     let stageIndex = 0;
 
     function runPipeline() {
@@ -739,6 +773,11 @@
       pipelineText.textContent = stage.label;
       pipelinePct.textContent = stage.pct + '%';
       progressEl.style.width = stage.pct + '%';
+      const uiValue = Math.min(100, stage.pct + 4);
+      const apiValue = Math.min(100, stage.pct + 12);
+      const backendValue = Math.min(100, stage.pct - 3 < 0 ? 0 : stage.pct - 3);
+      uiPct.textContent = uiValue + '%'; apiPct.textContent = apiValue + '%'; backendPct.textContent = backendValue + '%';
+      uiBar.style.width = uiValue + '%'; apiBar.style.width = apiValue + '%'; backendBar.style.width = backendValue + '%';
       stageIndex++;
       if (stageIndex >= pipelineStages.length) {
         setTimeout(() => {
@@ -746,6 +785,8 @@
           progressEl.style.width = '0%';
           pipelinePct.textContent = '0%';
           pipelineText.textContent = 'Restarting quality pipeline...';
+          uiPct.textContent = apiPct.textContent = backendPct.textContent = '0%';
+          uiBar.style.width = apiBar.style.width = backendBar.style.width = '0%';
           stageIndex = 0;
         }, 1400);
       }
@@ -758,9 +799,10 @@
       '<span class="info">[INFO]</span> Pipeline triggered from Git commit',
       '<span class="ok">[PASS]</span> OAuth2 token validated',
       '<span class="ok">[PASS]</span> Member API response schema validated',
-      '<span class="ok">[PASS]</span> Database validation completed',
-      '<span class="accent">[RUN ]</span> Selenium regression suite executing',
-      '<span class="ok">[PASS]</span> 42/42 automated checks passed',
+      '<span class="accent">[UI  ]</span> Selenium Chrome worker executing',
+      '<span class="accent">[API ]</span> REST regression running in parallel',
+      '<span class="ok">[DATA]</span> Backend and SQL validation passed',
+      '<span class="ok">[PASS]</span> UI + API + backend results combined',
       '<span class="info">[KPI ]</span> Results written to quality metrics store',
       '<span class="ok">[GATE]</span> Quality Gate: PASSED'
     ];
