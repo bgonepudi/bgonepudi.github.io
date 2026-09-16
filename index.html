@@ -1,849 +1,127 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#07111f" />
-  <meta name="description" content="Bhavya Gonepudi — Quality Engineering and Test Automation leader focused on AI-assisted quality engineering, enterprise automation, API testing, CI/CD modernization, quality analytics, and engineering leadership." />
-  <meta name="keywords" content="Bhavya Gonepudi, Quality Engineering Leader, Test Automation, AI in QA, AI Assisted Testing, Selenium, Java, API Testing, REST Assured, CI/CD, Jenkins, Healthcare QA, Quality Engineering" />
-  <meta property="og:title" content="Bhavya Gonepudi | Quality Engineering for the AI Era" />
-  <meta property="og:description" content="Quality Engineering leadership, AI-assisted testing, automation architecture, API/UI automation, CI/CD transformation, and quality intelligence." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bgonepudi.github.io/" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bhavya Gonepudi — Quality Engineering and Test Automation Leader for the AI era.">
   <title>Bhavya Gonepudi | Quality Engineering for the AI Era</title>
-
   <style>
-    :root {
-      --bg: #07111f;
-      --bg-2: #0b1728;
-      --surface: rgba(17, 31, 51, .74);
-      --surface-strong: #102039;
-      --surface-soft: rgba(255,255,255,.045);
-      --text: #edf5ff;
-      --muted: #9fb1c8;
-      --line: rgba(158, 181, 211, .16);
-      --blue: #5ca8ff;
-      --cyan: #4ee7e2;
-      --violet: #9c83ff;
-      --green: #72e4a8;
-      --shadow: 0 24px 80px rgba(0,0,0,.22);
-      --max: 1180px;
-      --radius: 22px;
-    }
-
-    html[data-theme="light"] {
-      --bg: #f7f9fc;
-      --bg-2: #eef4fb;
-      --surface: rgba(255,255,255,.9);
-      --surface-strong: #ffffff;
-      --surface-soft: rgba(15, 37, 68, .035);
-      --text: #0d1b2d;
-      --muted: #52657d;
-      --line: rgba(32, 61, 97, .13);
-      --blue: #1265d4;
-      --cyan: #008f9f;
-      --violet: #6a4fe7;
-      --green: #137a4b;
-      --shadow: 0 20px 60px rgba(28, 60, 100, .10);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 75% -10%, rgba(92,168,255,.13), transparent 33%),
-        radial-gradient(circle at 2% 18%, rgba(156,131,255,.09), transparent 26%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      transition: background .25s ease, color .25s ease;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(var(--max), 92%); margin: 0 auto; }
-    .section { padding: 92px 0; position: relative; }
-    .section.alt { background: linear-gradient(180deg, transparent, rgba(92,168,255,.035), transparent); }
-    .section-head { max-width: 760px; margin-bottom: 42px; }
-    .kicker {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--cyan); font-weight: 800; font-size: .78rem;
-      text-transform: uppercase; letter-spacing: .14em; margin-bottom: 12px;
-    }
-    .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    h2 { font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.04em; line-height: 1.08; }
-    .section-head p { color: var(--muted); margin-top: 14px; font-size: 1.02rem; }
-
-    /* NAV */
-    .nav-wrap {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(18px);
-      background: color-mix(in srgb, var(--bg) 78%, transparent);
-      border-bottom: 1px solid var(--line);
-    }
-    nav {
-      min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
-    }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 850; letter-spacing: -.02em; }
-    .brand-mark {
-      width: 37px; height: 37px; border-radius: 12px; display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--blue), var(--violet));
-      color: #fff; font-size: .88rem; box-shadow: 0 8px 30px rgba(92,168,255,.22);
-    }
-    .brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .07em; margin-top: -2px; font-weight: 700; }
-    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-weight: 700; font-size: .88rem; }
-    .nav-links a:hover { color: var(--text); }
-    .theme-btn {
-      width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line);
-      background: var(--surface-soft); color: var(--text); cursor: pointer;
-    }
-
-    /* HERO */
-    .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; padding: 72px 0 82px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 56px; }
-    .eyebrow {
-      display: inline-flex; gap: 9px; align-items: center; padding: 8px 12px;
-      border: 1px solid var(--line); border-radius: 999px; background: var(--surface-soft);
-      color: var(--muted); font-size: .8rem; font-weight: 800; margin-bottom: 24px;
-    }
-    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(114,228,168,.08); }
-    h1 { font-size: clamp(3rem, 7vw, 6.35rem); line-height: .96; letter-spacing: -.065em; max-width: 850px; }
-    .grad {
-      background: linear-gradient(90deg, var(--blue), var(--cyan) 46%, var(--violet));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .hero-copy { color: var(--muted); max-width: 720px; margin-top: 25px; font-size: clamp(1rem, 1.5vw, 1.18rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 17px; border-radius: 13px; border: 1px solid var(--line);
-      font-weight: 800; font-size: .9rem; transition: .2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn.primary { background: linear-gradient(135deg, var(--blue), #3c82ed); color: white; border-color: transparent; box-shadow: 0 12px 34px rgba(50,126,230,.2); }
-    .btn.soft { background: var(--surface-soft); }
-
-    .signal-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
-    .signal {
-      padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px;
-      background: var(--surface-soft); color: var(--muted); font-size: .75rem; font-weight: 700;
-    }
-
-    .hero-visual { position: relative; min-height: 530px; display: grid; place-items: center; }
-    .orbital {
-      width: 370px; height: 370px; border-radius: 50%; border: 1px solid var(--line);
-      position: relative; display: grid; place-items: center;
-      box-shadow: inset 0 0 80px rgba(92,168,255,.035);
-    }
-    .orbital::before, .orbital::after {
-      content: ""; position: absolute; border-radius: 50%; border: 1px solid var(--line);
-    }
-    .orbital::before { inset: 42px; }
-    .orbital::after { inset: 92px; }
-    .core {
-      width: 132px; height: 132px; border-radius: 32px;
-      background: linear-gradient(135deg, rgba(92,168,255,.95), rgba(156,131,255,.95));
-      display: grid; place-items: center; text-align: center; color: #fff;
-      box-shadow: 0 0 80px rgba(92,168,255,.26);
-      position: relative; z-index: 2; animation: float 5s ease-in-out infinite;
-    }
-    .core strong { font-size: 1.55rem; line-height: 1; }
-    .core span { display: block; font-size: .68rem; margin-top: 7px; opacity: .86; font-weight: 700; }
-    @keyframes float { 50% { transform: translateY(-8px); } }
-    .node {
-      position: absolute; width: 126px; padding: 12px 10px;
-      border: 1px solid var(--line); border-radius: 15px;
-      background: color-mix(in srgb, var(--surface-strong) 90%, transparent);
-      box-shadow: var(--shadow); text-align: center;
-    }
-    .node b { display: block; font-size: .78rem; }
-    .node small { color: var(--muted); font-size: .67rem; }
-    .node.n1 { top: 5%; left: 0; }
-    .node.n2 { top: 6%; right: -2%; }
-    .node.n3 { bottom: 7%; left: -2%; }
-    .node.n4 { bottom: 5%; right: 0; }
-
-    /* METRICS */
-    .metric-strip {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      border: 1px solid var(--line); border-radius: var(--radius);
-      background: var(--surface); box-shadow: var(--shadow); overflow: hidden;
-    }
-    .metric { padding: 26px 28px; border-right: 1px solid var(--line); }
-    .metric:last-child { border-right: 0; }
-    .metric strong { display: block; font-size: 2rem; letter-spacing: -.05em; color: var(--text); }
-    .metric span { display: block; color: var(--muted); font-size: .82rem; margin-top: 4px; font-weight: 700; }
-
-    /* CARDS */
-    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
-    .card {
-      border: 1px solid var(--line); border-radius: var(--radius); padding: 25px;
-      background: var(--surface); box-shadow: 0 14px 45px rgba(0,0,0,.06);
-      transition: transform .2s ease, border-color .2s ease;
-    }
-    .card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--blue) 45%, var(--line)); }
-    .icon {
-      width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
-      background: linear-gradient(135deg, rgba(92,168,255,.14), rgba(156,131,255,.10));
-      border: 1px solid var(--line); margin-bottom: 16px; font-size: 1.18rem;
-    }
-    .card h3 { font-size: 1.04rem; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: .9rem; }
-
-    /* QUALITY FLOW */
-    .flow {
-      display: grid; grid-template-columns: repeat(7, 1fr); gap: 9px; align-items: stretch;
-      margin-top: 30px;
-    }
-    .flow-step {
-      padding: 18px 10px; text-align: center; border: 1px solid var(--line);
-      border-radius: 16px; background: var(--surface);
-    }
-    .flow-step b { font-size: .8rem; display: block; }
-    .flow-step small { font-size: .68rem; color: var(--muted); }
-    .flow-arrow { display: none; }
-
-    /* EXPERIENCE */
-    .experience {
-      display: grid; grid-template-columns: 240px 1fr; gap: 34px;
-      border: 1px solid var(--line); border-radius: 28px; padding: 34px;
-      background: var(--surface);
-    }
-    .experience-side .company { color: var(--cyan); font-weight: 900; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
-    .experience-side .years { margin-top: 8px; color: var(--muted); font-size: .86rem; }
-    .experience-main h3 { font-size: clamp(1.5rem,3vw,2.2rem); letter-spacing: -.03em; }
-    .experience-main > p { color: var(--muted); margin-top: 10px; max-width: 810px; }
-    .impact-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px 28px; margin-top: 24px; }
-    .impact-item { display: flex; gap: 10px; color: var(--muted); font-size: .9rem; }
-    .impact-item::before { content: "↗"; color: var(--cyan); font-weight: 900; }
-    .timeline { margin-top: 18px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
-    .timeline-item { border: 1px solid var(--line); border-radius: 16px; padding: 16px; background: var(--surface-soft); }
-    .timeline-item small { color: var(--cyan); font-size: .7rem; font-weight: 800; }
-    .timeline-item b { display: block; margin-top: 5px; font-size: .86rem; }
-    .timeline-item span { display: block; color: var(--muted); font-size: .74rem; margin-top: 3px; }
-
-    /* PROJECTS */
-    .project-card { position: relative; overflow: hidden; min-height: 255px; }
-    .project-num { position: absolute; right: 18px; top: 14px; color: var(--line); font-size: 3.4rem; font-weight: 900; line-height: 1; }
-    .project-card .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
-    .tag { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .68rem; font-weight: 700; }
-
-    /* TECH */
-    .tech-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tech {
-      padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px;
-      background: var(--surface); color: var(--muted); font-size: .82rem; font-weight: 750;
-    }
-
-    /* QUOTE / CONTACT */
-    .vision {
-      border-radius: 30px; padding: 44px;
-      background:
-        radial-gradient(circle at 95% 0, rgba(78,231,226,.13), transparent 28%),
-        radial-gradient(circle at 3% 100%, rgba(156,131,255,.12), transparent 30%),
-        var(--surface);
-      border: 1px solid var(--line);
-    }
-    .vision blockquote { font-size: clamp(1.6rem, 4vw, 3.1rem); line-height: 1.12; letter-spacing: -.04em; max-width: 950px; }
-    .vision p { color: var(--muted); margin-top: 18px; max-width: 750px; }
-
-    .contact {
-      text-align: center; border: 1px solid var(--line); border-radius: 32px; padding: 60px 24px;
-      background: linear-gradient(135deg, rgba(92,168,255,.09), rgba(156,131,255,.07));
-    }
-    .contact h2 { max-width: 800px; margin: auto; }
-    .contact p { max-width: 650px; margin: 16px auto 0; color: var(--muted); }
-    .contact .hero-actions { justify-content: center; }
-
-    footer { border-top: 1px solid var(--line); padding: 28px 0 42px; color: var(--muted); font-size: .78rem; }
-    .footer-flex { display: flex; justify-content: space-between; gap: 20px; align-items: center; flex-wrap: wrap; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: .6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 980px) {
-      .nav-links a:not(.keep) { display: none; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero { min-height: auto; }
-      .hero-visual { min-height: 450px; }
-      .metric-strip { grid-template-columns: repeat(2,1fr); }
-      .metric:nth-child(2) { border-right: 0; }
-      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .grid-3 { grid-template-columns: repeat(2,1fr); }
-      .flow { grid-template-columns: repeat(4,1fr); }
-      .experience { grid-template-columns: 1fr; }
-      .timeline { grid-template-columns: repeat(2,1fr); }
-    }
-
-    @media (max-width: 650px) {
-      .section { padding: 68px 0; }
-      .hero { padding-top: 52px; }
-      h1 { font-size: clamp(3rem, 16vw, 4.25rem); }
-      .hero-visual { min-height: 380px; transform: scale(.88); margin-inline: -22px; }
-      .orbital { width: 315px; height: 315px; }
-      .node { width: 110px; }
-      .metric-strip, .grid-3, .grid-2, .impact-list, .timeline, .flow { grid-template-columns: 1fr; }
-      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
-      .metric:last-child { border-bottom: 0; }
-      .experience, .vision { padding: 24px; }
-      .brand small { display: none; }
-    }
-
-
-
-    /* AUTOMATION ANIMATIONS */
-    .automation-stack { width: 100%; max-width: 520px; display: grid; gap: 16px; }
-    .pipeline-panel, .console-panel {
-      border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--surface-strong) 92%, transparent);
-      box-shadow: var(--shadow); overflow: hidden;
-    }
-    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); }
-    .panel-title { font-size:.74rem; font-weight:850; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-    .panel-status { display:flex; align-items:center; gap:7px; color:var(--green); font-size:.7rem; font-weight:800; }
-    .status-dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 6px rgba(114,228,168,.08); animation:pulse 1.8s infinite; }
-    @keyframes pulse { 50% { box-shadow:0 0 0 11px rgba(114,228,168,0); } }
-
-    .pipeline-track { position:relative; padding:18px 14px 20px; }
-    .pipeline-line { position:absolute; left:7%; right:7%; top:42px; height:2px; background:var(--line); overflow:hidden; }
-    .pipeline-line::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent, var(--cyan), var(--blue), transparent); transform:translateX(-100%); animation:flowline 3.2s linear infinite; }
-    @keyframes flowline { to { transform:translateX(100%); } }
-    .pipeline-steps { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; z-index:2; }
-    .pipe-step { text-align:center; min-width:0; }
-    .pipe-node { width:30px; height:30px; border-radius:50%; margin:0 auto 8px; display:grid; place-items:center; border:1px solid var(--line); background:var(--bg-2); font-size:.68rem; font-weight:900; color:var(--muted); position:relative; }
-    .pipe-step.active .pipe-node { color:#fff; background:linear-gradient(135deg,var(--blue),var(--violet)); border-color:transparent; box-shadow:0 0 24px rgba(92,168,255,.28); }
-    .pipe-step.done .pipe-node { color:#04120b; background:var(--green); border-color:transparent; }
-    .pipe-label { font-size:.62rem; color:var(--muted); font-weight:800; line-height:1.15; }
-    .pipeline-meta { display:flex; justify-content:space-between; gap:12px; padding:0 14px 14px; color:var(--muted); font-size:.7rem; }
-    .progress { height:6px; border-radius:999px; background:var(--surface-soft); overflow:hidden; margin:0 14px 14px; }
-    .progress > span { display:block; width:0%; height:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); border-radius:inherit; transition:width .6s ease; }
-
-    .parallel-workers { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:0 14px 14px; }
-    .worker-card { padding:10px; border:1px solid var(--line); border-radius:12px; background:var(--surface-soft); min-width:0; }
-    .worker-head { display:flex; align-items:center; gap:7px; }
-    .worker-dot { width:7px; height:7px; flex:none; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); animation:pulse 1.2s infinite; }
-    .worker-name { font-size:.62rem; font-weight:900; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .worker-value { margin-left:auto; color:var(--cyan); font-size:.63rem; font-weight:900; }
-    .worker-card small { display:block; color:var(--muted); font-size:.55rem; margin:6px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .worker-bar { height:3px; border-radius:10px; background:var(--line); overflow:hidden; }
-    .worker-bar span { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,var(--blue),var(--cyan)); transition:width .6s ease; }
-    .parallel-note { padding:0 14px 12px; color:var(--muted); font-size:.58rem; }
-    .parallel-note b { color:var(--violet); }
-
-    .console-body { padding:14px; min-height:155px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.72rem; line-height:1.55; color:var(--muted); }
-    .console-line { opacity:0; transform:translateY(4px); animation:consoleIn .35s forwards; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .console-line .ok { color:var(--green); }
-    .console-line .info { color:var(--cyan); }
-    .console-line .accent { color:var(--blue); }
-    @keyframes consoleIn { to { opacity:1; transform:none; } }
-
-    .orbital .signal-pulse { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--cyan); box-shadow:0 0 18px var(--cyan); z-index:5; }
-    .orbital .sp1 { animation:orbit1 6s linear infinite; }
-    .orbital .sp2 { animation:orbit2 7.5s linear infinite; animation-delay:-2s; background:var(--violet); box-shadow:0 0 18px var(--violet); }
-    .orbital .sp3 { animation:orbit3 5.5s linear infinite; animation-delay:-1s; background:var(--green); box-shadow:0 0 18px var(--green); }
-    @keyframes orbit1 { from { transform:rotate(0deg) translateX(185px) rotate(0deg);} to { transform:rotate(360deg) translateX(185px) rotate(-360deg);} }
-    @keyframes orbit2 { from { transform:rotate(0deg) translateX(143px) rotate(0deg);} to { transform:rotate(-360deg) translateX(143px) rotate(360deg);} }
-    @keyframes orbit3 { from { transform:rotate(0deg) translateX(92px) rotate(0deg);} to { transform:rotate(360deg) translateX(92px) rotate(-360deg);} }
-
-    .metric strong.counting { color:var(--cyan); }
-
-    @media (max-width:650px) {
-      .pipeline-steps { gap:3px; }
-      .pipe-node { width:26px; height:26px; }
-      .pipe-label { font-size:.56rem; }
-      .console-body { font-size:.65rem; }
-      .parallel-workers { grid-template-columns:1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .core { animation: none; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .btn, .card { transition: none; }
-    }
+    :root{--ink:#050a12;--panel:#0b1625;--panel2:#0e1d30;--paper:#f3f7fb;--muted:#8ea2b7;--line:rgba(164,190,218,.16);--cyan:#52e7d1;--blue:#5d9cff;--violet:#9d7cff;--green:#b5f56d;--red:#ff7280}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--ink)}body{margin:0;background:radial-gradient(circle at 88% 4%,rgba(93,156,255,.11),transparent 28%),var(--ink);color:var(--paper);font-family:Inter,Segoe UI,Arial,sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}a{color:inherit}::selection{background:rgba(82,231,209,.25)}
+    .ambient{position:fixed;z-index:0;width:34rem;height:34rem;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:.12}.a1{top:4rem;right:-12rem;background:var(--blue)}.a2{top:75rem;left:-18rem;background:var(--violet)}
+    header{position:relative;z-index:20;height:78px;padding:0 clamp(22px,5vw,78px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(5,10,18,.8);backdrop-filter:blur(18px)}
+    .brand{display:flex;align-items:center;gap:13px;text-decoration:none}.brand>span{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--violet));font-size:12px;font-weight:900;box-shadow:0 10px 34px rgba(93,156,255,.24)}.brand div{display:flex;flex-direction:column;gap:3px}.brand b{font-size:11px;letter-spacing:1.8px}.brand small{color:var(--muted);font-size:8px;font-weight:700;letter-spacing:1.6px}nav{display:flex;gap:34px}nav a,.connect{color:#93a6bb;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:1.4px}.connect{color:#d9e6f2}.connect:hover,nav a:hover{color:var(--cyan)}
+    section{position:relative;z-index:1}.hero{min-height:calc(100vh - 78px);padding:clamp(70px,9vh,108px) clamp(22px,5vw,78px) 64px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(430px,.92fr);gap:clamp(45px,7vw,105px);align-items:center;border-bottom:1px solid var(--line)}.hero:before,.lab-section:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(93,156,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(93,156,255,.05) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,transparent,#000,transparent);opacity:.42}
+    .kicker{display:flex;align-items:center;gap:8px;color:var(--cyan);font:800 10px ui-monospace,Consolas,monospace;letter-spacing:1.6px}.kicker i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan);animation:pulse 1.6s infinite}.hero h1,.section-head h2,.career h3,footer h2{margin:24px 0 22px;font-weight:680;letter-spacing:-.065em;line-height:.94}.hero h1{font-size:clamp(58px,7.4vw,112px)}em{font-style:normal;background:linear-gradient(105deg,#f0f7ff,var(--blue) 38%,var(--cyan) 68%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy>p{max-width:680px;margin:0;color:#a7b7c8;font-size:clamp(16px,1.3vw,20px);line-height:1.7}.actions{margin-top:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}.primary{min-height:52px;padding:0 22px;display:inline-flex;align-items:center;gap:11px;border:0;border-radius:10px;background:linear-gradient(120deg,var(--cyan),#81bfff);color:#041018;text-decoration:none;cursor:pointer;font-size:11px;font-weight:900;letter-spacing:1px;box-shadow:0 14px 40px rgba(82,231,209,.14);transition:.2s}.primary:hover{transform:translateY(-2px)}.secondary{color:#c3d1de;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:1.2px}.proof{margin-top:58px;max-width:640px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.proof div{padding:22px 20px 2px 0;display:flex;align-items:center;gap:12px;border-right:1px solid var(--line)}.proof div+div{padding-left:20px}.proof div:last-child{border:0}.proof strong{font-size:clamp(27px,3vw,43px);letter-spacing:-.06em}.proof span{color:#71869b;font-size:9px;font-weight:750;line-height:1.5;letter-spacing:.6px;text-transform:uppercase}
+    .hero-card{max-width:580px;width:100%;justify-self:end;border:1px solid rgba(93,156,255,.28);border-radius:25px;background:linear-gradient(145deg,rgba(15,29,49,.95),rgba(6,13,23,.97));box-shadow:0 40px 110px rgba(0,0,0,.45);overflow:hidden}.card-top{height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);color:#9bb0c4;font:800 9px ui-monospace,monospace;letter-spacing:1px}.live{color:var(--cyan)}.live:before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}.neural{height:370px;position:relative;display:grid;place-items:center;background:radial-gradient(circle,rgba(93,156,255,.12),transparent 58%)}.neural:before,.neural:after{content:"";position:absolute;border:1px dashed rgba(93,156,255,.24);border-radius:50%}.neural:before{width:285px;height:285px;animation:spin 18s linear infinite}.neural:after{width:210px;height:210px;border-color:rgba(82,231,209,.22);animation:spin 12s linear infinite reverse}.core{position:relative;z-index:3;width:126px;height:126px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(82,231,209,.7);border-radius:50%;background:radial-gradient(circle at 35% 25%,#2f6ac4,#39267b 64%,#111d36);box-shadow:0 0 55px rgba(93,156,255,.34);animation:core 3s ease-in-out infinite}.core b{font:900 20px ui-monospace,monospace}.core small{font:700 7px ui-monospace,monospace;letter-spacing:1px}.orbit{position:absolute;z-index:4;width:58px;height:58px;display:grid;place-items:center;border:1px solid rgba(93,156,255,.35);border-radius:16px;background:#0c1a2cec;font:900 10px ui-monospace,monospace}.o1{top:43px;left:18%;animation:float 3.2s infinite}.o2{top:70px;right:15%;animation:float 3.7s -.8s infinite}.o3{bottom:37px;left:calc(50% - 29px);animation:float 3.4s -1.4s infinite}.confidence{padding:0 24px 10px;display:flex;justify-content:space-between;align-items:flex-end;color:#7e92a9;font:800 9px ui-monospace,monospace;letter-spacing:1px}.confidence b{color:#fff;font-size:22px}.bar{height:4px;margin:0 24px 24px;border-radius:3px;background:#162940;overflow:hidden}.bar i{display:block;width:94.8%;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green));box-shadow:0 0 15px var(--cyan)}.mini{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.mini div{padding:17px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:5px}.mini div:last-child{border:0}.mini span{color:#688099;font:700 7px ui-monospace,monospace}.mini b{color:#d9e9f8;font:800 9px ui-monospace,monospace}
+    .lab-section,.leadership{padding:120px clamp(22px,5vw,78px)}.lab-section{background:linear-gradient(180deg,#07111d,#081421);border-bottom:1px solid var(--line)}.section-head{max-width:1480px;margin:0 auto 50px;display:grid;grid-template-columns:1.25fr .75fr;gap:65px;align-items:end}.section-head h2{font-size:clamp(46px,5vw,76px)}.section-head>p{margin:0 0 8px;color:#91a4b8;font-size:16px;line-height:1.75}
+    .lab{max-width:1480px;margin:auto;border:1px solid rgba(93,156,255,.28);border-radius:23px;background:rgba(5,13,23,.92);box-shadow:0 40px 115px rgba(0,0,0,.36);overflow:hidden}.lab-top{height:58px;padding:0 20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-bottom:1px solid var(--line);background:#0a1727}.dots{display:flex;gap:7px}.dots i{width:8px;height:8px;border-radius:50%;background:#ff6d7a}.dots i:nth-child(2){background:#ffc260}.dots i:nth-child(3){background:#64dda3}.lab-title{color:#a9bacb;font:800 9px ui-monospace,monospace;letter-spacing:1px}.phase{justify-self:end;display:flex;align-items:center;gap:7px;color:#8ea3b7;font:700 9px ui-monospace,monospace;text-transform:uppercase}.phase i{width:7px;height:7px;border-radius:50%;background:#6d8298}.phase.running i,.phase.generating i{background:var(--blue);box-shadow:0 0 12px var(--blue);animation:pulse 1s infinite}.phase.approval i{background:#f5c45d;box-shadow:0 0 12px #f5c45d}.phase.complete{color:var(--cyan)}.phase.complete i{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+    .scenario-row{padding:22px 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;border-bottom:1px solid var(--line)}.scenario-label{font:800 9px ui-monospace,monospace;letter-spacing:1px}.tabs{justify-self:center;display:flex;padding:4px;border:1px solid var(--line);border-radius:11px;background:#07111f;overflow:auto}.tabs button{padding:10px 13px;border:0;border-radius:8px;background:transparent;color:#7f94aa;cursor:pointer;font:750 9px ui-monospace,monospace;white-space:nowrap}.tabs button.active{background:linear-gradient(135deg,rgba(93,156,255,.2),rgba(157,124,255,.14));color:#edf7ff;box-shadow:inset 0 0 0 1px rgba(93,156,255,.28)}.tabs button:disabled{opacity:.5;cursor:not-allowed}.env{padding:7px 9px;border:1px solid rgba(82,231,209,.16);border-radius:7px;color:#7ea599;font:700 8px ui-monospace,monospace;white-space:nowrap}.requirement{margin:22px 24px 0;padding:17px 19px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;border:1px solid rgba(93,156,255,.18);border-radius:12px;background:rgba(14,29,49,.67)}.req-id{color:var(--blue);font:800 9px ui-monospace,monospace}.requirement p{margin:0;color:#c1d0df;font-size:13px;line-height:1.55}.coverage{color:#89a0b6;font:700 9px ui-monospace,monospace;white-space:nowrap}
+    .flow{padding:38px 30px 34px;display:grid;grid-template-columns:repeat(6,1fr)}.flow-step{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;color:#52677c}.flow-icon{position:relative;z-index:2;width:42px;height:42px;display:grid;place-items:center;border:1px solid #26394f;border-radius:12px;background:#091523;font-weight:900}.flow-step>span{margin-top:11px;display:flex;flex-direction:column;gap:4px}.flow-step b{color:#657b91;font:800 9px ui-monospace,monospace}.flow-step small{font-size:8px}.flow-line{position:absolute;z-index:1;top:21px;left:calc(50% + 21px);width:calc(100% - 42px);height:1px;background:#26394f}.flow-step.active .flow-icon{border-color:var(--blue);color:#fff;background:linear-gradient(135deg,#3369ba,#613daa);box-shadow:0 0 25px rgba(93,156,255,.35);animation:stage 1.4s infinite}.flow-step.active b{color:#e8f3fd}.flow-step.done .flow-icon{border-color:rgba(82,231,209,.6);color:var(--cyan);background:rgba(82,231,209,.08)}.flow-step.done b{color:#b5d8d0}.flow-step.done .flow-line{background:linear-gradient(90deg,var(--cyan),rgba(82,231,209,.45))}
+    .approval{min-height:80px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(157,124,255,.06),rgba(82,231,209,.04))}.approval>div{display:flex;align-items:center;gap:12px}.shield{color:var(--cyan);font-size:23px}.approval span{display:flex;flex-direction:column;gap:4px}.approval b{font:850 10px ui-monospace,monospace;letter-spacing:.6px}.approval small{color:#71879d;font-size:10px}.run-btn{min-width:210px;height:45px;padding:0 16px;border:1px solid rgba(82,231,209,.34);border-radius:9px;background:linear-gradient(120deg,var(--cyan),#7fb9ff);color:#041117;cursor:pointer;font:900 10px ui-monospace,monospace;letter-spacing:.6px}.run-btn:disabled{color:#c5d7e9;border-color:rgba(93,156,255,.22);background:rgba(93,156,255,.09);cursor:wait}.run-btn.approve{background:linear-gradient(120deg,#9d7cff,#52e7d1)}
+    .execution{display:grid;grid-template-columns:.9fr 1.1fr;min-height:465px}.parallel{border-right:1px solid var(--line)}.panel-head{height:56px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);color:#9db0c3;background:rgba(12,25,42,.55);font:800 9px ui-monospace,monospace;letter-spacing:.8px}.panel-head small{color:#5c7288;font-size:8px}.worker{position:relative;margin:18px 20px 0;min-height:104px;padding:17px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;border:1px solid rgba(150,181,213,.13);border-radius:13px;background:rgba(14,29,49,.5);overflow:hidden}.worker:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#30485e}.worker.running{border-color:rgba(93,156,255,.32)}.worker.running:before{background:var(--blue);box-shadow:0 0 10px var(--blue)}.worker.done{border-color:rgba(82,231,209,.25)}.worker.done:before{background:var(--cyan)}.worker.failed{border-color:rgba(255,114,128,.5);background:rgba(90,24,38,.18)}.worker.failed:before{background:var(--red);box-shadow:0 0 10px var(--red)}.worker.recovering{border-color:rgba(157,124,255,.45);background:rgba(86,55,140,.12)}.worker.recovering:before{background:var(--violet);box-shadow:0 0 10px var(--violet)}.w-icon{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(93,156,255,.2);border-radius:10px;color:var(--blue);background:rgba(93,156,255,.06);font-weight:900}.w-copy{min-width:0;display:flex;flex-direction:column;gap:4px}.w-copy b{font:850 10px ui-monospace,monospace;letter-spacing:.7px}.w-copy span{overflow:hidden;color:#9bb0c3;font-size:11px;text-overflow:ellipsis;white-space:nowrap}.w-copy small{color:#597087;font:700 8px ui-monospace,monospace}.w-stat{display:flex;flex-direction:column;align-items:flex-end;gap:3px}.w-stat b{font:800 18px ui-monospace,monospace}.w-stat span{color:#627a91;font:800 7px ui-monospace,monospace}.worker.failed .w-stat span{color:var(--red)}.worker.recovering .w-stat span{color:#c3adff}.worker.done .w-stat span{color:var(--cyan)}.w-bar{position:absolute;left:16px;right:16px;bottom:10px;height:2px;background:#172b41}.w-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .45s}.worker.failed .w-bar i{background:linear-gradient(90deg,var(--red),#ffab72)}
+    .console{min-width:0}.console-lines{padding:20px 22px;font-family:ui-monospace,Consolas,monospace}.console-row{min-height:34px;display:grid;grid-template-columns:62px 55px minmax(0,1fr) 16px;gap:9px;align-items:center;border-bottom:1px solid rgba(164,190,218,.055);opacity:.09;transform:translateX(-7px);color:#8095aa;font-size:9px;transition:.3s}.console-row.visible{opacity:1;transform:none}.console-row time{color:#465e75}.console-row b{color:var(--blue);font-size:8px}.console-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.console-row.ai b{color:var(--violet)}.console-row.fail b,.console-row.fail .mark{color:var(--red)}.console-row.fail span{color:#ffc0c6}.console-row.recover b,.console-row.recover .mark{color:#c3adff}.console-row.pass b,.console-row.pass .mark,.console-row.final b,.console-row.final .mark{color:var(--cyan)}.console-row.final span{color:#dffcf7;font-weight:700}.cursor{padding-top:12px;color:var(--cyan)}.cursor i{display:inline-block;width:7px;height:14px;background:var(--cyan);vertical-align:middle;animation:blink .75s steps(1) infinite}
+    .recovery-strip{display:none;min-height:82px;padding:16px 24px;grid-template-columns:auto 1fr auto 1fr auto 1fr auto;align-items:center;gap:13px;border-top:1px solid rgba(255,114,128,.2);background:linear-gradient(90deg,rgba(255,114,128,.08),rgba(157,124,255,.08),rgba(82,231,209,.06))}.recovery-strip.show{display:grid}.recovery-item{display:flex;align-items:center;gap:9px;color:#788da2}.recovery-item:first-child{color:var(--red)}.recovery-item.active{color:#c3adff}.recovery-item.success{color:var(--cyan)}.recovery-item span{display:flex;flex-direction:column;gap:3px}.recovery-item b{font:850 8px ui-monospace,monospace}.recovery-item small{color:#6c8298;font:700 8px ui-monospace,monospace;white-space:nowrap}.rec-line{height:1px;background:#263b50}
+    .results{min-height:98px;display:grid;grid-template-columns:minmax(290px,.95fr) 1.4fr;border-top:1px solid var(--line);background:linear-gradient(90deg,rgba(93,156,255,.05),transparent)}.score{padding:14px 23px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--line)}.score-circle{width:62px;height:62px;display:grid;place-items:center;border:2px solid #25405b;border-radius:50%;font:850 17px ui-monospace,monospace}.results.complete .score-circle{border-color:var(--cyan);box-shadow:0 0 22px rgba(82,231,209,.14)}.score-copy{display:flex;flex-direction:column;gap:5px}.score-copy b{font:850 10px ui-monospace,monospace}.score-copy small{color:#667d94;font-size:9px}.results.complete .score-copy b{color:var(--cyan)}dl{margin:0;display:grid;grid-template-columns:repeat(6,1fr)}dl div{padding:0 14px;display:flex;flex-direction:column;justify-content:center;gap:7px;border-right:1px solid var(--line)}dt{color:#60768c;font:750 8px ui-monospace,monospace}dd{margin:0;color:#d8e7f4;font:850 15px ui-monospace,monospace}.results.complete dl div:nth-child(2) dd,.results.complete dl div:nth-child(4) dd,.results.complete dl div:last-child dd{color:var(--cyan)}
+    .leadership{background:radial-gradient(circle at 80% 10%,rgba(157,124,255,.08),transparent 28%),#050a12}.cards{max-width:1480px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.cards article{min-height:260px;padding:29px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(14,27,46,.74),rgba(7,16,28,.84))}.cards article>span{color:var(--cyan);font:800 10px ui-monospace,monospace}.cards h3{margin:45px 0 14px;font-size:22px;line-height:1.13}.cards p{margin:0;color:#889cb0;font-size:13px;line-height:1.7}
+    .career{max-width:1480px;margin:68px auto 0;display:grid;grid-template-columns:.9fr 1.1fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(12,25,42,.82),rgba(5,12,21,.9))}.career-copy{padding:clamp(32px,4vw,56px);border-right:1px solid var(--line)}.career h3{margin-top:45px;font-size:clamp(31px,3vw,50px)}.career-copy>p{color:#91a4b8;font-size:14px;line-height:1.8}.career blockquote{margin:32px 0 0;padding:18px 0 18px 21px;border-left:2px solid var(--cyan);color:#d4e4f2;font-size:15px;font-weight:620;line-height:1.6}.metrics{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.metrics span{padding:18px 12px 0 0;display:flex;flex-direction:column;gap:6px;color:#60768c;font:750 8px ui-monospace,monospace}.metrics b{color:#eaf4fd;font-size:20px}.timeline{padding:22px 34px}.timeline article{display:grid;grid-template-columns:116px 1fr;gap:22px;padding:27px 0;border-bottom:1px solid var(--line)}.timeline article:last-child{border:0}.timeline article>span{padding-top:3px;color:#60788f;font:800 8px ui-monospace,monospace}.timeline div{padding-left:22px;border-left:1px solid #294057}.timeline h4{margin:0 0 6px;font-size:17px}.timeline article:first-child h4{color:var(--cyan)}.timeline b{color:#a9bbcc;font-size:10px}.timeline p{margin:11px 0 0;color:#768ca1;font-size:11px;line-height:1.65}
+    .systems{max-width:1480px;margin:68px auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(7,16,28,.72)}.systems-head{padding:36px;border-bottom:1px solid var(--line)}.systems-head h3{margin:30px 0 10px;font-size:34px}.systems-head p{margin:0;color:#869aaf;font-size:13px}.system{padding:23px 28px;display:grid;grid-template-columns:34px minmax(250px,.7fr) 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--line)}.system:last-child{border:0}.system>span{color:#506980;font:800 10px ui-monospace,monospace}.system div{display:flex;flex-direction:column;gap:6px}.system b{font-size:15px}.system small{color:var(--cyan);font:700 8px ui-monospace,monospace}.system p{margin:0;color:#8195a9;font-size:12px;line-height:1.55}.tech{max-width:1480px;margin:30px auto 0;display:flex;flex-wrap:wrap;gap:9px}.tech span{padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:#8fa4b8;background:rgba(12,25,42,.54);font:750 9px ui-monospace,monospace}
+    footer{max-width:1480px;margin:105px auto 0;padding:70px 0 25px;display:grid;grid-template-columns:1fr auto;align-items:end;border-top:1px solid var(--line)}footer h2{font-size:clamp(43px,5vw,72px);margin-bottom:0}.footer-actions{display:flex;gap:20px;align-items:center}.copyright{grid-column:1/-1;margin-top:60px;color:#4c6277;font:700 8px ui-monospace,monospace}
+    @keyframes pulse{50%{opacity:.4;transform:scale(.84)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-8px);border-color:var(--cyan)}}@keyframes core{50%{transform:scale(1.045);box-shadow:0 0 80px rgba(93,156,255,.45)}}@keyframes stage{50%{transform:scale(1.08)}}@keyframes blink{50%{opacity:0}}
+    @media(max-width:1100px){.hero{grid-template-columns:1fr}.hero-card{max-width:720px;justify-self:start}.scenario-row{grid-template-columns:1fr auto}.scenario-label{display:none}.tabs{justify-self:start}.execution{grid-template-columns:1fr}.parallel{padding-bottom:18px;border-right:0;border-bottom:1px solid var(--line)}.results{grid-template-columns:1fr}.score{border-right:0;border-bottom:1px solid var(--line)}.career{grid-template-columns:1fr}.career-copy{border-right:0;border-bottom:1px solid var(--line)}}
+    @media(max-width:800px){nav{display:none}.hero,.lab-section,.leadership{padding-left:20px;padding-right:20px}.section-head{grid-template-columns:1fr;gap:15px}.scenario-row{grid-template-columns:1fr}.tabs{width:100%}.env{justify-self:start}.flow{grid-template-columns:repeat(3,1fr);gap:32px 0}.flow-step:nth-child(3) .flow-line{display:none}.approval{align-items:stretch;flex-direction:column}.run-btn{width:100%}.recovery-strip.show{grid-template-columns:repeat(4,1fr)}.rec-line{display:none}.cards{grid-template-columns:1fr}.system{grid-template-columns:28px 1fr}.system p{grid-column:2}footer{grid-template-columns:1fr;gap:28px}.footer-actions{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){.brand div,.connect{display:none}.hero{padding-top:64px}.hero h1{font-size:clamp(47px,15vw,66px)}.hero-copy>p{font-size:15px}.proof{grid-template-columns:1fr}.proof div,.proof div+div{padding:17px 0;border-right:0;border-bottom:1px solid var(--line)}.hero-card{border-radius:18px}.neural{height:305px}.neural:before{width:245px;height:245px}.neural:after{width:180px;height:180px}.o1{left:8%}.o2{right:7%}.mini{grid-template-columns:1fr}.mini div{border-right:0;border-bottom:1px solid var(--line)}.section-head h2,footer h2{font-size:42px}.lab-top{grid-template-columns:auto 1fr}.lab-title{display:none}.requirement{margin:18px 14px 0;grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr);padding-left:10px;padding-right:10px}.flow-step:nth-child(2) .flow-line,.flow-step:nth-child(4) .flow-line{display:none}.flow-step:nth-child(3) .flow-line{display:block}.worker{margin-left:12px;margin-right:12px;grid-template-columns:auto 1fr}.w-stat{grid-column:2;align-items:flex-start;flex-direction:row}.console-lines{padding:16px 12px}.console-row{grid-template-columns:48px 42px minmax(0,1fr);gap:5px;font-size:8px}.console-row .mark{display:none}.recovery-strip.show{grid-template-columns:repeat(2,1fr);padding:17px 14px}.results dl{grid-template-columns:repeat(2,1fr)}dl div{min-height:68px;border-bottom:1px solid var(--line)}.metrics{grid-template-columns:1fr}.metrics span{padding-bottom:13px;border-bottom:1px solid var(--line)}.timeline{padding:10px 21px}.timeline article{grid-template-columns:1fr;gap:10px}.system{padding:21px 18px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
-
 <body>
-  <div class="nav-wrap">
-    <div class="container">
-      <nav aria-label="Primary navigation">
-        <a class="brand" href="#home" aria-label="Bhavya Gonepudi home">
-          <span class="brand-mark">BG</span>
-          <span>Bhavya Gonepudi<small>QUALITY ENGINEERING LEADER</small></span>
-        </a>
-        <div class="nav-links">
-          <a href="#leadership">Leadership</a>
-          <a href="#experience">Experience</a>
-          <a href="#work">Work</a>
-          <a href="#articles">Articles</a>
-          <a href="#technology">Technology</a>
-          <a class="keep" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme">◐</button>
-        </div>
-      </nav>
-    </div>
-  </div>
+  <div class="ambient a1"></div><div class="ambient a2"></div>
+  <header>
+    <a class="brand" href="#home"><span>BG</span><div><b>BHAVYA GONEPUDI</b><small>QUALITY ENGINEERING</small></div></a>
+    <nav><a href="#home">OVERVIEW</a><a href="#lab">QUALITY LAB</a><a href="#leadership">LEADERSHIP</a></nav>
+    <a class="connect" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noreferrer">CONNECT ↗</a>
+  </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="live-dot"></span> Quality Engineering • AI • Automation • Leadership</div>
-          <h1>Engineering quality for the <span class="grad">AI era.</span></h1>
-          <p class="hero-copy">
-            I’m Bhavya Gonepudi, a Quality Engineering and Test Automation leader with 18+ years of experience building scalable automation, modernizing CI/CD quality practices, and helping teams turn quality data into better engineering decisions.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#work">Explore my work →</a>
-            <a class="btn soft" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a class="btn soft" href="https://github.com/bgonepudi" target="_blank" rel="noopener">GitHub ↗</a>
-          </div>
-          <div class="signal-list">
-            <span class="signal">AI-Assisted Quality Engineering</span>
-            <span class="signal">Enterprise Automation</span>
-            <span class="signal">API & Integration Testing</span>
-            <span class="signal">CI/CD Quality Gates</span>
-            <span class="signal">Healthcare Quality</span>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="AI and Quality Engineering visual">
-          <div class="orbital">
-            <span class="signal-pulse sp1"></span><span class="signal-pulse sp2"></span><span class="signal-pulse sp3"></span>
-            <div class="node n1"><b>AI-Assisted QE</b><small>Generate • Analyze • Refine</small></div>
-            <div class="node n2"><b>Automation</b><small>UI • API • Data</small></div>
-            <div class="node n3"><b>CI/CD</b><small>Continuous validation</small></div>
-            <div class="node n4"><b>Quality Intelligence</b><small>Risk • Coverage • KPIs</small></div>
-            <div class="core"><div><strong>AI + QE</strong><span>INTELLIGENT QUALITY</span></div></div>
-          </div>
-
-          <div class="automation-stack reveal" aria-label="Live automation execution demo">
-            <div class="pipeline-panel">
-              <div class="panel-head">
-                <span class="panel-title">CI/CD Quality Pipeline</span>
-                <span class="panel-status"><span class="status-dot"></span>Running</span>
-              </div>
-              <div class="pipeline-track">
-                <div class="pipeline-line"></div>
-                <div class="pipeline-steps" id="pipelineSteps">
-                  <div class="pipe-step"><div class="pipe-node">1</div><div class="pipe-label">CODE</div></div>
-                  <div class="pipe-step"><div class="pipe-node">2</div><div class="pipe-label">BUILD</div></div>
-                  <div class="pipe-step"><div class="pipe-node">3</div><div class="pipe-label">API TEST</div></div>
-                  <div class="pipe-step"><div class="pipe-node">4</div><div class="pipe-label">UI TEST</div></div>
-                  <div class="pipe-step"><div class="pipe-node">5</div><div class="pipe-label">QUALITY</div></div>
-                  <div class="pipe-step"><div class="pipe-node">6</div><div class="pipe-label">DEPLOY</div></div>
-                </div>
-              </div>
-              <div class="progress"><span id="pipelineProgress"></span></div>
-              <div class="pipeline-meta"><span id="pipelineText">Initializing automation...</span><span id="pipelinePct">0%</span></div>
-              <div class="parallel-workers">
-                <div class="worker-card">
-                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">SELENIUM UI</span><span class="worker-value" id="uiPct">0%</span></div>
-                  <small>Chrome Worker 01 • User journeys</small><div class="worker-bar"><span id="uiBar"></span></div>
-                </div>
-                <div class="worker-card">
-                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">API TESTS</span><span class="worker-value" id="apiPct">0%</span></div>
-                  <small>Service Worker 02 • REST + OAuth2 + SSL</small><div class="worker-bar"><span id="apiBar"></span></div>
-                </div>
-                <div class="worker-card">
-                  <div class="worker-head"><span class="worker-dot"></span><span class="worker-name">BACKEND VALIDATION</span><span class="worker-value" id="backendPct">0%</span></div>
-                  <small>Data Worker 03 • SQL + integration</small><div class="worker-bar"><span id="backendBar"></span></div>
-                </div>
-              </div>
-              <div class="parallel-note"><b>PARALLEL MODE:</b> Run Selenium, API, and backend validation together—or execute each suite independently.</div>
-            </div>
-
-            <div class="console-panel">
-              <div class="panel-head">
-                <span class="panel-title">Automation Console</span>
-                <span class="panel-status"><span class="status-dot"></span>Live</span>
-              </div>
-              <div class="console-body" id="consoleBody"></div>
-            </div>
-          </div>
-        </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="kicker"><i></i> QUALITY ENGINEERING · AI · AUTOMATION LEADERSHIP</span>
+        <h1>Engineering<br>confidence for<br><em>the AI era.</em></h1>
+        <p>I’m Bhavya Gonepudi—a hands-on QA and Test Automation leader building intelligent quality systems, scalable automation, and stronger engineering teams.</p>
+        <div class="actions"><a class="primary" href="#lab">EXPLORE THE QUALITY LAB ↓</a><a class="secondary" href="#leadership">VIEW LEADERSHIP IMPACT ›</a></div>
+        <div class="proof"><div><strong>18+</strong><span>Years in quality<br>engineering</span></div><div><strong>90%</strong><span>Automation<br>coverage achieved</span></div><div><strong>2K+</strong><span>Production defects<br>prevented</span></div></div>
+      </div>
+      <div class="hero-card">
+        <div class="card-top"><span>● QUALITY INTELLIGENCE</span><span class="live">LIVE SYSTEM</span></div>
+        <div class="neural"><span class="orbit o1">UI</span><span class="orbit o2">API</span><span class="orbit o3">DATA</span><div class="core"><span>✦</span><b>AI-QE</b><small>ORCHESTRATOR</small></div></div>
+        <div class="confidence"><span>RELEASE CONFIDENCE</span><b>94.8%</b></div><div class="bar"><i></i></div>
+        <div class="mini"><div><span>PIPELINE</span><b>HEALTHY</b></div><div><span>QUALITY GATES</span><b>6 / 6</b></div><div><span>GOVERNANCE</span><b>HUMAN LED</b></div></div>
       </div>
     </section>
 
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="metric-strip reveal">
-          <div class="metric"><strong data-target="17" data-suffix="+">0</strong><span>Years in Quality Engineering & Automation</span></div>
-          <div class="metric"><strong data-target="2000" data-suffix="+">0</strong><span>Production defects prevented</span></div>
-          <div class="metric"><strong data-target="90" data-prefix="~" data-suffix="%">0</strong><span>Automated regression coverage</span></div>
-          <div class="metric"><strong data-target="60" data-suffix="%+">0</strong><span>Environment setup effort reduced</span></div>
+    <section class="lab-section" id="lab">
+      <div class="section-head"><div><span class="kicker">INTERACTIVE TECHNICAL SHOWCASE</span><h2>One requirement.<br><em>Complete quality evidence.</em></h2></div><p>Choose a scenario, generate the test assets, approve the plan, and watch Selenium, API, and backend validation execute in parallel.</p></div>
+      <div class="lab">
+        <div class="lab-top"><span class="dots"><i></i><i></i><i></i></span><span class="lab-title">ENTERPRISE QUALITY ORCHESTRATOR</span><span class="phase idle" id="phase"><i></i><span>Ready for requirement intake</span></span></div>
+        <div class="scenario-row"><span class="scenario-label">01 · SELECT REQUIREMENT</span><div class="tabs" id="tabs"></div><span class="env">QA · WINDOWS · JENKINS</span></div>
+        <div class="requirement"><span class="req-id" id="reqId"></span><p id="reqText"></p><span class="coverage" id="coverage"></span></div>
+        <div class="flow" id="flow"></div>
+        <div class="approval"><div><span class="shield">◇</span><span><b id="approvalTitle">HUMAN-IN-THE-LOOP CONTROL</b><small id="approvalText">AI accelerates the work. A quality owner approves intent and execution.</small></span></div><button class="run-btn" id="runButton">✦ GENERATE TEST ASSETS</button></div>
+        <div class="execution">
+          <div class="parallel"><div class="panel-head"><span>▦ PARALLEL EXECUTION</span><small>3 ISOLATED WORKERS</small></div><div id="workers"></div></div>
+          <div class="console"><div class="panel-head"><span>›_ AUTOMATION CONSOLE</span><small>MASTER-SUITE / LIVE</small></div><div class="console-lines" id="console"></div></div>
         </div>
+        <div class="recovery-strip" id="recoveryStrip">
+          <div class="recovery-item" data-stage="detected"><b>⚠</b><span><b>FAILURE DETECTED</b><small>503 evidence preserved</small></span></div><i class="rec-line"></i>
+          <div class="recovery-item" data-stage="diagnosing"><b>✦</b><span><b>AI DIAGNOSIS</b><small id="diagnosisText">Queued</small></span></div><i class="rec-line"></i>
+          <div class="recovery-item" data-stage="retrying"><b>↻</b><span><b>SAFE RETRY</b><small id="retryText">Policy checked</small></span></div><i class="rec-line"></i>
+          <div class="recovery-item" data-stage="recovered"><b>✓</b><span><b>RECOVERED</b><small id="recoveredText">Waiting</small></span></div>
+        </div>
+        <div class="results" id="results"><div class="score"><div class="score-circle"><span id="score">0%</span></div><div class="score-copy"><b id="scoreTitle">EXECUTION PROGRESS</b><small id="scoreText">Approve and run to generate final results</small></div></div><dl><div><dt>TESTS</dt><dd id="tests">—</dd></div><div><dt>PASSED</dt><dd id="passed">—</dd></div><div><dt>FAILED</dt><dd>0</dd></div><div><dt>RECOVERED</dt><dd id="recovered">0</dd></div><div><dt>DURATION</dt><dd id="duration">—</dd></div><div><dt>REPORT</dt><dd id="report">PENDING</dd></div></dl></div>
       </div>
     </section>
 
-    <section class="section alt" id="leadership">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="kicker">Leadership focus</div>
-          <h2>Quality is an engineering capability, not a final checkpoint.</h2>
-          <p>I combine hands-on technical depth with strategy, governance, mentoring, and measurable outcomes to help engineering organizations build quality into delivery.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card reveal"><div class="icon">✦</div><h3>AI-Assisted Quality Engineering</h3><p>Apply AI to accelerate test ideation, API automation, framework development, failure analysis, documentation, and engineering productivity — with human review focused on intent and risk.</p></article>
-          <article class="card reveal"><div class="icon">⚙</div><h3>Enterprise Automation Architecture</h3><p>Design scalable validation across UI, API, backend, database, integration, and end-to-end workflows with maintainability and execution speed in mind.</p></article>
-          <article class="card reveal"><div class="icon">∞</div><h3>CI/CD Quality Engineering</h3><p>Embed automated validation, quality gates, and release signals into delivery pipelines to create faster feedback and stronger release confidence.</p></article>
-          <article class="card reveal"><div class="icon">↗</div><h3>Quality Intelligence</h3><p>Turn automation results, defect trends, coverage, execution health, and risk indicators into information teams and leaders can act on.</p></article>
-          <article class="card reveal"><div class="icon">◇</div><h3>Healthcare Quality</h3><p>Lead quality initiatives across complex healthcare platforms, sensitive data, integrations, and business-critical workflows in regulated environments.</p></article>
-          <article class="card reveal"><div class="icon">◎</div><h3>People & Transformation</h3><p>Build stronger Quality Engineering teams through standards, technical mentoring, code review, cross-training, governance, and a continuous improvement mindset.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="vision reveal">
-          <div class="kicker">How I think about quality</div>
-          <blockquote>Move quality earlier. Automate what repeats. Use AI where it adds leverage. Keep engineering judgment focused on risk and customer impact.</blockquote>
-          <p>The goal is not simply more tests. The goal is a quality system that gives teams better feedback, better decisions, and more confidence to ship.</p>
-          <div class="flow">
-            <div class="flow-step"><b>Requirements</b><small>Intent & risk</small></div>
-            <div class="flow-step"><b>AI Assist</b><small>Generate & analyze</small></div>
-            <div class="flow-step"><b>Development</b><small>Shift left</small></div>
-            <div class="flow-step"><b>API / UI</b><small>Automated validation</small></div>
-            <div class="flow-step"><b>CI/CD</b><small>Quality gates</small></div>
-            <div class="flow-step"><b>Intelligence</b><small>KPIs & signals</small></div>
-            <div class="flow-step"><b>Release</b><small>Confidence</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="kicker">Experience</div>
-          <h2>Enterprise Quality Engineering backed by measurable impact.</h2>
-          <p>Leadership across healthcare, pharmaceutical, financial services, telecom, automation architecture, test strategy, performance, API, data, and CI/CD.</p>
-        </div>
-
-        <div class="experience reveal">
-          <aside class="experience-side">
-            <div class="company">AmeriHealth Caritas</div>
-            <div class="years">Aug 2014 — Present</div>
-          </aside>
-          <div class="experience-main">
-            <h3>QA Manager / Test Automation Lead</h3>
-            <p>Lead Quality Engineering and automation strategy for large-scale healthcare platforms, partnering across Engineering, Product, DevOps, Architecture, and business teams to move quality earlier in the lifecycle.</p>
-            <div class="impact-list">
-              <div class="impact-item">Expanded automated regression coverage to approximately 90%.</div>
-              <div class="impact-item">Prevented 2,000+ production defects through stronger automation and release controls.</div>
-              <div class="impact-item">Built scalable UI, API, backend, database, data integration, and end-to-end automation capabilities.</div>
-              <div class="impact-item">Embedded automated validation into Jenkins and Git-based CI/CD pipelines.</div>
-              <div class="impact-item">Developed API automation for REST, OAuth2, SSL, schema validation, negative testing, and chained workflows.</div>
-              <div class="impact-item">Lead AI-assisted QE adoption for test generation, API automation, framework development, and release validation.</div>
-              <div class="impact-item">Established quality metrics, risk-based testing, release readiness, and go/no-go decision support.</div>
-              <div class="impact-item">Mentor distributed Quality Engineering teams through standards, governance, code reviews, and cross-training.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <small>DEC 2012 — AUG 2014</small>
-            <b>ALMAC — NTT DATA</b>
-            <span>QA Manager / Test Automation Lead</span>
-          </div>
-          <div class="timeline-item reveal">
-            <small>AUG 2012 — NOV 2012</small>
-            <b>iPipeline — NTT DATA</b>
-            <span>Test Lead Consultant</span>
-          </div>
-          <div class="timeline-item reveal">
-            <small>MAR 2008 — JUL 2012</small>
-            <b>SEI / SEIC — NTT DATA</b>
-            <span>Automation Consultant</span>
-          </div>
-          <div class="timeline-item reveal">
-            <small>FEB 2007 — FEB 2008</small>
-            <b>Verizon</b>
-            <span>Production Support Engineer</span>
-          </div>
-        </div>
-
-        <div class="career-note card reveal" style="margin-top:18px">
-          <div class="kicker">Career progression</div>
-          <h3 style="margin-bottom:8px">From hands-on automation to enterprise Quality Engineering leadership</h3>
-          <p>My earlier NTT DATA assignments progressed through automation consulting, test leadership, and QA management across financial services, insurance technology, and pharmaceutical/clinical platforms. In 2013, I also received recognition for promotion to Principal Consultant within NTT DATA.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="kicker">Featured engineering work</div>
-          <h2>From test automation to quality platforms.</h2>
-          <p>Representative areas of engineering work that show how strategy, architecture, automation, AI, and reporting come together.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card project-card reveal">
-            <div class="project-num">01</div><div class="icon">API</div>
-            <h3>Enterprise API Automation Framework</h3>
-            <p>Reusable architecture for REST and service validation with authentication, data-driven execution, assertions, reporting, and CI/CD integration.</p>
-            <div class="tags"><span class="tag">Java</span><span class="tag">REST Assured</span><span class="tag">OAuth2</span><span class="tag">JSON</span><span class="tag">Gradle</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-num">02</div><div class="icon">∞</div>
-            <h3>CI/CD Test Automation Platform</h3>
-            <p>Pipeline-driven execution with configurable test selection, environment handling, automated reporting, and quality gates designed for faster feedback.</p>
-            <div class="tags"><span class="tag">Jenkins</span><span class="tag">Git</span><span class="tag">Gradle</span><span class="tag">Selenium</span><span class="tag">API</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-num">03</div><div class="icon">KPI</div>
-            <h3>Quality KPI & Automation Analytics</h3>
-            <p>Centralized execution results and quality metrics that turn pass/fail data, coverage, trends, and execution health into actionable release insight.</p>
-            <div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Reporting</span><span class="tag">KPIs</span><span class="tag">Quality Intelligence</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-num">04</div><div class="icon">AI</div>
-            <h3>AI + Quality Engineering Lab</h3>
-            <p>Practical exploration of AI-generated test scenarios, requirements-to-test workflows, failure analysis, test data generation, API test creation, and risk-based regression.</p>
-            <div class="tags"><span class="tag">Generative AI</span><span class="tag">LLMs</span><span class="tag">Test Generation</span><span class="tag">Failure Analysis</span><span class="tag">Risk</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="section alt" id="articles">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="kicker">Thought Leadership</div>
-          <h2>Ideas from the field.</h2>
-          <p>I write about lessons from real Quality Engineering work — automation, AI-assisted testing, engineering mindset, and what it takes to build quality into delivery.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card project-card reveal">
-            <div class="project-num">01</div>
-            <div class="icon">✎</div>
-            <h3>A Lesson I Learned in Test Automation the Hard Way!</h3>
-            <p>A practical reflection on test automation — why building scripts is only part of the job, and why maintainability, engineering judgment, and the right automation strategy matter over time.</p>
-            <div class="tags">
-              <span class="tag">Test Automation</span>
-              <span class="tag">Quality Engineering</span>
-              <span class="tag">Lessons Learned</span>
-            </div>
-            <div style="margin-top:20px">
-              <a class="btn soft" href="https://www.linkedin.com/pulse/lesson-i-learned-test-automation-hard-way-bhavya-gonepudi-lzoqe/" target="_blank" rel="noopener">Read on LinkedIn ↗</a>
-            </div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-num">02</div>
-            <div class="icon">AI</div>
-            <h3>AI + Testing Mindset</h3>
-            <p>Exploring how AI is changing the testing mindset — not by replacing Quality Engineers, but by shifting more of our attention toward risk, intent, smarter validation, and better engineering decisions.</p>
-            <div class="tags">
-              <span class="tag">AI in Testing</span>
-              <span class="tag">Testing Mindset</span>
-              <span class="tag">Future of QE</span>
-            </div>
-            <div style="margin-top:20px">
-              <a class="btn soft" href="https://www.linkedin.com/in/bhavyagonepudi/recent-activity/articles/" target="_blank" rel="noopener">View My Articles ↗</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="card reveal" style="margin-top:18px; display:flex; gap:22px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <div style="max-width:760px">
-            <div class="kicker">More on LinkedIn</div>
-            <h3 style="font-size:1.25rem; margin-bottom:6px">Quality Engineering • Automation • AI • Leadership</h3>
-            <p style="color:var(--muted)">Follow my LinkedIn activity for new articles and practical thoughts on modern Quality Engineering.</p>
-          </div>
-          <a class="btn primary" href="https://www.linkedin.com/in/bhavyagonepudi/recent-activity/articles/" target="_blank" rel="noopener">See all articles →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="technology">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="kicker">Technology</div>
-          <h2>Technical depth across the quality engineering stack.</h2>
-          <p>I use technology as an enabler for reliable delivery — not as a collection of buzzwords.</p>
-        </div>
-
-        <div class="tech-cloud reveal">
-          <span class="tech">Java</span><span class="tech">Selenium</span><span class="tech">REST Assured</span><span class="tech">Cucumber</span><span class="tech">JUnit</span>
-          <span class="tech">API Automation</span><span class="tech">REST APIs</span><span class="tech">OAuth2</span><span class="tech">SSL</span><span class="tech">Postman</span>
-          <span class="tech">SoapUI</span><span class="tech">JMeter</span><span class="tech">SQL</span><span class="tech">MySQL</span><span class="tech">SQL Server</span>
-          <span class="tech">JSON</span><span class="tech">JSONPath</span><span class="tech">Jenkins</span><span class="tech">Git</span><span class="tech">GitLab</span>
-          <span class="tech">GitHub</span><span class="tech">Gradle</span><span class="tech">Docker</span><span class="tech">CI/CD</span><span class="tech">Data Validation</span>
-          <span class="tech">Quality Gates</span><span class="tech">Generative AI</span><span class="tech">LLM-Assisted Testing</span><span class="tech">Quality Analytics</span><span class="tech">Risk-Based Testing</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="grid-3">
-          <article class="card reveal"><div class="icon">01</div><h3>Strategy before tools</h3><p>Start with business risk, delivery bottlenecks, and feedback needs. Choose automation and AI techniques based on the problem, not the trend.</p></article>
-          <article class="card reveal"><div class="icon">02</div><h3>Measure what matters</h3><p>Coverage alone is not quality. Combine execution, leakage, reliability, risk, speed, and release-readiness signals.</p></article>
-          <article class="card reveal"><div class="icon">03</div><h3>Build for teams</h3><p>Frameworks succeed when engineers can understand, extend, troubleshoot, and trust them. Maintainability is part of the architecture.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact reveal">
-          <div class="kicker" style="justify-content:center">Connect</div>
-          <h2>Interested in Quality Engineering, AI-assisted testing, automation strategy, or engineering leadership?</h2>
-          <p>I share practical ideas around automation, AI in testing, CI/CD, quality metrics, and building stronger engineering teams.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
-            <a class="btn soft" href="https://github.com/bgonepudi" target="_blank" rel="noopener">View GitHub ↗</a>
-          </div>
-        </div>
-      </div>
+    <section class="leadership" id="leadership">
+      <div class="section-head"><div><span class="kicker">LEADERSHIP + TECHNICAL DEPTH</span><h2>Quality as an<br><em>engineering capability.</em></h2></div><p>I connect business risk, engineering discipline, practical AI, and team development—so quality moves with delivery instead of waiting at the end.</p></div>
+      <div class="cards"><article><span>01</span><h3>Enterprise automation architecture</h3><p>Scalable UI, API, backend, database, integration and end-to-end validation built for teams to extend and trust.</p></article><article><span>02</span><h3>AI with accountable governance</h3><p>AI accelerates test design, scripting and analysis. Human review still owns business intent, risk and release decisions.</p></article><article><span>03</span><h3>Quality intelligence</h3><p>Execution health, coverage, defects and risk become clear release signals—not another dashboard no one uses.</p></article></div>
+      <div class="career"><div class="career-copy"><span class="kicker">MY LEADERSHIP JOURNEY</span><h3>From finding production problems to engineering systems that prevent them.</h3><p>My career started close to production, where reliability is real and every issue has a customer impact. That experience still shapes how I lead: understand the risk, make the evidence visible, and build quality into the delivery system.</p><blockquote>“AI can accelerate the work. Leadership still owns the judgment, the standards, and the release decision.”</blockquote><div class="metrics"><span><b>18+</b> YEARS IN QE</span><span><b>90%</b> AUTOMATION COVERAGE</span><span><b>2K+</b> DEFECTS PREVENTED</span></div></div><div class="timeline"><article><span>2014 — PRESENT</span><div><h4>AmeriHealth Caritas</h4><b>QA Manager / Test Automation Lead</b><p>Leading enterprise quality strategy across healthcare platforms, distributed teams, UI/API/backend automation, CI/CD governance, and AI-assisted quality engineering.</p></div></article><article><span>2012 — 2014</span><div><h4>NTT DATA · Almac · iPipeline</h4><b>Quality and Test Automation Leadership</b><p>Expanded automation thinking from scripts into reusable frameworks, delivery standards, and team operating models.</p></div></article><article><span>2007 — 2012</span><div><h4>NTT DATA · SEI · Verizon</h4><b>Engineering Foundations</b><p>Built the production awareness, troubleshooting discipline, and technical depth that continue to guide my leadership.</p></div></article></div></div>
+      <div class="systems"><div class="systems-head"><span class="kicker">SELECTED SYSTEMS</span><h3>Built for real enterprise delivery.</h3><p>Architecture, tooling, reporting and operating models that make quality visible, repeatable and actionable.</p></div><div class="system"><span>01</span><div><b>Enterprise API Automation</b><small>JAVA 17 · REST ASSURED · CUCUMBER · GRADLE · JENKINS</small></div><p>OAuth2, SSL, schema validation, database comparison, reruns and actionable reporting.</p></div><div class="system"><span>02</span><div><b>Quality Intelligence</b><small>KPI DATABASE · EXTENT · CI/CD SIGNALS</small></div><p>Execution, coverage and failure data shaped into leadership-ready release signals.</p></div><div class="system"><span>03</span><div><b>AI-Assisted Quality Workflow</b><small>REQUIREMENT → TEST DESIGN → APPROVAL → EXECUTION</small></div><p>Faster creation with traceability, review controls and engineering ownership.</p></div></div>
+      <div class="tech"><span>JAVA</span><span>SELENIUM</span><span>REST ASSURED</span><span>CUCUMBER</span><span>JENKINS</span><span>SQL SERVER</span><span>OAUTH2</span><span>SSL</span><span>GRADLE</span><span>GENERATIVE AI</span></div>
+      <footer><div><span class="kicker">LET’S BUILD WHAT QUALITY NEEDS NEXT</span><h2>Technical depth.<br><em>Leadership judgment.</em></h2></div><div class="footer-actions"><a class="primary" href="https://www.linkedin.com/in/bhavyagonepudi/" target="_blank" rel="noreferrer">CONNECT ON LINKEDIN ↗</a><a class="secondary" href="https://github.com/bgonepudi" target="_blank" rel="noreferrer">VIEW GITHUB ↗</a></div><span class="copyright">© 2026 BHAVYA GONEPUDI · QUALITY ENGINEERING FOR THE AI ERA</span></footer>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-flex">
-      <span>© <span id="year"></span> Bhavya Gonepudi. Built for GitHub Pages.</span>
-      <span>Quality Engineering • Automation • AI • Leadership</span>
-    </div>
-  </footer>
-
   <script>
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    if (saved) root.dataset.theme = saved;
-
-    toggle.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      localStorage.setItem('theme', next);
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-
-    // Live CI/CD pipeline animation
-    const pipelineStages = [
-      {label:'Source validated', pct:16},
-      {label:'Gradle build complete', pct:32},
-      {label:'API regression running', pct:52},
-      {label:'UI regression running', pct:70},
-      {label:'Quality gate passed', pct:88},
-      {label:'Deployment approved', pct:100}
-    ];
-    const stepEls = [...document.querySelectorAll('#pipelineSteps .pipe-step')];
-    const progressEl = document.getElementById('pipelineProgress');
-    const pipelineText = document.getElementById('pipelineText');
-    const pipelinePct = document.getElementById('pipelinePct');
-    const uiPct = document.getElementById('uiPct');
-    const apiPct = document.getElementById('apiPct');
-    const backendPct = document.getElementById('backendPct');
-    const uiBar = document.getElementById('uiBar');
-    const apiBar = document.getElementById('apiBar');
-    const backendBar = document.getElementById('backendBar');
-    let stageIndex = 0;
-
-    function runPipeline() {
-      stepEls.forEach((el, i) => {
-        el.classList.toggle('done', i < stageIndex);
-        el.classList.toggle('active', i === stageIndex);
-      });
-      const stage = pipelineStages[stageIndex];
-      pipelineText.textContent = stage.label;
-      pipelinePct.textContent = stage.pct + '%';
-      progressEl.style.width = stage.pct + '%';
-      const uiValue = Math.min(100, stage.pct + 4);
-      const apiValue = Math.min(100, stage.pct + 12);
-      const backendValue = Math.min(100, stage.pct - 3 < 0 ? 0 : stage.pct - 3);
-      uiPct.textContent = uiValue + '%'; apiPct.textContent = apiValue + '%'; backendPct.textContent = backendValue + '%';
-      uiBar.style.width = uiValue + '%'; apiBar.style.width = apiValue + '%'; backendBar.style.width = backendValue + '%';
-      stageIndex++;
-      if (stageIndex >= pipelineStages.length) {
-        setTimeout(() => {
-          stepEls.forEach(el => el.classList.remove('done','active'));
-          progressEl.style.width = '0%';
-          pipelinePct.textContent = '0%';
-          pipelineText.textContent = 'Restarting quality pipeline...';
-          uiPct.textContent = apiPct.textContent = backendPct.textContent = '0%';
-          uiBar.style.width = apiBar.style.width = backendBar.style.width = '0%';
-          stageIndex = 0;
-        }, 1400);
-      }
-    }
-    setInterval(runPipeline, 1250);
-    runPipeline();
-
-    // Live automation console animation
-    const consoleMessages = [
-      '<span class="info">[INFO]</span> Pipeline triggered from Git commit',
-      '<span class="ok">[PASS]</span> OAuth2 token validated',
-      '<span class="ok">[PASS]</span> Member API response schema validated',
-      '<span class="accent">[UI  ]</span> Selenium Chrome worker executing',
-      '<span class="accent">[API ]</span> REST regression running in parallel',
-      '<span class="ok">[DATA]</span> Backend and SQL validation passed',
-      '<span class="ok">[PASS]</span> UI + API + backend results combined',
-      '<span class="info">[KPI ]</span> Results written to quality metrics store',
-      '<span class="ok">[GATE]</span> Quality Gate: PASSED'
-    ];
-    const consoleBody = document.getElementById('consoleBody');
-    let consoleIndex = 0;
-    function pushConsoleLine() {
-      const div = document.createElement('div');
-      div.className = 'console-line';
-      div.innerHTML = consoleMessages[consoleIndex];
-      consoleBody.appendChild(div);
-      while (consoleBody.children.length > 7) consoleBody.removeChild(consoleBody.firstChild);
-      consoleIndex = (consoleIndex + 1) % consoleMessages.length;
-    }
-    setInterval(pushConsoleLine, 900);
-    pushConsoleLine();
-
-    // Count-up impact metrics when they enter the viewport
-    const counters = document.querySelectorAll('.metric strong[data-target]');
-    const countObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = Number(el.dataset.target || 0);
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const duration = 1200;
-        const start = performance.now();
-        el.classList.add('counting');
-        function tick(now) {
-          const t = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-          const value = Math.round(target * eased);
-          el.textContent = prefix + value.toLocaleString() + suffix;
-          if (t < 1) requestAnimationFrame(tick);
-          else el.classList.remove('counting');
-        }
-        requestAnimationFrame(tick);
-        obs.unobserve(el);
-      });
-    }, { threshold: .55 });
-    counters.forEach(c => countObserver.observe(c));
+    const scenarios={
+      member:{label:"Member eligibility",requirement:"Verify an eligible member can be found and the service response matches the system of record.",tests:42,coverage:"UI · API · SQL",endpoint:"GET /members/{memberId}",ui:"Member search journey",data:"SQL Server reconciliation"},
+      oauth:{label:"OAuth resilience",requirement:"Verify token refresh, protected endpoint access, and safe rejection of an expired credential.",tests:36,coverage:"API · OAuth2 · SSL",endpoint:"POST /oauth/token → GET /claims",ui:"Secure claims journey",data:"Authorization audit validation"},
+      contract:{label:"Data contract",requirement:"Verify the service contract, required fields, and source-to-target values before release.",tests:28,coverage:"Schema · API · DB",endpoint:"GET /member-summary",ui:"Summary view validation",data:"Source-to-target comparison"},
+      recovery:{label:"Failure + auto-recovery",requirement:"Verify a transient service failure is diagnosed, retried within policy, and recorded without hiding the original evidence.",tests:31,coverage:"API · AI diagnosis · Retry",endpoint:"GET /eligibility → 503 → retry",ui:"Member eligibility journey",data:"Recovery evidence reconciliation"}
+    };
+    const workflow=[['{}','Requirement','Business intent'],['✓','Test cases','AI-assisted design'],['</>','Automation','Runnable scripts'],['◇','Approval','Human judgment'],['▶','Execution','Parallel validation'],['✓','Quality gate','Evidence to release']];
+    const standardLogs=[['SYSTEM','Initializing Java 17 / Gradle execution environment','info'],['DESIGN','Generated traceable test cases from approved requirement','ai'],['UI','Selenium worker started in Chrome','run'],['API','OAuth2 + SSL request specification loaded','run'],['DATA','SQL Server validation worker connected','run'],['API','Response status, schema and timing verified','pass'],['UI','Critical member journey completed','pass'],['DATA','API values matched the system of record','pass'],['REPORT','Extent results and KPI summary assembled','pass'],['GATE','Release evidence accepted — deployment approved','final']];
+    const recoveryLogs=[['SYSTEM','Initializing Java 17 / Gradle execution environment','info'],['DESIGN','Generated failure-path tests and approved retry policy','ai'],['UI','Selenium member eligibility journey started','run'],['API','GET /eligibility → 503 Service Unavailable','fail'],['SIGNAL','Transient failure isolated; original evidence retained','fail'],['AI','Diagnosis: upstream timeout, no assertion defect detected','ai'],['RECOVERY','Policy allows one safe retry; refreshing session','recover'],['API','Retry 1/1 → 200 OK; schema and timing verified','pass'],['UI','Journey resumed from verified checkpoint','pass'],['DATA','Recovered response matched SQL Server data','pass'],['REPORT','Initial failure, diagnosis and retry added to evidence','pass'],['GATE','Quality gate passed with one transparent recovery','final']];
+    let phase='idle',scenarioId='member',generationStep=0,tick=0,timers=[],runner=null;
+    const $=id=>document.getElementById(id);
+    const next={idle:'generating',generating:'approval',approval:'running',running:'complete',complete:'idle'};
+    function recoveryStage(){if(scenarioId!=='recovery')return'none';if(phase==='complete')return'recovered';if(phase!=='running'||tick<3)return'none';if(tick===3)return'detected';if(tick<=5)return'diagnosing';if(tick<=7)return'retrying';return'recovered'}
+    function progress(){const recovery=scenarioId==='recovery';const api=recovery?(tick<=3?tick*16:tick<=5?48:Math.min(100,48+(tick-5)*13)):Math.min(100,tick*14);return{ui:phase==='complete'?100:Math.min(100,Math.max(0,tick*12-8)),api:phase==='complete'?100:api,data:phase==='complete'?100:Math.min(100,Math.max(0,tick*11-10))}}
+    function flowState(i){if(phase==='idle')return i===0?'active':'waiting';if(phase==='generating')return i<=generationStep?(i===generationStep?'active':'done'):'waiting';if(phase==='approval')return i<3?'done':i===3?'active':'waiting';if(phase==='running')return i<4?'done':i===4?'active':'waiting';return'done'}
+    function renderTabs(){const locked=phase==='generating'||phase==='running';$('tabs').innerHTML=Object.entries(scenarios).map(([id,s])=>`<button class="${id===scenarioId?'active':''}" data-id="${id}" ${locked?'disabled':''}>${s.label}</button>`).join('');$('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{scenarioId=b.dataset.id;reset();render()})}
+    function renderScenario(){const s=scenarios[scenarioId];$('reqId').textContent=`REQ-${scenarioId.toUpperCase()}-01`;$('reqText').textContent=s.requirement;$('coverage').textContent=s.coverage}
+    function renderFlow(){$('flow').innerHTML=workflow.map((w,i)=>`<div class="flow-step ${flowState(i)}"><div class="flow-icon">${flowState(i)==='done'?'✓':w[0]}</div><span><b>${w[1]}</b><small>${w[2]}</small></span>${i<workflow.length-1?'<i class="flow-line"></i>':''}</div>`).join('')}
+    function workerStatus(key,value){const r=recoveryStage();if(key==='api'&&scenarioId==='recovery'){if(r==='detected')return'FAILED';if(r==='diagnosing')return'DIAGNOSING';if(r==='retrying')return'RETRYING';if(r==='recovered'&&value===100)return'RECOVERED'}return value===100?'PASSED':value>0?'RUNNING':'QUEUED'}
+    function renderWorkers(){const s=scenarios[scenarioId],p=progress(),r=recoveryStage();const rows=[['ui','UI','SELENIUM UI',s.ui,'Chrome · Worker 01',p.ui],['api','{}','API VALIDATION',s.endpoint,'REST Assured · Worker 02',p.api],['data','DB','BACKEND + DB',s.data,'SQL · Worker 03',p.data]];$('workers').innerHTML=rows.map(x=>{let cls=phase==='running'&&x[5]<100?'running':'';if(x[5]===100)cls+=' done';if(x[0]==='api'&&r==='detected')cls+=' failed';if(x[0]==='api'&&(r==='diagnosing'||r==='retrying'))cls+=' recovering';return`<article class="worker ${cls}"><div class="w-icon">${x[1]}</div><div class="w-copy"><b>${x[2]}</b><span>${x[3]}</span><small>${x[4]}</small></div><div class="w-stat"><b>${x[5]}%</b><span>${workerStatus(x[0],x[5])}</span></div><div class="w-bar"><i style="width:${x[5]}%"></i></div></article>`}).join('')}
+    function renderConsole(){const logs=scenarioId==='recovery'?recoveryLogs:standardLogs;const visible=phase==='complete'?logs.length:phase==='running'?Math.min(logs.length,tick+2):phase==='approval'?2:1;$('console').innerHTML=logs.map((x,i)=>`<div class="console-row ${x[2]} ${i<visible?'visible':''}"><time>00:00:${String(i+1).padStart(2,'0')}</time><b>${x[0]}</b><span>${x[1]}</span><b class="mark">${['pass','final'].includes(x[2])?'✓':x[2]==='fail'?'⚠':x[2]==='recover'?'↻':''}</b></div>`).join('')+'<div class="cursor">› <i></i></div>'}
+    function renderRecovery(){const r=recoveryStage(),strip=$('recoveryStrip');strip.className='recovery-strip '+(r!=='none'?'show':'');const order=['detected','diagnosing','retrying','recovered'],current=order.indexOf(r);strip.querySelectorAll('.recovery-item').forEach((el,i)=>el.className='recovery-item '+(i<current?'success':i===current?'active':''));$('diagnosisText').textContent=r==='detected'?'Queued':'Transient timeout';$('retryText').textContent=r==='retrying'?'Running 1 of 1':r==='recovered'?'Completed':'Policy checked';$('recoveredText').textContent=r==='recovered'?'Evidence accepted':'Waiting'}
+    function renderControls(){const p=progress(),total=Math.round((p.ui+p.api+p.data)/3),s=scenarios[scenarioId],labels={idle:'Ready for requirement intake',generating:'Generating traceable assets',approval:'Human approval required',running:'Parallel execution in progress',complete:'Quality gate passed'};$('phase').className='phase '+phase;$('phase').querySelector('span').textContent=labels[phase];const btn=$('runButton');btn.disabled=['generating','running'].includes(phase);btn.className='run-btn '+(phase==='approval'?'approve':'');btn.textContent=phase==='idle'?'✦ GENERATE TEST ASSETS':phase==='generating'?'↻ GENERATING…':phase==='approval'?'◇ APPROVE & RUN':phase==='running'?`Ⅱ EXECUTING ${total}%`:'↻ RUN AGAIN';$('approvalTitle').textContent=phase==='approval'?`${s.tests} TESTS READY FOR REVIEW`:phase==='complete'?'APPROVED EVIDENCE RECORDED':'HUMAN-IN-THE-LOOP CONTROL';$('approvalText').textContent=phase==='approval'?'Traceability, scripts, data and expected results generated.':'AI accelerates the work. A quality owner approves intent and execution.';const done=phase==='complete';$('results').className='results '+(done?'complete':'');$('score').textContent=(done?100:total)+'%';$('scoreTitle').textContent=done?'QUALITY GATE PASSED':'EXECUTION PROGRESS';$('scoreText').textContent=done?'Evidence ready for release decision':'Approve and run to generate final results';$('tests').textContent=done?s.tests:'—';$('passed').textContent=done?s.tests:'—';$('recovered').textContent=done&&scenarioId==='recovery'?'1':'0';$('duration').textContent=done?'05.2s':'—';$('report').textContent=done?'READY':'PENDING'}
+    function render(){renderTabs();renderScenario();renderFlow();renderWorkers();renderConsole();renderRecovery();renderControls()}
+    function clearTimers(){timers.forEach(clearTimeout);timers=[];if(runner){clearInterval(runner);runner=null}}
+    function reset(){clearTimers();phase='idle';generationStep=0;tick=0}
+    function generate(){reset();phase=next.idle;render();timers=[setTimeout(()=>{generationStep=1;render()},500),setTimeout(()=>{generationStep=2;render()},1050),setTimeout(()=>{generationStep=3;render()},1600),setTimeout(()=>{phase=next.generating;render()},2050)]}
+    function run(){tick=0;phase=next.approval;render();runner=setInterval(()=>{tick++;if(tick>=10){clearInterval(runner);runner=null;setTimeout(()=>{phase=next.running;render()},350)}render()},520)}
+    $('runButton').onclick=()=>{if(phase==='idle'||phase==='complete')generate();else if(phase==='approval')run()};
+    render();
   </script>
 </body>
 </html>
