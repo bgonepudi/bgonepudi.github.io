@@ -1,1106 +1,381 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bhavya Gonepudi | Quality Engineering Leader</title>
-  <meta name="description"
-        content="Quality engineering, enterprise automation, practical AI, and leadership by Bhavya Gonepudi.">
+<style>
+  .quality-flow {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 70px 0;
+  }
 
-  <style>
-    :root {
-      --ink: #171717;
-      --muted: #575757;
-      --paper: #fafafa;
-      --line: #d9d9d9;
-      --accent: #234be2;
+  .quality-flow h2 {
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .quality-flow p {
+    color: #575757;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .quality-flow-label {
+    font: 14px monospace;
+    letter-spacing: 2px;
+    color: #526579;
+    text-transform: uppercase;
+  }
+
+  .quality-diagram {
+    background: #fff;
+    border: 1px solid #b8cbdc;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .quality-diagram-heading {
+    padding: 20px;
+    border-bottom: 1px solid #d9e3ec;
+    background: #f8fafc;
+    color: #173c60;
+    font: 14px/1.6 monospace;
+  }
+
+  .quality-engine {
+    position: relative;
+    height: 430px;
+    display: grid;
+    place-items: center;
+  }
+
+  .quality-ring {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    border: 1px dashed #9abbd5;
+    border-radius: 50%;
+    animation: qualityRotate 18s linear infinite;
+  }
+
+  .quality-ring::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: calc(50% - 5px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #087c6c;
+  }
+
+  .quality-ring-inner {
+    width: 220px;
+    height: 220px;
+    border-color: #8fc9bd;
+    animation-direction: reverse;
+    animation-duration: 12s;
+  }
+
+  .quality-core {
+    position: relative;
+    z-index: 2;
+    width: 150px;
+    height: 150px;
+    border-radius: 35px;
+    background: #173c60;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 12px #e6f6f2;
+    animation: qualityPulse 3s ease-in-out infinite;
+  }
+
+  .quality-core strong {
+    font-size: 26px;
+  }
+
+  .quality-core span {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .quality-node {
+    position: absolute;
+    z-index: 3;
+    min-width: 135px;
+    padding: 14px;
+    background: #f8fcff;
+    border: 1px solid #a9c6db;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .quality-node strong {
+    display: block;
+    color: #173c60;
+    font-size: 16px;
+  }
+
+  .quality-node span {
+    display: block;
+    color: #526579;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .quality-requirement {
+    top: 24px;
+    left: 20px;
+  }
+
+  .quality-design {
+    top: 24px;
+    right: 20px;
+  }
+
+  .quality-execution {
+    bottom: 24px;
+    left: 20px;
+  }
+
+  .quality-evidence {
+    bottom: 24px;
+    right: 20px;
+  }
+
+  .quality-node::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 1px);
+    width: 3px;
+    height: 42px;
+    background: #087c6c;
+    animation: qualitySignal 2s ease-in-out infinite;
+  }
+
+  .quality-requirement::after,
+  .quality-design::after {
+    top: 100%;
+  }
+
+  .quality-execution::after,
+  .quality-evidence::after {
+    bottom: 100%;
+  }
+
+  .quality-design::after {
+    animation-delay: .5s;
+  }
+
+  .quality-execution::after {
+    animation-delay: 1s;
+  }
+
+  .quality-evidence::after {
+    animation-delay: 1.5s;
+  }
+
+  .quality-diagram-footer {
+    padding: 20px;
+    border-top: 1px solid #d9e3ec;
+  }
+
+  .quality-diagram-footer p {
+    margin: 0 0 14px;
+    font-size: 15px;
+  }
+
+  .quality-track {
+    height: 7px;
+    border-radius: 8px;
+    background: #e4edf3;
+    overflow: hidden;
+  }
+
+  .quality-track span {
+    display: block;
+    width: 30%;
+    height: 100%;
+    background: #087c6c;
+    animation: qualityTravel 4s linear infinite;
+  }
+
+  .quality-stages {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    color: #173c60;
+    font-size: 14px;
+  }
+
+  .quality-flow-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 24px;
+    border-radius: 28px;
+    background: #173c60;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .quality-flow-link:focus-visible {
+    outline: 3px solid #234be2;
+    outline-offset: 4px;
+  }
+
+  @keyframes qualityRotate {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes qualityPulse {
+    50% {
+      box-shadow: 0 0 0 20px rgba(8, 124, 108, .07);
+    }
+  }
+
+  @keyframes qualitySignal {
+    0%, 100% { opacity: .25; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes qualityTravel {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(430%); }
+  }
+
+  @media (max-width: 800px) {
+    .quality-flow {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding: 50px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quality-engine {
+      height: 430px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 18px/1.6 Arial, sans-serif;
+    .quality-node {
+      min-width: 110px;
+      padding: 12px 8px;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button, select { font: inherit; }
-    button { cursor: pointer; }
-    button:disabled { opacity: .45; cursor: default; }
-
-    a:focus-visible, button:focus-visible, select:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
+    .quality-node strong {
+      font-size: 14px;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding: 24px 5%;
-      border-bottom: 1px solid var(--line);
+    .quality-requirement,
+    .quality-execution {
+      left: 10px;
     }
 
-    nav strong { font-size: 20px; }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      font-size: 15px;
+    .quality-design,
+    .quality-evidence {
+      right: 10px;
     }
 
-    main {
-      max-width: 1440px;
-      margin: auto;
-      padding: 0 5%;
+    .quality-ring {
+      width: 245px;
+      height: 245px;
     }
 
-    section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--line);
-      scroll-margin-top: 24px;
+    .quality-ring-inner {
+      width: 190px;
+      height: 190px;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      font-size: clamp(48px, 6vw, 88px);
-      line-height: 1.05;
-      letter-spacing: -3px;
-      margin: 24px 0;
+    .quality-core {
+      width: 140px;
+      height: 140px;
     }
+  }
 
-    h2 {
-      font-size: clamp(34px, 4vw, 60px);
-      line-height: 1.15;
-      letter-spacing: -1.5px;
+  @media (prefers-reduced-motion: reduce) {
+    .quality-diagram *,
+    .quality-diagram *::before,
+    .quality-diagram *::after {
+      animation: none !important;
     }
+  }
+</style>
 
-    h3 { font-size: 24px; line-height: 1.3; }
-    p { color: var(--muted); }
+<section class="quality-flow" id="quality-flow">
+  <div>
+    <div class="quality-flow-label">AI quality orchestrator</div>
 
-    .eyebrow {
-      font: 14px/1.5 monospace;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+    <h2>
+      From business intent<br>
+      to release evidence.
+    </h2>
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 30px;
-      align-items: center;
-      min-height: 760px;
-    }
+    <p>
+      Requirements guide test design. A quality owner reviews
+      the intent and approves execution. UI, API, and backend
+      checks produce the evidence needed for a release decision.
+    </p>
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 24px 0;
-    }
+    <a class="quality-flow-link" href="#lab">
+      Try the workflow
+    </a>
+  </div>
 
-    .button {
-      display: inline-block;
-      border: 1px solid var(--ink);
-      border-radius: 28px;
-      padding: 12px 24px;
-      background: var(--ink);
-      color: white;
-      font-size: 16px;
-    }
-
-    .button.light { background: white; color: var(--ink); }
-
-    .stats { display: flex; gap: 30px; margin-top: 36px; }
-    .stats strong { display: block; font-size: 34px; }
-    .stats span { font-size: 14px; color: var(--muted); }
-
-    /* Character atlas: three columns and two rows. */
-    .character-stage {
-      position: relative;
-      min-height: 560px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(
-        ellipse at center, white, #f9eff2 70%, #fafafa
-      );
-      border-radius: 45%;
-    }
-
-    .character-name {
-      position: absolute;
-      top: 65px;
-      font-size: clamp(54px, 6vw, 88px);
-      font-weight: 900;
-      letter-spacing: -5px;
-      color: #eedfe3;
-    }
-
-    .character {
-      width: 100%;
-      aspect-ratio: 1;
-      overflow: hidden;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      position: relative;
-      margin-top: 40px;
-    }
-
-    .sprite {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-image: url("./bhavya-character-v2.png");
-      background-size: 300% 200%;
-      background-position: 0% 0%;
-      background-repeat: no-repeat;
-    }
-
-    .character-message {
-      position: absolute;
-      top: 0;
-      z-index: 2;
-      max-width: 90%;
-      padding: 10px 18px;
-      border: 1px solid #e2d5d9;
-      border-radius: 24px;
-      background: white;
-      color: #6c3448;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    .greet {
-      position: relative;
-      margin-top: -10px;
-      padding: 9px 22px;
-      border: 1px solid #6c3448;
-      border-radius: 24px;
-      background: white;
-      color: #6c3448;
-      font-size: 16px;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .profile-card {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      height: 390px;
-      margin: auto;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      perspective: 1200px;
-      text-align: left;
-    }
-
-    .card-inner {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform .7s;
-    }
-
-    .profile-card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-face {
-      position: absolute;
-      inset: 0;
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: white;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 20px 45px #0000000d;
-    }
-
-    .card-back {
-      transform: rotateY(180deg);
-      background: var(--ink);
-      color: white;
-    }
-
-    .card-back p { color: #ddd; }
-    .monogram { font-size: 100px; font-weight: bold; line-height: 1; }
-    .card-name { font-size: 28px; font-weight: bold; }
-    .card-caption { font-size: 15px; }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .filter {
-      padding: 8px 18px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: white;
-      font-size: 15px;
-    }
-
-    .filter.active { background: var(--ink); color: white; }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
-    }
-
-    .skill {
-      min-height: 140px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      background: white;
-      text-align: left;
-      transition: transform .2s;
-    }
-
-    .skill:hover { transform: translateY(-4px); }
-    .skill.selected { background: #eef1ff; border-color: var(--accent); }
-    .skill small { display: block; font: 14px monospace; }
-    .skill b { display: block; font-size: 38px; }
-    .skill span { font-size: 15px; }
-    .skill-detail { min-height: 90px; padding-top: 24px; }
-
-    .rail {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 24px;
-    }
-
-    .highlight {
-      flex: 0 0 330px;
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: white;
-      scroll-snap-align: start;
-    }
-
-    .highlight-number { font: 44px monospace; color: #aaa; }
-
-    .lab {
-      padding: 30px;
-      border: 1px solid #d2d6e1;
-      border-radius: 12px;
-      background: #f0f2f8;
-    }
-
-    .workflow {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .step {
-      padding: 16px;
-      border: 1px solid var(--line);
-      background: white;
-      font-size: 16px;
-    }
-
-    .step.active { border-color: var(--accent); }
-
-    label { display: block; font-size: 16px; }
-
-    select {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      background: white;
-      font-size: 16px;
-    }
-
-    .workers {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 24px 0;
-    }
-
-    .worker {
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: white;
-    }
-
-    .worker h3 { font-size: 20px; }
-    .worker p, .worker span { font-size: 15px; }
-    progress { width: 100%; accent-color: var(--accent); }
-
-    .console {
-      min-height: 180px;
-      padding: 22px;
-      border-radius: 8px;
-      background: #181b24;
-      color: #e7ebff;
-      white-space: pre-wrap;
-      font: 15px/1.7 monospace;
-    }
-
-    .projects, .articles {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .project, .article {
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: white;
-    }
-
-    .article a { border-bottom: 1px solid var(--ink); }
-    .experience { padding: 24px 0; border-bottom: 1px solid var(--line); }
-    .experience small { font: 14px monospace; color: var(--muted); }
-
-    footer {
-      padding: 24px 5%;
-      font: 14px monospace;
-      color: var(--muted);
-    }
-
-    @media (max-width: 800px) {
-      body { font-size: 17px; }
-      nav { align-items: flex-start; }
-      .nav-links { gap: 10px; justify-content: flex-end; }
-      section { padding: 55px 0; }
-
-      .hero, .two-columns, .projects, .articles, .workers {
-        grid-template-columns: 1fr;
-      }
-
-      .hero { gap: 35px; }
-      h1 { letter-spacing: -2px; }
-      .character-stage { min-height: 440px; }
-      .character { max-width: 500px; }
-      .stats { gap: 18px; }
-      .skills { grid-template-columns: repeat(3, 1fr); }
-      .workflow { grid-template-columns: 1fr 1fr; }
-      .lab { padding: 20px; }
-      .highlight { flex-basis: 85%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <a href="#"><strong>BHAVYA GONEPUDI.</strong></a>
-    <div class="nav-links">
-      <a href="#skills">Skills</a>
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#articles">Articles</a>
+  <div class="quality-diagram">
+    <div class="quality-diagram-heading">
+      AI QUALITY ORCHESTRATOR · WORKFLOW SIMULATION
     </div>
-  </nav>
 
-  <main>
-    <section class="hero" id="hero">
-      <div>
-        <div class="eyebrow">Quality engineering · AI · Leadership</div>
-        <h1>I build quality.<br>I grow teams.<br>I move delivery.</h1>
+    <div class="quality-engine">
+      <div class="quality-ring" aria-hidden="true"></div>
+      <div class="quality-ring quality-ring-inner"
+           aria-hidden="true"></div>
 
-        <p>
-          I’m Bhavya, a Quality Engineering and Test Automation leader
-          connecting enterprise automation, practical AI, and the people
-          who make it work.
-        </p>
-
-        <div class="actions">
-          <a class="button" href="#lab">Explore my quality lab</a>
-          <a class="button light" href="mailto:bgonepudi@gmail.com">
-            Let’s connect
-          </a>
-        </div>
-
-        <div class="stats">
-          <div><strong>19+</strong><span>Years in quality</span></div>
-          <div><strong>40+</strong><span>Professionals led</span></div>
-          <div><strong>20</strong><span>Applications supported</span></div>
-        </div>
+      <div class="quality-core">
+        <strong>AI + QE</strong>
+        <span>Human governed</span>
       </div>
 
-      <div class="character-stage" id="character-stage">
-        <div class="character-name" aria-hidden="true">BHAVYA</div>
-
-        <p class="character-message" id="message" aria-live="polite">
-          Move your cursor. I’m listening.
-        </p>
-
-        <button class="character" id="character"
-                aria-label="Greet Bhavya’s animated character">
-          <span class="sprite" id="sprite" role="img"
-                aria-label="Animated portrait of Bhavya behind a laptop">
-          </span>
-        </button>
-
-        <button class="greet" id="greet">Say hello</button>
-      </div>
-    </section>
-
-    <section class="two-columns">
-      <div>
-        <div class="eyebrow">The person behind the platforms</div>
-        <h2>Quality starts<br>with people.</h2>
-        <p>
-          I connect business risk, engineering discipline, and team
-          development—so quality moves with delivery instead of waiting
-          at the end.
-        </p>
+      <div class="quality-node quality-requirement">
+        <strong>REQUIREMENT</strong>
+        <span>Business intent</span>
       </div>
 
-      <button class="profile-card" id="profile-card"
-              aria-label="Flip Bhavya’s profile card" aria-pressed="false">
-        <span class="card-inner">
-          <span class="card-face">
-            <span class="eyebrow">Quality engineering</span>
-            <span class="monogram">BG.</span>
-            <span class="card-name">Bhavya Gonepudi</span>
-            <span class="card-caption">
-              Quality Engineering Leader<br>
-              Test Automation Manager<br><br>
-              Tap to flip
-            </span>
-          </span>
-
-          <span class="card-face card-back">
-            <span>The way I lead</span>
-            <span>
-              Understand the business risk.<br>
-              Make the evidence visible.<br>
-              Build quality into delivery.
-            </span>
-            <span>
-              AI can accelerate the work.
-              Leadership still owns the judgment.
-            </span>
-            <span class="card-caption">Tap to return</span>
-          </span>
-        </span>
-      </button>
-    </section>
-
-    <section id="skills">
-      <div class="eyebrow">The building blocks</div>
-      <h2>My table of skills.</h2>
-      <p>Select a tile to see how I put it to work.</p>
-      <div class="filters" id="filters"></div>
-      <div class="skills" id="skill-grid"></div>
-      <p class="skill-detail" id="skill-detail" aria-live="polite">
-        Select a skill to explore its role in my work.
-      </p>
-    </section>
-
-    <section>
-      <div class="eyebrow">Leadership in practice</div>
-      <h2>Beyond the résumé.</h2>
-
-      <div class="actions">
-        <button class="button light" id="previous">Previous</button>
-        <button class="button light" id="next">Next</button>
+      <div class="quality-node quality-design">
+        <strong>AI DESIGN</strong>
+        <span>Tests + scripts</span>
       </div>
 
-      <div class="rail" id="rail">
-        <article class="highlight">
-          <div class="highlight-number">01</div>
-          <h3>Lead people.<br>Build capability.</h3>
-          <p>
-            Leading 40+ onshore and offshore professionals across
-            20 applications, including hiring, performance reviews,
-            mentoring, and cross-training.
-          </p>
-        </article>
-
-        <article class="highlight">
-          <div class="highlight-number">02</div>
-          <h3>Turn scripts into shared platforms.</h3>
-          <p>
-            Reusable UI, API, and backend frameworks that teams can
-            extend, maintain, and trust.
-          </p>
-        </article>
-
-        <article class="highlight">
-          <div class="highlight-number">03</div>
-          <h3>Bring quality into the pipeline.</h3>
-          <p>
-            Continuous validation, quality gates, reporting, and
-            traceable release evidence through Jenkins and CI/CD.
-          </p>
-        </article>
-
-        <article class="highlight">
-          <div class="highlight-number">04</div>
-          <h3>Keep AI accountable.</h3>
-          <p>
-            AI-assisted requirements and test design with human review,
-            approval, and clear ownership of execution.
-          </p>
-        </article>
+      <div class="quality-node quality-execution">
+        <strong>EXECUTION</strong>
+        <span>UI · API · DB</span>
       </div>
-    </section>
 
-    <section id="lab">
-      <div class="eyebrow">An interactive look at my work</div>
-      <h2>One requirement.<br>Three paths to confidence.</h2>
+      <div class="quality-node quality-evidence">
+        <strong>EVIDENCE</strong>
+        <span>Release signal</span>
+      </div>
+    </div>
+
+    <div class="quality-diagram-footer">
       <p>
-        This simulated workflow shows test design, human approval,
-        and parallel validation. It does not execute enterprise tests.
+        Illustrative workflow · Human approval before execution
       </p>
 
-      <div class="lab">
-        <h3>Automation Console</h3>
-
-        <div class="workflow">
-          <div class="step active">01 · Requirement</div>
-          <div class="step">02 · Test design</div>
-          <div class="step">03 · Human approval</div>
-          <div class="step">04 · Execution & evidence</div>
-        </div>
-
-        <label for="requirement">Business requirement</label>
-        <select id="requirement">
-          <option>
-            Member eligibility must match across UI, API, and database
-          </option>
-          <option>Provider updates must reach downstream systems</option>
-          <option>Claims processing must preserve data integrity</option>
-        </select>
-
-        <div class="actions">
-          <button class="button" id="generate">Generate test design</button>
-          <button class="button light" id="approve" disabled>
-            Approve & run in parallel
-          </button>
-          <button class="button light" id="reset">Reset</button>
-        </div>
-
-        <div class="workers">
-          <div class="worker">
-            <h3>PepperMill</h3>
-            <p>Selenium · Java · POM</p>
-            <progress max="100" value="0"></progress>
-            <span class="worker-state">Ready · UI validation</span>
-          </div>
-
-          <div class="worker">
-            <h3>PepperAPI</h3>
-            <p>REST Assured · Cucumber</p>
-            <progress max="100" value="0"></progress>
-            <span class="worker-state">Ready · API validation</span>
-          </div>
-
-          <div class="worker">
-            <h3>PepperWare</h3>
-            <p>File2DB · Table2Table</p>
-            <progress max="100" value="0"></progress>
-            <span class="worker-state">Ready · Backend validation</span>
-          </div>
-        </div>
-
-        <div class="console" id="console" role="log" aria-live="polite">Ready for requirement intake.
-Choose a requirement and generate its test design.</div>
+      <div class="quality-track" aria-hidden="true">
+        <span></span>
       </div>
-    </section>
 
-    <section id="work">
-      <div class="eyebrow">Selected engineering work</div>
-      <h2>Built for real delivery.</h2>
-
-      <div class="projects">
-        <article class="project">
-          <h3>Enterprise API Automation Framework</h3>
-          <p>
-            A reusable Java 17 framework using REST Assured, Cucumber,
-            JUnit 5, and Gradle. Supports suite execution, OAuth2, SSL,
-            schema validation, database comparison, and reruns.
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>CI/CD Quality Pipelines</h3>
-          <p>
-            Smoke validation alongside delivery and scheduled regression
-            for deeper confidence. Jenkins connects parallel execution,
-            reports, artifacts, and quality gates.
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>Execution KPI & Analytics</h3>
-          <p>
-            MySQL KPI capture and Extent reporting connect pass, fail,
-            skipped, and duration data to build traceability and
-            leadership-ready summaries.
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>AI-Assisted Quality Engineering</h3>
-          <p>
-            Requirements become reviewed test cases and approved
-            execution plans. Traceability and human ownership keep
-            acceleration grounded in business intent.
-          </p>
-        </article>
+      <div class="quality-stages">
+        <span>Design</span>
+        <span>Approve</span>
+        <span>Validate</span>
+        <span>Release</span>
       </div>
-    </section>
-
-    <section id="experience">
-      <div class="eyebrow">The career behind the work</div>
-      <h2>A reliability mindset.<br>An engineering journey.</h2>
-
-      <article class="experience">
-        <small>AUG 2014 — PRESENT</small>
-        <h3>AmeriHealth Caritas</h3>
-        <strong>Quality Engineering Leader / Test Automation Manager</strong>
-        <p>
-          Directing enterprise quality strategy across healthcare
-          platforms, distributed teams, UI/API/backend automation,
-          CI/CD governance, and AI-assisted quality engineering.
-          Leading 40+ professionals across 20 applications.
-        </p>
-      </article>
-
-      <article class="experience">
-        <small>DEC 2012 — AUG 2014</small>
-        <h3>Almac · NTT DATA</h3>
-        <strong>QA Manager / Test Automation Lead</strong>
-        <p>
-          Led quality delivery and expanded automation into reusable
-          frameworks, standards, and team operating practices.
-        </p>
-      </article>
-
-      <article class="experience">
-        <small>AUG 2012 — NOV 2012</small>
-        <h3>iPipeline · NTT DATA</h3>
-        <strong>Test Lead Consultant</strong>
-        <p>
-          Led test delivery for insurance technology with reliable
-          execution, coordination, and release readiness.
-        </p>
-      </article>
-
-      <article class="experience">
-        <small>MAR 2008 — JUL 2012</small>
-        <h3>SEI / SEIC · NTT DATA</h3>
-        <strong>Automation Consultant</strong>
-        <p>
-          Built automation for financial-services platforms and
-          strengthened the foundation for scalable testing.
-        </p>
-      </article>
-
-      <article class="experience">
-        <small>FEB 2007 — FEB 2008</small>
-        <h3>Verizon</h3>
-        <strong>Production Support Engineer</strong>
-        <p>
-          Supported production systems and investigated service issues,
-          developing a customer-focused reliability mindset.
-        </p>
-      </article>
-    </section>
-
-    <section id="articles">
-      <div class="eyebrow">Ideas from experience</div>
-      <h2>What I’m thinking about.</h2>
-
-      <div class="articles">
-        <article class="article">
-          <h3>A Lesson I Learned in Test Automation the Hard Way!</h3>
-          <p>
-            Maintainability, engineering judgment, and why the right
-            automation strategy matters over time.
-          </p>
-          <a href="https://www.linkedin.com/pulse/lesson-i-learned-test-automation-hard-way-bhavya-gonepudi-lzoqe/"
-             target="_blank" rel="noopener">
-            Read on LinkedIn
-          </a>
-        </article>
-
-        <article class="article">
-          <h3>AI + Testing Mindset</h3>
-          <p>
-            Practical thoughts on risk, intent, smarter validation,
-            and the judgment Quality Engineers bring.
-          </p>
-          <a href="https://www.linkedin.com/in/bhavyagonepudi/recent-activity/articles/"
-             target="_blank" rel="noopener">
-            Explore my articles
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="eyebrow">Let’s connect</div>
-      <h2>Technical depth.<br>Leadership judgment.<br>A human point of view.</h2>
-
-      <div class="actions">
-        <a class="button"
-           href="https://www.linkedin.com/in/bhavyagonepudi/"
-           target="_blank" rel="noopener">Connect on LinkedIn</a>
-
-        <a class="button light" href="mailto:bgonepudi@gmail.com">
-          Email me
-        </a>
-
-        <a class="button light" href="https://github.com/bgonepudi"
-           target="_blank" rel="noopener">View GitHub</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2026 BHAVYA GONEPUDI · QUALITY ENGINEERING FOR THE AI ERA</footer>
-
-  <script>
-    // Profile card.
-    const profile = document.getElementById("profile-card");
-
-    profile.onclick = () => {
-      const flipped = profile.classList.toggle("flipped");
-      profile.setAttribute("aria-pressed", String(flipped));
-    };
-
-    // Interactive skills.
-    const skills = [
-      ["Se", "Selenium", "Engineering",
-       "Browser automation through reusable Java page objects."],
-      ["Ja", "Java", "Engineering",
-       "The foundation of PepperMill and enterprise API automation."],
-      ["Ra", "REST Assured", "Engineering",
-       "Reusable service layers, request specifications, and response validation."],
-      ["Cu", "Cucumber", "Engineering",
-       "Readable scenarios with suite tags and business traceability."],
-      ["Sq", "SQL", "Engineering",
-       "Database validation, data comparison, and KPI capture."],
-      ["Gd", "Gradle", "Engineering",
-       "Repeatable Java builds and targeted suite execution."],
-      ["Jk", "Jenkins", "Delivery",
-       "Pipeline smoke tests, scheduled regression, and artifacts."],
-      ["Gl", "GitLab CI", "Delivery",
-       "Version-controlled automation integrated with delivery."],
-      ["Au", "OAuth2 / SSL", "Engineering",
-       "Configurable authentication and API connectivity."],
-      ["Ai", "Generative AI", "Leadership & AI",
-       "AI-assisted test design and failure analysis under human review."],
-      ["Ld", "Team leadership", "Leadership & AI",
-       "Hiring, mentoring, and growing distributed teams."],
-      ["Kp", "Quality KPIs", "Delivery",
-       "Execution data translated into actionable quality evidence."]
-    ];
-
-    let category = "All";
-    const filters = document.getElementById("filters");
-    const grid = document.getElementById("skill-grid");
-
-    function renderSkills() {
-      filters.replaceChildren();
-      grid.replaceChildren();
-
-      ["All", "Engineering", "Delivery", "Leadership & AI"].forEach(name => {
-        const button = document.createElement("button");
-        button.className = "filter" + (category === name ? " active" : "");
-        button.textContent = name;
-        button.setAttribute("aria-pressed", String(category === name));
-
-        button.onclick = () => {
-          category = name;
-          renderSkills();
-        };
-
-        filters.append(button);
-      });
-
-      skills.forEach((skill, index) => {
-        if (category !== "All" && category !== skill[2]) return;
-
-        const button = document.createElement("button");
-        button.className = "skill";
-        button.innerHTML =
-          "<small>" + String(index + 1).padStart(2, "0") + "</small>" +
-          "<b>" + skill[0] + "</b><span>" + skill[1] + "</span>";
-
-        button.onclick = () => {
-          grid.querySelectorAll("button").forEach(item => {
-            item.classList.remove("selected");
-          });
-
-          button.classList.add("selected");
-          document.getElementById("skill-detail").textContent =
-            skill[1] + " — " + skill[3];
-        };
-
-        grid.append(button);
-      });
-    }
-
-    renderSkills();
-
-    // Horizontal highlights.
-    const rail = document.getElementById("rail");
-    const reducedMotion =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    function moveRail(direction) {
-      rail.scrollBy({
-        left: direction * rail.clientWidth * .8,
-        behavior: reducedMotion ? "auto" : "smooth"
-      });
-    }
-
-    document.getElementById("previous").onclick = () => moveRail(-1);
-    document.getElementById("next").onclick = () => moveRail(1);
-
-    // Character reactions.
-    const sprite = document.getElementById("sprite");
-    const stage = document.getElementById("character-stage");
-    const message = document.getElementById("message");
-    const hero = document.getElementById("hero");
-
-    const positions = [
-      [0, 0], [50, 0], [100, 0],
-      [0, 100], [50, 100], [100, 100]
-    ];
-
-    let greeting = false;
-    let sequence = [];
-    let started = 0;
-    let cooldown = 0;
-    let animationFrame = 0;
-    let currentPose = -1;
-
-    function showPose(index) {
-      if (index === currentPose) return;
-      currentPose = index;
-
-      // Use the same hand for both wave frames.
-      const cell = index === 4 ? 3 : index;
-      const position = positions[cell];
-
-      sprite.style.backgroundPosition =
-        position[0] + "% " + position[1] + "%";
-
-      // The supplied atlas uses a mirrored pose for the left reaction.
-      sprite.style.transform =
-        index === 1 ? "scaleX(-1)" :
-        index === 4 ? "rotate(1.5deg)" : "none";
-    }
-
-    function animateGreeting(time) {
-      animationFrame = 0;
-
-      while (sequence.length && time - started >= sequence[0].time) {
-        const item = sequence.shift();
-        showPose(item.pose);
-
-        if (item.end) {
-          greeting = false;
-          cooldown = time + 2500;
-          message.textContent = "Ready to explore? Try the quality lab.";
-        }
-      }
-
-      if (greeting) {
-        animationFrame = requestAnimationFrame(animateGreeting);
-      }
-    }
-
-    function greet() {
-      if (greeting) return;
-
-      greeting = true;
-      message.textContent = "Hi, I’m Bhavya. Explore what I build.";
-      started = performance.now();
-
-      sequence = reducedMotion
-        ? [{ time: 0, pose: 3 }, { time: 1800, pose: 0, end: true }]
-        : [
-            { time: 0, pose: 3 },
-            { time: 240, pose: 4 },
-            { time: 480, pose: 3 },
-            { time: 720, pose: 4 },
-            { time: 960, pose: 3 },
-            { time: 1400, pose: 5 },
-            { time: 3200, pose: 0, end: true }
-          ];
-
-      if (!animationFrame) {
-        animationFrame = requestAnimationFrame(animateGreeting);
-      }
-    }
-
-    hero.addEventListener("pointermove", event => {
-      if (event.pointerType !== "mouse" || reducedMotion || greeting) return;
-
-      const box = stage.getBoundingClientRect();
-      const x = event.clientX;
-
-      const pose =
-        x < box.left + box.width * .35 ? 1 :
-        x > box.left + box.width * .65 ? 2 : 0;
-
-      if (pose === 0 && performance.now() > cooldown) {
-        greet();
-      } else {
-        showPose(pose);
-        message.textContent =
-          pose === 1 ? "Ideas over here?" :
-          pose === 2 ? "What’s next?" :
-          "Move your cursor. I’m listening.";
-      }
-    });
-
-    hero.addEventListener("pointerleave", () => {
-      if (!greeting) {
-        showPose(0);
-        message.textContent = "Move your cursor. I’m listening.";
-      }
-    });
-
-    document.getElementById("character").onclick = greet;
-    document.getElementById("greet").onclick = greet;
-    showPose(0);
-
-    // Automation simulation.
-    const generate = document.getElementById("generate");
-    const approve = document.getElementById("approve");
-    const requirement = document.getElementById("requirement");
-    const consoleOutput = document.getElementById("console");
-    const steps = [...document.querySelectorAll(".step")];
-    const bars = [...document.querySelectorAll("progress")];
-    const states = [...document.querySelectorAll(".worker-state")];
-
-    let timer = null;
-
-    function activateStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle("active", i === index);
-      });
-    }
-
-    function reset() {
-      clearInterval(timer);
-      timer = null;
-      generate.disabled = false;
-      approve.disabled = true;
-      requirement.disabled = false;
-      activateStep(0);
-
-      bars.forEach(bar => bar.value = 0);
-
-      states.forEach((state, index) => {
-        state.textContent = [
-          "Ready · UI validation",
-          "Ready · API validation",
-          "Ready · Backend validation"
-        ][index];
-      });
-
-      consoleOutput.textContent =
-        "Ready for requirement intake.\n" +
-        "Choose a requirement and generate its test design.";
-    }
-
-    generate.onclick = () => {
-      generate.disabled = true;
-      approve.disabled = false;
-      requirement.disabled = true;
-      activateStep(2);
-
-      consoleOutput.textContent =
-        "REQUIREMENT: " + requirement.value + "\n\n" +
-        "TEST DESIGN — 3 illustrative checks\n" +
-        "1. Validate the user-facing result in PepperMill.\n" +
-        "2. Validate the service response in PepperAPI.\n" +
-        "3. Compare downstream records in PepperWare.\n\n" +
-        "Waiting for a quality owner’s approval.";
-    };
-
-    approve.onclick = () => {
-      approve.disabled = true;
-      activateStep(3);
-
-      consoleOutput.textContent +=
-        "\n\nAPPROVED · Three isolated workers started in parallel.";
-
-      let tick = 0;
-
-      timer = setInterval(() => {
-        tick++;
-
-        bars.forEach((bar, index) => {
-          bar.value = Math.min(100, tick * [14, 18, 11][index]);
-
-          states[index].textContent =
-            bar.value === 100
-              ? "Complete · Passed"
-              : Math.round(bar.value) + "% · Running";
-        });
-
-        if (tick === 4) {
-          consoleOutput.textContent += "\nAPI response and schema validated.";
-        }
-
-        if (tick === 6) {
-          consoleOutput.textContent += "\nUI result validated.";
-        }
-
-        if (tick === 10) {
-          clearInterval(timer);
-          timer = null;
-
-          consoleOutput.textContent +=
-            "\nBackend comparison validated.\n\n" +
-            "SUMMARY: 3 passed · 0 failed\n" +
-            "Illustrative evidence ready for review.";
-        }
-      }, 500);
-    };
-
-    document.getElementById("reset").onclick = reset;
-    requirement.onchange = reset;
-  </script>
-</body>
-</html>
+    </div>
+  </div>
+</section>
