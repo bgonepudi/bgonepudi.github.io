@@ -1,381 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhavya Gonepudi | Quality Engineering Leader</title>
+<meta name="description" content="Bhavya Gonepudi — Quality Engineering, Test Automation, AI and Leadership.">
+
 <style>
-  .quality-flow {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 40px;
-    align-items: center;
-    padding: 70px 0;
-  }
+:root {
+  --ink:#171717;
+  --muted:#575757;
+  --line:#d9e0e7;
+  --blue:#173c60;
+  --teal:#087c6c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#fafafa;
+  color:var(--ink);
+  font:18px/1.65 Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,a:focus-visible,select:focus-visible{
+  outline:3px solid #234be2;
+  outline-offset:4px;
+}
+nav{
+  padding:24px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  border-bottom:1px solid var(--line);
+}
+nav strong{font-size:20px}
+nav div{display:flex;flex-wrap:wrap;gap:20px;font-size:15px}
+main{max-width:1400px;margin:auto;padding:0 5%}
+section{padding:70px 0;border-bottom:1px solid var(--line)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  font-size:clamp(48px,6vw,88px);
+  line-height:1.05;
+  letter-spacing:-3px;
+  margin:24px 0;
+}
+h2{
+  font-size:clamp(34px,4vw,56px);
+  line-height:1.15;
+  letter-spacing:-1.5px;
+}
+h3{font-size:24px;line-height:1.3}
+p{color:var(--muted)}
+.eyebrow{
+  font:14px/1.5 monospace;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero{min-height:720px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border:1px solid var(--blue);
+  border-radius:26px;
+  background:var(--blue);
+  color:white;
+  font-size:16px;
+}
+.btn.light{background:white;color:var(--blue)}
+.stats{display:flex;gap:30px;margin-top:32px}
+.stats strong{display:block;font-size:34px}
+.stats span{font-size:14px;color:var(--muted)}
 
-  .quality-flow h2 {
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1.15;
-    margin-bottom: 20px;
-  }
+/* Animated character */
+.character-stage{
+  position:relative;
+  min-height:530px;
+  background:radial-gradient(ellipse,white,#f9eff2 70%,#fafafa);
+  border-radius:45%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.character-name{
+  position:absolute;
+  top:65px;
+  font-size:clamp(54px,6vw,88px);
+  font-weight:900;
+  letter-spacing:-5px;
+  color:#eedfe3;
+}
+.character{
+  position:relative;
+  width:100%;
+  aspect-ratio:1;
+  border:0;
+  padding:0;
+  background:transparent;
+  overflow:hidden;
+  margin-top:40px;
+}
+.sprite{
+  display:block;
+  width:100%;
+  height:100%;
+  background-image:url("./bhavya-character-v2.png");
+  background-size:300% 200%;
+  background-position:0% 0%;
+  background-repeat:no-repeat;
+}
+.character-message{
+  position:absolute;
+  top:0;
+  z-index:2;
+  max-width:90%;
+  background:white;
+  border:1px solid #e2d5d9;
+  border-radius:24px;
+  padding:10px 18px;
+  color:#6c3448;
+  font-size:16px;
+  text-align:center;
+}
+.greet{position:relative;margin-top:-12px}
 
-  .quality-flow p {
-    color: #575757;
-    font-size: 18px;
-    line-height: 1.7;
-  }
+/* Animated quality flow */
+.diagram{
+  border:1px solid #b8cbdc;
+  border-radius:20px;
+  background:white;
+  overflow:hidden;
+}
+.diagram-heading{
+  padding:20px;
+  background:#f8fafc;
+  border-bottom:1px solid var(--line);
+  color:var(--blue);
+  font:14px/1.6 monospace;
+}
+.engine{position:relative;height:430px;display:grid;place-items:center}
+.ring{
+  position:absolute;
+  width:290px;
+  height:290px;
+  border:1px dashed #9abbd5;
+  border-radius:50%;
+  animation:spin 18s linear infinite;
+}
+.ring:before{
+  content:"";
+  position:absolute;
+  top:-5px;
+  left:calc(50% - 5px);
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--teal);
+}
+.ring.inner{
+  width:220px;
+  height:220px;
+  animation-direction:reverse;
+  animation-duration:12s;
+}
+.core{
+  position:relative;
+  z-index:2;
+  width:150px;
+  height:150px;
+  border-radius:35px;
+  background:var(--blue);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 0 12px #e6f6f2;
+  animation:pulse 3s ease-in-out infinite;
+}
+.core strong{font-size:26px}
+.core span{font-size:14px;margin-top:8px}
+.node{
+  position:absolute;
+  z-index:3;
+  min-width:135px;
+  padding:14px;
+  border:1px solid #a9c6db;
+  border-radius:12px;
+  background:#f8fcff;
+  text-align:center;
+}
+.node strong{display:block;color:var(--blue);font-size:16px}
+.node span{display:block;color:#526579;font-size:14px}
+.node.req{top:24px;left:20px}
+.node.design{top:24px;right:20px}
+.node.run{bottom:24px;left:20px}
+.node.evidence{bottom:24px;right:20px}
+.node:after{
+  content:"";
+  position:absolute;
+  left:calc(50% - 1px);
+  width:3px;
+  height:42px;
+  background:var(--teal);
+  animation:signal 2s ease-in-out infinite;
+}
+.node.req:after,.node.design:after{top:100%}
+.node.run:after,.node.evidence:after{bottom:100%}
+.node.design:after{animation-delay:.5s}
+.node.run:after{animation-delay:1s}
+.node.evidence:after{animation-delay:1.5s}
+.diagram-footer{padding:20px;border-top:1px solid var(--line)}
+.diagram-footer p{font-size:15px;margin-bottom:12px}
+.track{height:7px;background:#e4edf3;border-radius:8px;overflow:hidden}
+.track span{
+  display:block;
+  width:30%;
+  height:100%;
+  background:var(--teal);
+  animation:travel 4s linear infinite;
+}
+.stage-labels{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:14px;
+  color:var(--blue);
+  margin-top:16px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{box-shadow:0 0 0 20px #087c6c12}}
+@keyframes signal{50%{opacity:.25}}
+@keyframes travel{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(430%)}
+}
 
-  .quality-flow-label {
-    font: 14px monospace;
-    letter-spacing: 2px;
-    color: #526579;
-    text-transform: uppercase;
-  }
+/* Flipping profile card */
+.profile{
+  position:relative;
+  width:100%;
+  max-width:440px;
+  height:380px;
+  margin:auto;
+  border:0;
+  padding:0;
+  background:transparent;
+  perspective:1200px;
+  text-align:left;
+}
+.profile-inner{
+  display:block;
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .7s;
+}
+.profile.flipped .profile-inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;
+  inset:0;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:30px;
+  background:white;
+  backface-visibility:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 20px 45px #0000000d;
+}
+.face.back{transform:rotateY(180deg);background:var(--blue);color:white}
+.monogram{font-size:100px;font-weight:bold;line-height:1}
+.profile-name{font-size:28px;font-weight:bold}
+.small{font-size:15px}
 
-  .quality-diagram {
-    background: #fff;
-    border: 1px solid #b8cbdc;
-    border-radius: 20px;
-    overflow: hidden;
-  }
+/* Scratch reveal */
+.reveal-box{
+  position:relative;
+  aspect-ratio:1;
+  border:1px solid #bccbd9;
+  border-radius:20px;
+  overflow:hidden;
+  background:#eef4ff;
+}
+.reveal-under{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:radial-gradient(ellipse,white,#e5efff);
+}
+.reveal-portrait{
+  width:65%;
+  height:auto;
+  aspect-ratio:1;
+  background-position:0% 100%;
+}
+.tags{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.tags span{
+  background:var(--blue);
+  color:white;
+  border-radius:20px;
+  padding:6px 12px;
+  font-size:14px;
+}
+.reveal-under strong{
+  margin-top:12px;
+  color:var(--blue);
+  font-size:20px;
+  text-align:center;
+}
+.reveal-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  touch-action:pan-y;
+  cursor:crosshair;
+}
+.reveal-canvas.brushing{touch-action:none}
 
-  .quality-diagram-heading {
-    padding: 20px;
-    border-bottom: 1px solid #d9e3ec;
-    background: #f8fafc;
-    color: #173c60;
-    font: 14px/1.6 monospace;
-  }
+/* Skills */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.filter{
+  border:1px solid var(--line);
+  background:white;
+  border-radius:24px;
+  padding:8px 18px;
+  font-size:15px;
+}
+.filter.active{background:var(--blue);color:white}
+.skills{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.skill{
+  min-height:140px;
+  border:1px solid var(--line);
+  background:white;
+  padding:14px;
+  text-align:left;
+  transition:transform .2s;
+}
+.skill:hover{transform:translateY(-4px)}
+.skill.selected{background:#eef1ff;border-color:#234be2}
+.skill small{display:block;font:14px monospace}
+.skill b{display:block;font-size:38px}
+.skill span{font-size:15px}
+.detail{min-height:90px;padding-top:24px}
 
-  .quality-engine {
-    position: relative;
-    height: 430px;
-    display: grid;
-    place-items: center;
-  }
+/* Highlights and content */
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:24px}
+.highlight{
+  flex:0 0 330px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:white;
+  padding:30px;
+  scroll-snap-align:start;
+}
+.number{font:44px monospace;color:#aaa}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{border:1px solid var(--line);border-radius:8px;background:white;padding:30px}
+.card a{border-bottom:1px solid var(--blue)}
+.experience{padding:24px 0;border-bottom:1px solid var(--line)}
+.experience small{font:14px monospace;color:var(--muted)}
 
-  .quality-ring {
-    position: absolute;
-    width: 290px;
-    height: 290px;
-    border: 1px dashed #9abbd5;
-    border-radius: 50%;
-    animation: qualityRotate 18s linear infinite;
-  }
+/* Automation Console */
+.lab{padding:30px;border:1px solid #d2d6e1;border-radius:12px;background:#f0f2f8}
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.step{padding:16px;border:1px solid var(--line);background:white;font-size:16px}
+.step.active{border-color:#234be2}
+label{display:block;font-size:16px}
+select{width:100%;padding:12px;margin:8px 0;border:1px solid #aaa;border-radius:6px;background:white;font-size:16px}
+.workers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.worker{padding:20px;border:1px solid var(--line);border-radius:6px;background:white}
+.worker h3{font-size:20px}
+.worker p,.worker span{font-size:15px}
+progress{width:100%;accent-color:#234be2}
+.console{
+  min-height:180px;
+  padding:22px;
+  background:#181b24;
+  color:#e7ebff;
+  border-radius:8px;
+  white-space:pre-wrap;
+  font:15px/1.7 monospace;
+}
+footer{padding:24px 5%;font:14px monospace;color:var(--muted)}
 
-  .quality-ring::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: calc(50% - 5px);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #087c6c;
-  }
-
-  .quality-ring-inner {
-    width: 220px;
-    height: 220px;
-    border-color: #8fc9bd;
-    animation-direction: reverse;
-    animation-duration: 12s;
-  }
-
-  .quality-core {
-    position: relative;
-    z-index: 2;
-    width: 150px;
-    height: 150px;
-    border-radius: 35px;
-    background: #173c60;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 0 12px #e6f6f2;
-    animation: qualityPulse 3s ease-in-out infinite;
-  }
-
-  .quality-core strong {
-    font-size: 26px;
-  }
-
-  .quality-core span {
-    margin-top: 8px;
-    font-size: 14px;
-  }
-
-  .quality-node {
-    position: absolute;
-    z-index: 3;
-    min-width: 135px;
-    padding: 14px;
-    background: #f8fcff;
-    border: 1px solid #a9c6db;
-    border-radius: 12px;
-    text-align: center;
-  }
-
-  .quality-node strong {
-    display: block;
-    color: #173c60;
-    font-size: 16px;
-  }
-
-  .quality-node span {
-    display: block;
-    color: #526579;
-    font-size: 14px;
-    margin-top: 4px;
-  }
-
-  .quality-requirement {
-    top: 24px;
-    left: 20px;
-  }
-
-  .quality-design {
-    top: 24px;
-    right: 20px;
-  }
-
-  .quality-execution {
-    bottom: 24px;
-    left: 20px;
-  }
-
-  .quality-evidence {
-    bottom: 24px;
-    right: 20px;
-  }
-
-  .quality-node::after {
-    content: "";
-    position: absolute;
-    left: calc(50% - 1px);
-    width: 3px;
-    height: 42px;
-    background: #087c6c;
-    animation: qualitySignal 2s ease-in-out infinite;
-  }
-
-  .quality-requirement::after,
-  .quality-design::after {
-    top: 100%;
-  }
-
-  .quality-execution::after,
-  .quality-evidence::after {
-    bottom: 100%;
-  }
-
-  .quality-design::after {
-    animation-delay: .5s;
-  }
-
-  .quality-execution::after {
-    animation-delay: 1s;
-  }
-
-  .quality-evidence::after {
-    animation-delay: 1.5s;
-  }
-
-  .quality-diagram-footer {
-    padding: 20px;
-    border-top: 1px solid #d9e3ec;
-  }
-
-  .quality-diagram-footer p {
-    margin: 0 0 14px;
-    font-size: 15px;
-  }
-
-  .quality-track {
-    height: 7px;
-    border-radius: 8px;
-    background: #e4edf3;
-    overflow: hidden;
-  }
-
-  .quality-track span {
-    display: block;
-    width: 30%;
-    height: 100%;
-    background: #087c6c;
-    animation: qualityTravel 4s linear infinite;
-  }
-
-  .quality-stages {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
-    color: #173c60;
-    font-size: 14px;
-  }
-
-  .quality-flow-link {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 12px 24px;
-    border-radius: 28px;
-    background: #173c60;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-  }
-
-  .quality-flow-link:focus-visible {
-    outline: 3px solid #234be2;
-    outline-offset: 4px;
-  }
-
-  @keyframes qualityRotate {
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes qualityPulse {
-    50% {
-      box-shadow: 0 0 0 20px rgba(8, 124, 108, .07);
-    }
-  }
-
-  @keyframes qualitySignal {
-    0%, 100% { opacity: .25; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes qualityTravel {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(430%); }
-  }
-
-  @media (max-width: 800px) {
-    .quality-flow {
-      grid-template-columns: 1fr;
-      gap: 28px;
-      padding: 50px 0;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .quality-engine {
-      height: 430px;
-    }
-
-    .quality-node {
-      min-width: 110px;
-      padding: 12px 8px;
-    }
-
-    .quality-node strong {
-      font-size: 14px;
-    }
-
-    .quality-requirement,
-    .quality-execution {
-      left: 10px;
-    }
-
-    .quality-design,
-    .quality-evidence {
-      right: 10px;
-    }
-
-    .quality-ring {
-      width: 245px;
-      height: 245px;
-    }
-
-    .quality-ring-inner {
-      width: 190px;
-      height: 190px;
-    }
-
-    .quality-core {
-      width: 140px;
-      height: 140px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .quality-diagram *,
-    .quality-diagram *::before,
-    .quality-diagram *::after {
-      animation: none !important;
-    }
-  }
+@media(max-width:800px){
+  body{font-size:17px}
+  nav{align-items:flex-start}
+  nav div{gap:10px;justify-content:flex-end}
+  section{padding:50px 0}
+  .columns,.cards,.workers{grid-template-columns:1fr}
+  h1{letter-spacing:-2px}
+  .hero{gap:35px}
+  .character-stage{min-height:440px}
+  .stats{gap:18px}
+  .skills{grid-template-columns:repeat(3,1fr)}
+  .workflow{grid-template-columns:1fr 1fr}
+  .lab{padding:20px}
+  .highlight{flex-basis:85%}
+}
+@media(max-width:480px){
+  .node{min-width:110px;padding:12px 8px}
+  .node strong{font-size:14px}
+  .node.req,.node.run{left:10px}
+  .node.design,.node.evidence{right:10px}
+  .ring{width:245px;height:245px}
+  .ring.inner{width:190px;height:190px}
+  .core{width:140px;height:140px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
+</head>
 
-<section class="quality-flow" id="quality-flow">
+<body>
+<nav>
+  <a href="#"><strong>BHAVYA GONEPUDI.</strong></a>
   <div>
-    <div class="quality-flow-label">AI quality orchestrator</div>
+    <a href="#quality-flow">Quality Flow</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#articles">Articles</a>
+  </div>
+</nav>
 
-    <h2>
-      From business intent<br>
-      to release evidence.
-    </h2>
-
+<main>
+<section class="hero columns" id="hero">
+  <div>
+    <div class="eyebrow">Quality engineering · AI · Leadership</div>
+    <h1>I build quality.<br>I grow teams.<br>I move delivery.</h1>
     <p>
-      Requirements guide test design. A quality owner reviews
-      the intent and approves execution. UI, API, and backend
-      checks produce the evidence needed for a release decision.
+      I’m Bhavya, a Quality Engineering and Test Automation leader
+      connecting enterprise automation, practical AI, and the people
+      who make it work.
     </p>
-
-    <a class="quality-flow-link" href="#lab">
-      Try the workflow
-    </a>
+    <div class="actions">
+      <a class="btn" href="#lab">Explore my quality lab</a>
+      <a class="btn light" href="mailto:bgonepudi@gmail.com">Let’s connect</a>
+    </div>
+    <div class="stats">
+      <div><strong>19+</strong><span>Years in quality</span></div>
+      <div><strong>40+</strong><span>Professionals led</span></div>
+      <div><strong>20</strong><span>Applications supported</span></div>
+    </div>
   </div>
 
-  <div class="quality-diagram">
-    <div class="quality-diagram-heading">
+  <div class="character-stage" id="character-stage">
+    <div class="character-name" aria-hidden="true">BHAVYA</div>
+    <p class="character-message" id="message" aria-live="polite">
+      Move your cursor. I’m listening.
+    </p>
+    <button class="character" id="character" aria-label="Greet Bhavya">
+      <span class="sprite" id="sprite" role="img"
+        aria-label="Animated portrait of Bhavya behind a laptop"></span>
+    </button>
+    <button class="btn light greet" id="greet">Say hello</button>
+  </div>
+</section>
+
+<section class="columns" id="quality-flow">
+  <div>
+    <div class="eyebrow">AI quality orchestrator</div>
+    <h2>From business intent<br>to release evidence.</h2>
+    <p>
+      Requirements guide test design. A quality owner reviews the intent
+      and approves execution. UI, API, and backend checks produce the
+      evidence needed for a release decision.
+    </p>
+    <a class="btn" href="#lab">Try the workflow</a>
+  </div>
+
+  <div class="diagram">
+    <div class="diagram-heading">
       AI QUALITY ORCHESTRATOR · WORKFLOW SIMULATION
     </div>
-
-    <div class="quality-engine">
-      <div class="quality-ring" aria-hidden="true"></div>
-      <div class="quality-ring quality-ring-inner"
-           aria-hidden="true"></div>
-
-      <div class="quality-core">
-        <strong>AI + QE</strong>
-        <span>Human governed</span>
+    <div class="engine">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="ring inner" aria-hidden="true"></div>
+      <div class="core">
+        <strong>AI + QE</strong><span>Human governed</span>
       </div>
-
-      <div class="quality-node quality-requirement">
-        <strong>REQUIREMENT</strong>
-        <span>Business intent</span>
+      <div class="node req">
+        <strong>REQUIREMENT</strong><span>Business intent</span>
       </div>
-
-      <div class="quality-node quality-design">
-        <strong>AI DESIGN</strong>
-        <span>Tests + scripts</span>
+      <div class="node design">
+        <strong>AI DESIGN</strong><span>Tests + scripts</span>
       </div>
-
-      <div class="quality-node quality-execution">
-        <strong>EXECUTION</strong>
-        <span>UI · API · DB</span>
+      <div class="node run">
+        <strong>EXECUTION</strong><span>UI · API · DB</span>
       </div>
-
-      <div class="quality-node quality-evidence">
-        <strong>EVIDENCE</strong>
-        <span>Release signal</span>
+      <div class="node evidence">
+        <strong>EVIDENCE</strong><span>Release signal</span>
       </div>
     </div>
-
-    <div class="quality-diagram-footer">
-      <p>
-        Illustrative workflow · Human approval before execution
-      </p>
-
-      <div class="quality-track" aria-hidden="true">
-        <span></span>
-      </div>
-
-      <div class="quality-stages">
-        <span>Design</span>
-        <span>Approve</span>
-        <span>Validate</span>
-        <span>Release</span>
+    <div class="diagram-footer">
+      <p>Illustrative workflow · Human approval before execution</p>
+      <div class="track" aria-hidden="true"><span></span></div>
+      <div class="stage-labels">
+        <span>Design</span><span>Approve</span>
+        <span>Validate</span><span>Release</span>
       </div>
     </div>
   </div>
 </section>
+
+<section class="columns">
+  <div>
+    <div class="eyebrow">The person behind the platforms</div>
+    <h2>Quality starts<br>with people.</h2>
+    <p>
+      I connect business risk, engineering discipline, and team
+      development—so quality moves with delivery instead of waiting
+      at the end.
+    </p>
+  </div>
+  <button class="profile" id="profile" aria-label="Flip profile card" aria-pressed="false">
+    <span class="profile-inner">
+      <span class="face">
+        <span class="eyebrow">Quality engineering</span>
+        <span class="monogram">BG.</span>
+        <span class="profile-name">Bhavya Gonepudi</span>
+        <span class="small">
+          Quality Engineering Leader<br>
+          Test Automation Manager<br><br>Tap to flip
+        </span>
+      </span>
+      <span class="face back">
+        <span>The way I lead</span>
+        <span>
+          Understand the business risk.<br>
+          Make the evidence visible.<br>
+          Build quality into delivery.
+        </span>
+        <span>
+          AI can accelerate the work.
+          Leadership still owns the judgment.
+        </span>
+        <span class="small">Tap to return</span>
+      </span>
+    </span>
+  </button>
+</section>
+
+<section class="columns" id="reveal">
+  <div>
+    <div class="eyebrow">A different view of my work</div>
+    <h2>Reveal what’s<br>behind the quality.</h2>
+    <p>People, engineering, and practical AI—working together.</p>
+    <p class="small" id="reveal-hint" aria-live="polite">
+      Move your cursor to reveal. On mobile, enable the brush first.
+    </p>
+    <div class="actions">
+      <button class="btn light" id="brush" aria-pressed="false">Enable brush</button>
+      <button class="btn light" id="reveal-all">Reveal all</button>
+      <button class="btn light" id="reveal-reset">Start again</button>
+    </div>
+  </div>
+  <div class="reveal-box" id="reveal-box">
+    <div class="reveal-under">
+      <div class="sprite reveal-portrait" role="img" aria-label="Bhavya waving"></div>
+      <div class="tags">
+        <span>Human approval</span>
+        <span>UI · API · Backend</span>
+        <span>AI-assisted design</span>
+      </div>
+      <strong>Engineering quality for the AI era.</strong>
+    </div>
+    <canvas class="reveal-canvas" id="reveal-canvas" aria-hidden="true"></canvas>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="eyebrow">The building blocks</div>
+  <h2>My table of skills.</h2>
+  <p>Select a tile to see how I put it to work.</p>
+  <div class="filters" id="filters"></div>
+  <div class="skills" id="skill-grid"></div>
+  <p class="detail" id="skill-detail" aria-live="polite">
+    Select a skill to explore its role in my work.
+  </p>
+</section>
+
+<section>
+  <div class="eyebrow">Leadership in practice</div>
+  <h2>Beyond the résumé.</h2>
+  <div class="actions">
+    <button class="btn light" id="previous">Previous</button>
+    <button class="btn light" id="next">Next</button>
+  </div>
+  <div class="rail" id="rail">
+    <article class="highlight">
+      <div class="number">01</div>
+      <h3>Lead people.<br>Build capability.</h3>
+      <p>
+        Leading 40+ onshore and offshore professionals across
+        20 applications, including hiring, performance reviews,
+        mentoring, and cross-training.
+      </p>
+    </article>
+    <article class="highlight">
+      <div class="number">02</div>
+      <h3>Turn scripts into shared platforms.</h3>
+      <p>Reusable UI, API, and backend frameworks that teams can extend, maintain, and trust.</p>
+    </article>
+    <article class="highlight">
+      <div class="number">03</div>
+      <h3>Bring quality into the pipeline.</h3>
+      <p>Continuous validation, quality gates, reporting, and traceable release evidence through Jenkins and CI/CD.</p>
+    </article>
+    <article class="highlight">
+      <div class="number">04</div>
+      <h3>Keep AI accountable.</h3>
+      <p>AI-assisted requirements and test design with human review, approval, and clear execution ownership.</p>
+    </article>
+  </div>
+</section>
+
+<section id="lab">
+  <div class="eyebrow">An interactive look at my work</div>
+  <h2>One requirement.<br>Three paths to confidence.</h2>
+  <p>
+    This simulated workflow shows test design, human approval,
+    and parallel validation. It does not execute enterprise tests.
+  </p>
+
+  <div class="lab">
+    <h3>Automation Console</h3>
+    <div class="workflow">
+      <div class="step active">01 · Requirement</div>
+      <div class="step">02 · Test design</div>
+      <div class="step">03 · Human approval</div>
+      <div class="step">04 · Execution & evidence</div>
+    </div>
+
+    <label for="requirement">Business requirement</label>
+    <select id="requirement">
+      <option>Member eligibility must match across UI, API, and database</option>
+      <option>Provider updates must reach downstream systems</option>
+      <option>Claims processing must preserve data integrity</option>
+    </select>
+
+    <div class="actions">
+      <button class="btn" id="generate">Generate test design</button>
+      <button class="btn light" id="approve" disabled>Approve & run in parallel</button>
+      <button class="btn light" id="reset">Reset</button>
+    </div>
+
+    <div class="workers">
+      <div class="worker">
+        <h3>PepperMill</h3><p>Selenium · Java · POM</p>
+        <progress max="100" value="0"></progress>
+        <span class="worker-state">Ready · UI validation</span>
+      </div>
+      <div class="worker">
+        <h3>PepperAPI</h3><p>REST Assured · Cucumber</p>
+        <progress max="100" value="0"></progress>
+        <span class="worker-state">Ready · API validation</span>
+      </div>
+      <div class="worker">
+        <h3>PepperWare</h3><p>File2DB · Table2Table</p>
+        <progress max="100" value="0"></progress>
+        <span class="worker-state">Ready · Backend validation</span>
+      </div>
+    </div>
+
+    <div class="console" id="console" role="log" aria-live="polite">Ready for requirement intake.
+Choose a requirement and generate its test design.</div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="eyebrow">Selected engineering work</div>
+  <h2>Built for real delivery.</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Enterprise API Automation Framework</h3>
+      <p>
+        A reusable Java 17 framework using REST Assured, Cucumber,
+        JUnit 5, and Gradle. Supports suite execution, OAuth2, SSL,
+        schema validation, database comparison, and reruns.
+      </p>
+    </article>
+    <article class="card">
+      <h3>CI/CD Quality Pipelines</h3>
+      <p>
+        Smoke validation alongside delivery and scheduled regression
+        for deeper confidence. Jenkins connects parallel execution,
+        reports, artifacts, and quality gates.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Execution KPI & Analytics</h3>
+      <p>
+        MySQL KPI capture and Extent reporting connect pass, fail,
+        skipped, and duration data to build traceability and
+        leadership-ready summaries.
+      </p>
+    </article>
+    <article class="card">
+      <h3>AI-Assisted Quality Engineering</h3>
+      <p>
+        Requirements become reviewed test cases and approved
+        execution plans. Traceability and human ownership keep
+        acceleration grounded in business intent.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="eyebrow">The career behind the work</div>
+  <h2>A reliability mindset.<br>An engineering journey.</h2>
+
+  <article class="experience">
+    <small>AUG 2014 — PRESENT</small>
+    <h3>AmeriHealth Caritas</h3>
+    <strong>Quality Engineering Leader / Test Automation Manager</strong>
+    <p>
+      Directing enterprise quality strategy across healthcare platforms,
+      distributed teams, UI/API/backend automation, CI/CD governance,
+      and AI-assisted quality engineering. Leading 40+ professionals
+      across 20 applications.
+    </p>
+  </article>
+
+  <article class="experience">
+    <small>DEC 2012 — AUG 2014</small>
+    <h3>Almac · NTT DATA</h3>
+    <strong>QA Manager / Test Automation Lead</strong>
+    <p>Led quality delivery and expanded automation into reusable frameworks, standards, and team operating practices.</p>
+  </article>
+
+  <article class="experience">
+    <small>AUG 2012 — NOV 2012</small>
+    <h3>iPipeline · NTT DATA</h3>
+    <strong>Test Lead Consultant</strong>
+    <p>Led test delivery for insurance technology with reliable execution, coordination, and release readiness.</p>
+  </article>
+
+  <article class="experience">
+    <small>MAR 2008 — JUL 2012</small>
+    <h3>SEI / SEIC · NTT DATA</h3>
+    <strong>Automation Consultant</strong>
+    <p>Built automation for financial-services platforms and strengthened the foundation for scalable testing.</p>
+  </article>
+
+  <article class="experience">
+    <small>FEB 2007 — FEB 2008</small>
+    <h3>Verizon</h3>
+    <strong>Production Support Engineer</strong>
+    <p>Supported production systems and investigated service issues, developing a customer-focused reliability mindset.</p>
+  </article>
+</section>
+
+<section id="articles">
+  <div class="eyebrow">Ideas from experience</div>
+  <h2>What I’m thinking about.</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>A Lesson I Learned in Test Automation the Hard Way!</h3>
+      <p>Maintainability, engineering judgment, and why the right automation strategy matters over time.</p>
+      <a href="https://www.linkedin.com/pulse/lesson-i-learned-test-automation-hard-way-bhavya-gonepudi-lzoqe/"
+         target="_blank" rel="noopener">Read on LinkedIn</a>
+    </article>
+    <article class="card">
+      <h3>AI + Testing Mindset</h3>
+      <p>Practical thoughts on risk, intent, smarter validation, and the judgment Quality Engineers bring.</p>
+      <a href="https://www.linkedin.com/in/bhavyagonepudi/recent-activity/articles/"
+         target="_blank" rel="noopener">Explore my articles</a>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Let’s connect</div>
+  <h2>Technical depth.<br>Leadership judgment.<br>A human point of view.</h2>
+  <div class="actions">
+    <a class="btn" href="https://www.linkedin.com/in/bhavyagonepudi/"
+       target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <a class="btn light" href="mailto:bgonepudi@gmail.com">Email me</a>
+    <a class="btn light" href="https://github.com/bgonepudi"
+       target="_blank" rel="noopener">View GitHub</a>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 BHAVYA GONEPUDI · QUALITY ENGINEERING FOR THE AI ERA</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Profile card */
+$("profile").onclick = function() {
+  this.setAttribute("aria-pressed", this.classList.toggle("flipped"));
+};
+
+/* Character reactions */
+const sprite = $("sprite");
+const positions = [[0,0],[50,0],[100,0],[0,100],[50,100],[100,100]];
+let greeting = false;
+let cooldown = 0;
+let frame = 0;
+let sequence = [];
+let startTime = 0;
+
+function pose(n) {
+  const cell = n === 4 ? 3 : n;
+  sprite.style.backgroundPosition =
+    positions[cell][0] + "% " + positions[cell][1] + "%";
+  sprite.style.transform =
+    n === 1 ? "scaleX(-1)" : n === 4 ? "rotate(1.5deg)" : "none";
+}
+
+function animateGreeting(now) {
+  frame = 0;
+  while (sequence.length && now - startTime >= sequence[0].time) {
+    const item = sequence.shift();
+    pose(item.pose);
+    if (item.end) {
+      greeting = false;
+      cooldown = now + 2500;
+      $("message").textContent = "Ready to explore? Try the quality lab.";
+    }
+  }
+  if (greeting) frame = requestAnimationFrame(animateGreeting);
+}
+
+function greet() {
+  if (greeting) return;
+  greeting = true;
+  startTime = performance.now();
+  $("message").textContent = "Hi, I’m Bhavya. Explore what I build.";
+  sequence = reduced
+    ? [{time:0,pose:3},{time:1800,pose:0,end:true}]
+    : [
+        {time:0,pose:3},
+        {time:240,pose:4},
+        {time:480,pose:3},
+        {time:720,pose:4},
+        {time:960,pose:3},
+        {time:1400,pose:5},
+        {time:3200,pose:0,end:true}
+      ];
+  if (!frame) frame = requestAnimationFrame(animateGreeting);
+}
+
+$("hero").addEventListener("pointermove", e => {
+  if (e.pointerType !== "mouse" || reduced || greeting) return;
+  const r = $("character-stage").getBoundingClientRect();
+  const n = e.clientX < r.left + r.width*.35 ? 1 :
+            e.clientX > r.left + r.width*.65 ? 2 : 0;
+  if (n === 0 && performance.now() > cooldown) greet();
+  else {
+    pose(n);
+    $("message").textContent =
+      n === 1 ? "Ideas over here?" :
+      n === 2 ? "What’s next?" : "Move your cursor. I’m listening.";
+  }
+});
+
+$("hero").addEventListener("pointerleave", () => {
+  if (!greeting) pose(0);
+});
+$("character").onclick = greet;
+$("greet").onclick = greet;
+pose(0);
+
+/* Scratch-to-reveal */
+(() => {
+  const canvas = $("reveal-canvas");
+  const box = $("reveal-box");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    canvas.hidden = true;
+    return;
+  }
+
+  const image = new Image();
+  let ready = false, brush = false, full = false;
+  let last = null, width = 0, height = 0;
+
+  function drawCover() {
+    if (!ready) return;
+    const r = box.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    width = r.width;
+    height = r.height;
+    canvas.width = Math.round(width*dpr);
+    canvas.height = Math.round(height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0,0,width,height);
+
+    const size = Math.min(width*.84,height*.83);
+    ctx.drawImage(
+      image,0,0,image.width/3,image.height/2,
+      (width-size)/2,12,size,size
+    );
+
+    ctx.fillStyle = "#171717";
+    ctx.font = "bold " + Math.max(18,Math.min(24,width*.045)) + "px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Bhavya Gonepudi",width/2,height-45);
+    ctx.fillStyle = "#575757";
+    ctx.font = "16px Arial";
+    ctx.fillText("Quality Engineering Leader",width/2,height-20);
+
+    if (full) ctx.clearRect(0,0,width,height);
+  }
+
+  function erase(e) {
+    if (!ready || full) return;
+    const r = canvas.getBoundingClientRect();
+    const p = {x:e.clientX-r.left,y:e.clientY-r.top};
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.lineWidth = Math.max(48,width*.12);
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+    ctx.moveTo(last ? last.x : p.x,last ? last.y : p.y);
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,ctx.lineWidth/2,0,Math.PI*2);
+    ctx.fill();
+    last = p;
+    $("reveal-hint").textContent = "Keep brushing—or choose Reveal all.";
+  }
+
+  image.onload = () => { ready = true; drawCover(); };
+  image.onerror = () => {
+    canvas.hidden = true;
+    $("reveal-hint").textContent =
+      "The portrait image could not load. Check bhavya-character-v2.png.";
+  };
+  image.src = "./bhavya-character-v2.png";
+
+  canvas.addEventListener("pointermove", e => {
+    if (e.pointerType === "mouse" || brush) erase(e);
+  });
+
+  canvas.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" || brush) {
+      last = null;
+      erase(e);
+      canvas.setPointerCapture(e.pointerId);
+    }
+  });
+
+  ["pointerup","pointercancel","pointerleave"].forEach(name => {
+    canvas.addEventListener(name,() => last = null);
+  });
+
+  $("brush").onclick = () => {
+    brush = !brush;
+    canvas.classList.toggle("brushing",brush);
+    $("brush").setAttribute("aria-pressed",brush);
+    $("brush").textContent = brush ? "Disable brush" : "Enable brush";
+  };
+
+  $("reveal-all").onclick = () => {
+    full = true;
+    ctx.clearRect(0,0,width,height);
+    $("reveal-hint").textContent =
+      "Revealed: human judgment, practical AI, and parallel validation.";
+  };
+
+  $("reveal-reset").onclick = () => {
+    full = false;
+    last = null;
+    drawCover();
+    $("reveal-hint").textContent = "Ready to reveal again.";
+  };
+
+  let resizeTimer;
+  function resize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawCover,100);
+  }
+
+  if ("ResizeObserver" in window) new ResizeObserver(resize).observe(box);
+  else window.addEventListener("resize",resize);
+})();
+
+/* Skills */
+const skills = [
+  ["Se","Selenium","Engineering","Browser automation through reusable Java page objects."],
+  ["Ja","Java","Engineering","The foundation of PepperMill and enterprise API automation."],
+  ["Ra","REST Assured","Engineering","Service layers, request specifications, and response validation."],
+  ["Cu","Cucumber","Engineering","Readable scenarios with suite tags and business traceability."],
+  ["Sq","SQL","Engineering","Database validation, data comparison, and KPI capture."],
+  ["Gd","Gradle","Engineering","Repeatable Java builds and targeted suite execution."],
+  ["Jk","Jenkins","Delivery","Pipeline smoke tests, scheduled regression, and artifacts."],
+  ["Gl","GitLab CI","Delivery","Version-controlled automation integrated with delivery."],
+  ["Au","OAuth2 / SSL","Engineering","Configurable authentication and API connectivity."],
+  ["Ai","Generative AI","Leadership & AI","AI-assisted test design and failure analysis under human review."],
+  ["Ld","Team leadership","Leadership & AI","Hiring, mentoring, and growing distributed teams."],
+  ["Kp","Quality KPIs","Delivery","Execution data translated into actionable quality evidence."]
+];
+
+let category = "All";
+
+function renderSkills() {
+  $("filters").replaceChildren();
+  $("skill-grid").replaceChildren();
+
+  ["All","Engineering","Delivery","Leadership & AI"].forEach(name => {
+    const b = document.createElement("button");
+    b.className = "filter" + (category === name ? " active" : "");
+    b.textContent = name;
+    b.setAttribute("aria-pressed",category === name);
+    b.onclick = () => { category = name; renderSkills(); };
+    $("filters").append(b);
+  });
+
+  skills.forEach((s,i) => {
+    if (category !== "All" && category !== s[2]) return;
+    const b = document.createElement("button");
+    b.className = "skill";
+    b.innerHTML =
+      "<small>" + String(i+1).padStart(2,"0") +
+      "</small><b>" + s[0] + "</b><span>" + s[1] + "</span>";
+    b.onclick = () => {
+      $("skill-grid").querySelectorAll("button").forEach(x => {
+        x.classList.remove("selected");
+      });
+      b.classList.add("selected");
+      $("skill-detail").textContent = s[1] + " — " + s[3];
+    };
+    $("skill-grid").append(b);
+  });
+}
+renderSkills();
+
+/* Highlights */
+function moveRail(direction) {
+  $("rail").scrollBy({
+    left:direction*$("rail").clientWidth*.8,
+    behavior:reduced ? "auto" : "smooth"
+  });
+}
+$("previous").onclick = () => moveRail(-1);
+$("next").onclick = () => moveRail(1);
+
+/* Automation simulation */
+const steps = [...document.querySelectorAll(".step")];
+const bars = [...document.querySelectorAll("progress")];
+const states = [...document.querySelectorAll(".worker-state")];
+let timer = null;
+
+function activateStep(n) {
+  steps.forEach((s,i) => s.classList.toggle("active",i === n));
+}
+
+function resetLab() {
+  clearInterval(timer);
+  timer = null;
+  $("generate").disabled = false;
+  $("approve").disabled = true;
+  $("requirement").disabled = false;
+  activateStep(0);
+  bars.forEach(b => b.value = 0);
+  states.forEach((s,i) => {
+    s.textContent = [
+      "Ready · UI validation",
+      "Ready · API validation",
+      "Ready · Backend validation"
+    ][i];
+  });
+  $("console").textContent =
+    "Ready for requirement intake.\nChoose a requirement and generate its test design.";
+}
+
+$("generate").onclick = () => {
+  $("generate").disabled = true;
+  $("approve").disabled = false;
+  $("requirement").disabled = true;
+  activateStep(2);
+  $("console").textContent =
+    "REQUIREMENT: " + $("requirement").value + "\n\n" +
+    "TEST DESIGN — 3 illustrative checks\n" +
+    "1. Validate the user-facing result in PepperMill.\n" +
+    "2. Validate the service response in PepperAPI.\n" +
+    "3. Compare downstream records in PepperWare.\n\n" +
+    "Waiting for a quality owner’s approval.";
+};
+
+$("approve").onclick = () => {
+  $("approve").disabled = true;
+  activateStep(3);
+  $("console").textContent +=
+    "\n\nAPPROVED · Three isolated workers started in parallel.";
+
+  let tick = 0;
+  timer = setInterval(() => {
+    tick++;
+    bars.forEach((bar,i) => {
+      bar.value = Math.min(100,tick*[14,18,11][i]);
+      states[i].textContent = bar.value === 100
+        ? "Complete · Passed"
+        : Math.round(bar.value) + "% · Running";
+    });
+    if (tick === 4) $("console").textContent += "\nAPI response and schema validated.";
+    if (tick === 6) $("console").textContent += "\nUI result validated.";
+    if (tick === 10) {
+      clearInterval(timer);
+      timer = null;
+      $("console").textContent +=
+        "\nBackend comparison validated.\n\n" +
+        "SUMMARY: 3 passed · 0 failed\n" +
+        "Illustrative evidence ready for review.";
+    }
+  },500);
+};
+
+$("reset").onclick = resetLab;
+$("requirement").onchange = resetLab;
+</script>
+</body>
+</html>
