@@ -13,7 +13,7 @@ QA & Test Automation Leader | AI-Driven Quality Engineering
 
 About Me
 
-I am a strategic and impact-focused QA and Test Automation Leader with 17+ years of experience building quality engineering practices, scalable automation solutions, and high-performing teams.
+I am a strategic and impact-focused QA and Test Automation Leader with 19+ years of experience building quality engineering practices, scalable automation solutions, and high-performing teams.
 
 My work connects engineering execution with business outcomes. I focus on creating practical quality strategies, modernizing CI/CD pipelines, improving release confidence, and turning test results into clear metrics leaders can act on.
 
