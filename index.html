@@ -439,6 +439,7 @@ footer{padding:24px 5%;font:14px monospace;color:var(--muted)}
     <a href="#quality-flow">Quality Flow</a>
     <a href="#skills">Skills</a>
     <a href="#work">Work</a>
+    <a href="#code-example">Code</a>
     <a href="#experience">Experience</a>
     <a href="#articles">Articles</a>
   </div>
@@ -724,6 +725,20 @@ Choose a requirement and generate its test design.</div>
         execution plans. Traceability and human ownership keep
         acceleration grounded in business intent.
       </p>
+    </article>
+  </div>
+</section>
+
+<section id="code-example">
+  <div class="eyebrow">Code you can explore</div>
+  <h2>From test results to a useful summary.</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Test Result Summary · Python example</h3>
+      <p>A small, independently runnable example that reads synthetic test results from CSV and summarizes pass, fail, and skipped counts. It demonstrates how execution data can become a clear starting point for a quality conversation.</p>
+      <p><strong>Problem:</strong> Raw test results can be difficult to scan. <strong>Approach:</strong> validate each result and calculate a transparent summary. <strong>Scope:</strong> demonstration code, not an enterprise framework or a production dashboard.</p>
+      <p>Python standard library · CSV · automated tests</p>
+      <a class="btn light" href="examples/test-result-summary/index.html">Explore the example and run instructions</a>
     </article>
   </div>
 </section>
@@ -1141,3 +1156,4 @@ $("requirement").onchange = resetLab;
 </script>
 </body>
 </html>
+
